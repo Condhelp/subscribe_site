@@ -90,7 +90,7 @@ const Home = () => {
 
         <Container>
           <S.HeroContents>
-            <S.Title>Vem aí, um novo conceito em gestão condominal.</S.Title>
+            <S.Title>Vem aí, um novo conceito no mercado condominial</S.Title>
             <S.MainLogo src={mainLogo} alt={""} />
           </S.HeroContents>
         </Container>
