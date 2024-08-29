@@ -11,7 +11,6 @@ export const Head = styled.div`
   flex-direction: column;
   gap: 16px;
   text-align: center;
-  max-width: 590px;
   margin: auto;
 `
 
@@ -21,9 +20,11 @@ export const Title = styled.span`
   color: ${({ theme }) => theme.colors.green.light};
 `
 
-export const Description = styled.span`
+export const Description = styled.span<{ $big?: boolean }>`
   font-size: 22px;
   color: #61676a;
+  max-width: ${({ $big }) => ($big ? "unset" : "590px")};
+  margin: auto;
 `
 
 export const Content = styled.div`

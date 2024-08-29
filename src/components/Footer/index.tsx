@@ -8,6 +8,22 @@ const Footer = () => {
   return (
     <S.Component>
       <Container>
+        <S.Disclaimer>
+          <span>Atenção</span>
+          <span>
+            A CONDHELP é apenas uma plataforma de conexão, e não oferece
+            quaisquer garantias, implícitas ou explicitas, sobre os produtos e
+            serviços disponibilizados em nossa Solução. Assim, a CONDHELP não se
+            responsabiliza, a qualquer título, pelos serviços ou produtos
+            comercializados pelos fornecedores listados em nosso Sistema, sendo
+            sua contratação por conta e risco do Síndico, que fica ciente que
+            todos os eventuais danos ou prejuízos, de qualquer natureza, que
+            possam decorrer da contratação/aquisição dos serviços e produtos
+            listados em nosso Sistema são de responsabilidade exclusiva do
+            fornecedor contratado, sem qualquer solidariedade ou subsidiariedade
+            da CONDHELP.
+          </span>
+        </S.Disclaimer>
         <S.Main>
           <Logo />
 

@@ -8,22 +8,36 @@ export const Component = styled.footer`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.green.dark};
   border-radius: 16px;
+  padding: 20px;
+`
+
+export const Disclaimer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.green.light};
+
+  span {
+    color: ${({ theme }) => theme.colors.green.light};
+  }
 `
 
 export const Main = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
   justify-content: space-between;
   gap: 24px;
   flex: 1;
-  padding: 20px;
 `
 
 export const Nav = styled.nav`
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-right: 20px;
 
   span {
     text-decoration: none;

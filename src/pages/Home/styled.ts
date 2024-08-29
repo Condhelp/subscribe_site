@@ -1,13 +1,17 @@
 import styled from "styled-components"
 
-import radar from "../../assets/images/radar.png"
-
 export const Page = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 60px;
   padding: 20px;
   background-color: #f4f5f7;
+`
+
+export const PageContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin: 60px 0;
 `
 
 export const Hero = styled.div`
@@ -129,195 +133,150 @@ export const Button = styled.button`
   color: ${({ theme }) => theme.colors.white.main};
 `
 
-export const PointSection = styled.section`
-  background-image: url(${radar});
-  background-repeat: no-repeat;
-  background-position: center -60px;
-  background-size: 110%;
-  padding: 100px 0;
+export const Features = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 36px;
+`
+
+export const FeatureLine = styled.div<{ $reverse: boolean; $dark: boolean }>`
+  /* max-width: 980px; */
+  display: flex;
+  flex-direction: ${({ $reverse }) => ($reverse ? "row-reverse" : "row")};
+  background-color: ${({ $dark, theme }) =>
+    $dark ? "transparent" : theme.colors.white.main};
+  gap: 36px;
+  border-radius: 24px;
+  padding: 20px;
+
+  img {
+    width: 100%;
+    max-width: 580px;
+    border-radius: 8px;
+  }
+`
+
+export const FeatureInfo = styled.div<{ $justText?: boolean }>`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: ${({ $justText }) => ($justText ? "center" : "flex-start")};
+  gap: 16px;
+`
+
+export const FeatureTitle = styled.span<{ $textCenter?: boolean }>`
+  font-size: 22px;
+  font-size: ${({ $textCenter }) => ($textCenter ? 32 : 22)}px;
+  font-weight: 500;
+  color: #333;
+  text-align: ${({ $textCenter }) => ($textCenter ? "center" : "left")};
+`
+
+export const FeatureText = styled.span`
+  font-size: 18px;
+  color: #61676a;
+`
+
+export const StartGap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 32px;
-
-  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
-    background-size: 100%;
-    padding: 64px 0;
-  }
-`
-
-export const PointImage = styled.img`
-  width: 860px;
-  height: auto;
-
-  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
-    width: 100%;
-  }
-`
-
-export const PointText = styled.p`
-  width: 860px;
-  color: ${({ theme }) => theme.colors.yellow.medium};
-  font-size: 32px;
-  text-align: center;
-
-  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
-    width: 100%;
-    font-size: 24px;
-  }
+  gap: 48px;
 
   span {
-    color: ${({ theme }) => theme.colors.yellow.light};
-    font-weight: bold;
+    max-width: 580px;
+    font-size: 18px;
   }
 `
 
-export const Testimonials = styled.div`
-  display: flex;
-  gap: 32px;
-  padding: 100px 0;
-
-  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
-    flex-direction: column;
-    gap: 124px;
-  }
-
-  @media (max-width: ${({ theme }) => theme.bp.small}px) {
-    padding-bottom: 0;
-  }
-`
-
-// Form
-
-export const FomSection = styled.section`
+export const StartGapContact = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
-  max-width: 620px;
-  margin: auto;
-  padding: 32px 0 140px;
-`
+  gap: 16px;
 
-export const FormTitle = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  max-width: 620px;
-  color: ${({ theme }) => theme.colors.white.main};
-  text-align: center;
-
-  span:nth-child(1) {
-    font-size: 32px;
-    font-weight: 600;
-  }
-
-  span:nth-child(2) {
-    font-size: 22px;
-    font-weight: 400;
-  }
-
-  @media (max-width: ${({ theme }) => theme.bp.small}px) {
-    span:nth-child(1) {
-      font-size: 24px;
-    }
-
-    span:nth-child(2) {
-      font-size: 16px;
-    }
-  }
-`
-
-export const FormArea = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-`
-
-export const FormLine = styled.div`
-  display: flex;
-  gap: 20px;
-  width: 100%;
-  flex-wrap: wrap;
-`
-
-export const FormInfo = styled.p`
-  color: ${({ theme }) => theme.colors.yellow.light};
-  font-size: 18px;
-  text-align: center;
-  max-width: 460px;
-`
-
-export const FormButtons = styled.div`
-  display: flex;
-  gap: 20px;
-  width: 100%;
-
-  @media (max-width: 720px) {
-    flex-direction: column;
+  div {
+    display: flex;
     align-items: center;
-    gap: 48px;
+    gap: 16px;
 
-    & > div,
-    & > button {
-      width: fit-content;
+    span {
+      white-space: nowrap;
     }
   }
 `
 
-export const RecaptchaArea = styled.div`
-  background-color: ${({ theme }) => theme.colors.white.main};
-  border-radius: 2px;
-  padding: 8px 12px;
+export const SPGArea = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  flex: 1;
-
-  @media (max-width: 720px) {
-    gap: 48px;
-  }
+  gap: 16px;
 `
 
-export const RLeft = styled.div`
+export const SPGExpandButton = styled.button<{ $opened: boolean }>`
+  outline: none;
+  border: none;
+  background: none;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   cursor: pointer;
 
   span {
-    font-family: Roboto;
-    font-size: 16px;
-    color: #000;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #61676a;
+  }
+
+  svg {
+    transition: transform 0.3s;
+    transform: rotate(${({ $opened }) => ($opened ? 0 : 180)}deg);
   }
 `
 
-export const RCheckbox = styled.input`
-  width: 24px;
-  height: 24px;
+export const SPGWrapper = styled.div<{ $opened: boolean }>`
+  display: grid;
+  transition: grid-template-rows 0.3s;
+  grid-template-rows: ${({ $opened }) => ($opened ? 1 : 0)}fr;
 `
 
-export const RLogo = styled.img`
-  height: 60px;
-  width: auto;
+export const SPGContent = styled.div<{ $opened: boolean }>`
+  min-height: 0;
+  overflow: hidden;
 `
 
-export const SubmitBtn = styled.button<{ $disabled: boolean }>`
-  outline: none;
-  border: none;
-  cursor: ${({ $disabled }) => ($disabled ? "unset" : "pointer")};
-  opacity: ${({ $disabled }) => ($disabled ? 0.6 : 1)};
-  text-decoration: none;
-  background-color: ${({ theme }) => theme.colors.yellow.medium};
-  color: ${({ theme }) => theme.colors.green.dark};
-  font-size: 22px;
-  text-transform: uppercase;
+export const ServicesProductsGrid = styled.div`
+  display: grid;
+  gap: 36px;
+  width: 100%;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: ${({ theme }) => theme.colors.white.main};
+  padding: 20px;
+  border-radius: 8px;
+`
+
+export const SPCategory = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`
+
+export const SPCategoryName = styled.span`
+  font-size: 12px;
   font-weight: 600;
-  padding: 0.8rem 1.4rem;
-  border-radius: 12px;
-  flex: 1;
-  transition: opacity 0.3s;
+  color: #434546;
+  text-transform: uppercase;
+`
+
+export const SPList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`
+
+export const SPItem = styled.span`
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.green.dark};
 `

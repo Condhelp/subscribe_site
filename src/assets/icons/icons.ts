@@ -1,5 +1,5 @@
-import { ReactComponent as logoFull } from "./logo_full.svg"
-import { ReactComponent as userCircle } from "./user_circle.svg"
+import { ReactComponent as LogoFull } from "./logo_full.svg"
+import { ReactComponent as UserCircle } from "./user_circle.svg"
 import { ReactComponent as Hidro } from "./hidro.svg"
 import { ReactComponent as Structure } from "./structure.svg"
 import { ReactComponent as Elevator } from "./elevator.svg"
@@ -12,6 +12,8 @@ import { ReactComponent as Security } from "./security.svg"
 import { ReactComponent as Copy } from "./copy.svg"
 import { ReactComponent as Check } from "./cehck.svg"
 import { ReactComponent as Calculator } from "./calc.svg"
+import { ReactComponent as Whatsapp } from "./whatsapp.svg"
+import { ReactComponent as Dropdown } from "./dropdown.svg"
 
 export const Icons = {
   Hidro,
@@ -26,6 +28,8 @@ export const Icons = {
   Copy,
   Check,
   Calculator,
-  LogoFull: logoFull,
-  UserCircle: userCircle,
+  LogoFull,
+  UserCircle,
+  Whatsapp,
+  Dropdown,
 }
