@@ -1,11 +1,28 @@
+import { useEffect, useState } from "react"
 import * as S from "./styled"
+
 import { Link } from "react-router-dom"
 import { menu } from "../../utils/system/menu"
 import { Icons } from "../../assets/icons/icons"
 
 const Header = () => {
+  const [floating, setFloating] = useState(false)
+
+  useEffect(() => {
+    const breakPoint = window.innerHeight
+
+    const ev = () => {
+      setFloating(window.scrollY > breakPoint)
+    }
+    window.addEventListener("scroll", ev)
+
+    return () => {
+      window.removeEventListener("scroll", ev)
+    }
+  }, [])
+
   return (
-    <S.Element>
+    <S.Element $floating={floating}>
       <Icons.LogoFull width={190} />
 
       <S.Nav>

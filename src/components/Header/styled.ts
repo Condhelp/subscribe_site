@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const Element = styled.header`
+export const Element = styled.header<{ $floating: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,7 +9,10 @@ export const Element = styled.header`
   position: fixed;
   z-index: 20;
   width: calc(100vw - 56px);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(${({ $floating }) => ($floating ? 10 : 0)}px);
+  background-color: ${({ $floating, theme }) =>
+    $floating ? theme.colors.green.medium : "transparent"};
+  transition: background-color 0.3s, backdrop-filter 0.3s;
 `
 
 export const Nav = styled.nav`
@@ -22,7 +25,7 @@ export const Nav = styled.nav`
 export const MenuItem = styled.div`
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.green.light};
+    color: #90cc61;
     font-size: 14px;
     transition: color 0.3s;
 
