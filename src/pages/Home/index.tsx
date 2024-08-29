@@ -5,9 +5,6 @@ import Container from "../../components/Container"
 
 import Footer from "../../components/Footer"
 
-// layout resourses
-import mainLogo from "../../assets/images/full_logo.png"
-
 // speakers images
 import easy from "../../assets/images/easy.png"
 import Header from "../../components/Header"
@@ -23,6 +20,7 @@ import checks from "../../assets/images/checks.png"
 import { Icons } from "../../assets/icons/icons"
 import { availableServices } from "../../utils/system/services"
 import { useNavigate } from "react-router-dom"
+import Carousel from "../../components/Carousel"
 
 const f1: any[] = [
   {
@@ -120,16 +118,14 @@ const Home = () => {
 
       <S.Hero>
         <Container>
-          <S.HeroContents>
-            <S.Title>Vem aí, um novo conceito no mercado condominial</S.Title>
-            <S.MainLogo src={mainLogo} alt={""} />
-          </S.HeroContents>
+          <Carousel />
         </Container>
       </S.Hero>
 
       <Container>
         <S.PageContent>
           <Section
+            id={"generalRef"}
             title="Simples, Fácil e objetivo"
             description="Com a CONDHELP, a forma de fazer orçamentos nos Condomínios, ficou ainda mais simples. Transformamos essa etapa importante em apenas alguns cliques."
           >
@@ -161,7 +157,10 @@ const Home = () => {
             </div>
           </Section>
 
-          <Section description="Funcionalidades que otimizam tempo e processos com as soluções CONDHELP">
+          <Section
+            id={"managerRef"}
+            description="Funcionalidades que otimizam tempo e processos com as soluções CONDHELP"
+          >
             <S.Features>
               {f1.map((i, k) => (
                 <S.FeatureLine key={k} $reverse={i.reverse} $dark={i.dark}>
@@ -208,7 +207,10 @@ const Home = () => {
             </S.Features>
           </Section>
 
-          <Section title="Quero oferecer meu serviço ou produto">
+          <Section
+            id={"providerRef"}
+            title="Quero oferecer meu serviço ou produto"
+          >
             <S.StartGap>
               <span>
                 Saia na <strong>FRENTE</strong> do seu concorrente, realize seu
