@@ -27,15 +27,17 @@ export const SlidePlace = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border-radius: 16px;
   flex: 1;
 
   img {
     height: 100%;
+    max-height: 100%;
     width: auto;
   }
 `
 
-export const SlideContent = styled.div`
+export const SlideContent = styled.div<{ $transparent: boolean }>`
   z-index: 2;
   width: 480px;
   min-height: 60svh;
@@ -43,13 +45,13 @@ export const SlideContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-image: linear-gradient(
-    170deg,
-    #1c321e 0%,
-    #4e7c3c 80%,
-    #f3d332 140%
-  );
+  background-image: "unset";
+  background-color: ${({ $transparent }) =>
+    $transparent ? "transparent" : "rgba(255, 255, 255, 0.2)"};
+  backdrop-filter: blur(${({ $transparent }) => ($transparent ? 0 : 10)}px);
   padding: 20px;
+  border-radius: 16px;
+  margin: ${({ $transparent }) => ($transparent ? 0 : 20)}px 0;
 `
 
 export const SlideFor = styled.span`

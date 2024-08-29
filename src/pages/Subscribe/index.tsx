@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import * as S from "./styled"
 
 import Container from "../../components/Container"
@@ -22,66 +22,61 @@ import { checkDate, formatDate } from "../../utils/masks/date"
 import { checkEmail } from "../../utils/masks/email"
 
 const Subscribe = () => {
-  const [name, setName] = useState("")
-  const [cpf, setCpf] = useState("")
-  const [birthdate, setBirthdate] = useState("")
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
-  const [condominium, setCondominium] = useState("")
-  const [robot, setRobot] = useState(true)
+  const [form, setForm] = useState({
+    name: "",
+    cpf: "",
+    birthdate: "",
+    email: "",
+    phone: "",
+    condominium: "",
+    code: "",
+    robot: true,
+  })
 
   const handleGetIn = () => {
     // ...
   }
 
   const checkForm = () => {
-    let hasErrors = true
+    let hasErrors = false
 
-    if (name.trim().length === 0) hasErrors = false
-    if (cpf.trim().length === 0) hasErrors = false
-    if (birthdate.trim().length === 0 && checkDate(birthdate)) hasErrors = false
-    if (email.trim().length === 0 && checkEmail(email)) hasErrors = false
-    if (phone.trim().length === 0) hasErrors = false
-    if (condominium.trim().length === 0) hasErrors = false
+    if (form.name.trim().length === 0) hasErrors = true
+    if (form.cpf.trim().length === 0) hasErrors = true
+    if (form.birthdate.trim().length === 0 || !checkDate(form.birthdate))
+      hasErrors = true
+    if (form.email.trim().length === 0 || !checkEmail(form.email))
+      hasErrors = true
+    if (form.phone.trim().length === 0) hasErrors = true
+    if (form.condominium.trim().length === 0) hasErrors = true
+    if (form.code.trim().length === 0) hasErrors = true
+    if (form.robot) hasErrors = true
 
     return hasErrors
   }
 
-  const handleForm = (field: string, value: string) => {
-    switch (field) {
-      case "name":
-        setName(value)
-        break
-      case "cpf":
-        setCpf(formatCpf(value))
-        break
-      case "birthdate":
-        setBirthdate(formatDate(value))
-        break
-      case "email":
-        setEmail(value)
-        break
-      case "phone":
-        setPhone(formatPhone(value))
-        break
-      case "condominium":
-        setCondominium(value)
-        break
+  const handleForm = (field: string, value: string | boolean) => {
+    let v = value
 
-      default:
-        break
-    }
+    if (field === "cpf") v = formatCpf(value as string)
+    if (field === "birthdate") v = formatDate(value as string)
+    if (field === "phone") v = formatPhone(value as string)
+
+    setForm((f) => ({ ...f, [field]: v }))
   }
 
   const handleFormSubmit = async () => {
     // ...
-    const formOk = checkForm()
+    const formOk = !checkForm()
 
     if (formOk) {
       // ...
       alert("Inscrição feita com sucesso!")
     } else alert("Preencha todos os dados corretamente")
   }
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+  }, [])
 
   return (
     <S.Page>
@@ -134,39 +129,46 @@ const Subscribe = () => {
             <S.FormLine>
               <Input
                 label="Nome Completo"
-                value={name}
+                value={form.name}
                 setValue={(value: string) => handleForm("name", value)}
               />
             </S.FormLine>
             <S.FormLine>
               <Input
                 label="CPF"
-                value={cpf}
+                value={form.cpf}
                 setValue={(value: string) => handleForm("cpf", value)}
               />
               <Input
                 label="Data de nascimento"
-                value={birthdate}
+                value={form.birthdate}
                 setValue={(value: string) => handleForm("birthdate", value)}
               />
             </S.FormLine>
             <S.FormLine>
               <Input
                 label="E-mail"
-                value={email}
+                value={form.email}
                 setValue={(value: string) => handleForm("email", value)}
               />
               <Input
                 label="Telefone"
-                value={phone}
+                value={form.phone}
                 setValue={(value: string) => handleForm("phone", value)}
               />
             </S.FormLine>
             <S.FormLine>
               <Input
                 label="Nome do seu condomínio"
-                value={condominium}
-                setValue={setCondominium}
+                value={form.condominium}
+                setValue={(value: string) => handleForm("condominium", value)}
+              />
+            </S.FormLine>
+            <S.FormLine>
+              <Input
+                label="Código"
+                value={form.code}
+                setValue={(value: string) => handleForm("code", value)}
               />
             </S.FormLine>
           </S.FormArea>
@@ -183,13 +185,17 @@ const Subscribe = () => {
 
           <S.FormButtons>
             <S.RecaptchaArea>
-              <S.RLeft onClick={() => setRobot(!robot)}>
-                <S.RCheckbox type="checkbox" checked={!robot} />
+              <S.RLeft onClick={() => handleForm("robot", !form.robot)}>
+                <S.RCheckbox type="checkbox" checked={!form.robot} />
                 <span>Não sou um robô</span>
               </S.RLeft>
               <S.RLogo src={recaptchaLogo} alt={""} />
             </S.RecaptchaArea>
-            <S.SubmitBtn onClick={handleFormSubmit} $disabled={robot}>
+            <S.SubmitBtn
+              onClick={handleFormSubmit}
+              disabled={checkForm()}
+              $disabled={checkForm()}
+            >
               Finalizar inscrição
             </S.SubmitBtn>
           </S.FormButtons>

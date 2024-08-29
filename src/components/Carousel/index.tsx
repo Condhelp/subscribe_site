@@ -44,7 +44,7 @@ const Carousel = () => {
             <S.SlidePlace>
               <img src={slide1} alt="" />
             </S.SlidePlace>
-            <S.SlideContent>
+            <S.SlideContent $transparent={true}>
               <S.SlideFor>Síndicos</S.SlideFor>
               <S.SlideMessage>
                 Solicite orçamentos de forma <strong>rápida</strong> para seus{" "}
@@ -58,7 +58,7 @@ const Carousel = () => {
         </SwiperSlide>
         <SwiperSlide>
           <S.SlideArea>
-            <S.SlideContent>
+            <S.SlideContent $transparent={true}>
               <S.SlideFor>Prestadores</S.SlideFor>
               <S.SlideMessage>
                 Aumente seus <strong>leads</strong> com a nossa{" "}
@@ -77,7 +77,7 @@ const Carousel = () => {
           <S.SlideArea>
             <img src={general} alt="" />
 
-            <S.SlideContent>
+            <S.SlideContent $transparent={false}>
               <Icons.LogoFull width="100%" height={"30%"} />
 
               <S.SlideMessage>Não é MAIS do MESMO.</S.SlideMessage>

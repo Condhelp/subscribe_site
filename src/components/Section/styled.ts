@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Component = styled.div<{ $fullHeight?: boolean }>`
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 64px;
 `
 
 export const Head = styled.div`

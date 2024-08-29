@@ -71,7 +71,7 @@ const f2: any[] = [
       </span>
     ))(),
     reverse: true,
-    dark: false,
+    dark: true,
   },
   {
     title: "Prestador, nunca foi tão fácil participar de orçamentos!",
@@ -87,7 +87,7 @@ const f2: any[] = [
       </span>
     ))(),
     reverse: false,
-    dark: false,
+    dark: true,
   },
   {
     image: checks,
@@ -240,7 +240,7 @@ const Home = () => {
                   <S.ServicesProductsGrid>
                     {availableServices.map((i, k) => (
                       <S.SPCategory key={k}>
-                        <S.SPCategoryName>{i.name}</S.SPCategoryName>
+                        <S.SPCategoryName>{i.name ?? " "}</S.SPCategoryName>
                         <S.SPList>
                           {i.list.map((ii, ik) => (
                             <S.SPItem key={ik}>{ii}</S.SPItem>

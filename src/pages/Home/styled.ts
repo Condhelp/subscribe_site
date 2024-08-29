@@ -10,7 +10,7 @@ export const Page = styled.div`
 export const PageContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 120px;
   margin: 60px 0;
 `
 
@@ -136,11 +136,13 @@ export const Button = styled.button`
 export const Features = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 36px;
+  width: 100%;
 `
 
 export const FeatureLine = styled.div<{ $reverse: boolean; $dark: boolean }>`
-  /* max-width: 980px; */
+  max-width: 980px;
   display: flex;
   flex-direction: ${({ $reverse }) => ($reverse ? "row-reverse" : "row")};
   background-color: ${({ $dark, theme }) =>
@@ -151,7 +153,7 @@ export const FeatureLine = styled.div<{ $reverse: boolean; $dark: boolean }>`
 
   img {
     width: 100%;
-    max-width: 580px;
+    max-width: 480px;
     border-radius: 8px;
   }
 `
@@ -165,10 +167,9 @@ export const FeatureInfo = styled.div<{ $justText?: boolean }>`
 `
 
 export const FeatureTitle = styled.span<{ $textCenter?: boolean }>`
-  font-size: 22px;
-  font-size: ${({ $textCenter }) => ($textCenter ? 32 : 22)}px;
-  font-weight: 500;
-  color: #333;
+  font-size: ${({ $textCenter }) => ($textCenter ? 32 : 26)}px;
+  font-weight: 600;
+  color: #61676a;
   text-align: ${({ $textCenter }) => ($textCenter ? "center" : "left")};
 `
 
