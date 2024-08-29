@@ -5,6 +5,10 @@ export const Page = styled.div`
   flex-direction: column;
   padding: 20px;
   background-color: #f4f5f7;
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    padding: 0px;
+  }
 `
 
 export const PageContent = styled.div`
@@ -26,6 +30,11 @@ export const Hero = styled.div`
     #4e7c3c 80%,
     #f3d332 140%
   );
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    border-radius: 0px;
+    height: 90vh;
+  }
 `
 
 export const HeroContents = styled.div`
@@ -92,6 +101,11 @@ export const Line = styled.div`
   img {
     border-radius: 12px;
   }
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `
 
 export const LineColumn = styled.div`
@@ -156,6 +170,10 @@ export const FeatureLine = styled.div<{ $reverse: boolean; $dark: boolean }>`
     max-width: 480px;
     border-radius: 8px;
   }
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    flex-direction: column;
+  }
 `
 
 export const FeatureInfo = styled.div<{ $justText?: boolean }>`
@@ -188,6 +206,10 @@ export const StartGap = styled.div`
   span {
     max-width: 580px;
     font-size: 18px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    flex-direction: column;
   }
 `
 
@@ -256,6 +278,10 @@ export const ServicesProductsGrid = styled.div`
   background-color: ${({ theme }) => theme.colors.white.main};
   padding: 20px;
   border-radius: 8px;
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 
 export const SPCategory = styled.div`

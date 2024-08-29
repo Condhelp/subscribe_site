@@ -129,19 +129,19 @@ const Home = () => {
             title="Simples, Fácil e objetivo"
             description="Com a CONDHELP, a forma de fazer orçamentos nos Condomínios, ficou ainda mais simples. Transformamos essa etapa importante em apenas alguns cliques."
           >
-            <S.Line>
+            <S.FeatureLine $dark={true} $reverse={false}>
               <img src={easy} alt="" />
-              <S.LineColumn>
-                <S.LineTitle>
+              <S.FeatureInfo>
+                <S.FeatureTitle>
                   Faça orçamentos para seus condomínios!
-                </S.LineTitle>
-                <S.LineDescription>
+                </S.FeatureTitle>
+                <S.FeatureText>
                   Conhecendo a responsabilidade que tem a função de Síndico,
                   criamos a conexão entre os desafios e as soluções para você
                   Síndico tirar nota 10 na sua prestação de contas.
-                </S.LineDescription>
-              </S.LineColumn>
-            </S.Line>
+                </S.FeatureText>
+              </S.FeatureInfo>
+            </S.FeatureLine>
           </Section>
 
           <S.VideoArea>
@@ -240,7 +240,11 @@ const Home = () => {
                   <S.ServicesProductsGrid>
                     {availableServices.map((i, k) => (
                       <S.SPCategory key={k}>
-                        <S.SPCategoryName>{i.name ?? " "}</S.SPCategoryName>
+                        {i.name ? (
+                          <S.SPCategoryName>{i.name ?? " "}</S.SPCategoryName>
+                        ) : (
+                          <div style={{ height: 15, width: 1 }} />
+                        )}
                         <S.SPList>
                           {i.list.map((ii, ik) => (
                             <S.SPItem key={ik}>{ii}</S.SPItem>

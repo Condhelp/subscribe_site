@@ -32,6 +32,11 @@ export const Main = styled.div`
   justify-content: space-between;
   gap: 24px;
   flex: 1;
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `
 
 export const Nav = styled.nav`
@@ -44,6 +49,15 @@ export const Nav = styled.nav`
     color: #90cc61;
     font-size: 14px;
     transition: color 0.3s;
+  }
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    span:nth-child(2) {
+      display: none;
+    }
   }
 `
 

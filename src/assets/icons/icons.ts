@@ -1,3 +1,4 @@
+import { ReactComponent as Burger } from "./burguer.svg"
 import { ReactComponent as LogoFull } from "./logo_full.svg"
 import { ReactComponent as UserCircle } from "./user_circle.svg"
 import { ReactComponent as Hidro } from "./hidro.svg"
@@ -16,6 +17,7 @@ import { ReactComponent as Whatsapp } from "./whatsapp.svg"
 import { ReactComponent as Dropdown } from "./dropdown.svg"
 
 export const Icons = {
+  Burger,
   Hidro,
   Structure,
   Elevator,

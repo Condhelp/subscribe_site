@@ -8,6 +8,7 @@ export const SlideArea = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
+  margin: 64px 0;
 
   & > img {
     z-index: 1;
@@ -19,6 +20,18 @@ export const SlideArea = styled.div`
 
   &:has(> img) {
     justify-content: center;
+  }
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    flex-direction: column;
+    max-height: 80svh;
+    justify-content: center;
+
+    & > img {
+      position: relative;
+      border-radius: 16px;
+      display: none;
+    }
   }
 `
 
@@ -34,6 +47,10 @@ export const SlidePlace = styled.div`
     height: 100%;
     max-height: 100%;
     width: auto;
+  }
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    order: 1;
   }
 `
 
@@ -52,6 +69,15 @@ export const SlideContent = styled.div<{ $transparent: boolean }>`
   padding: 20px;
   border-radius: 16px;
   margin: ${({ $transparent }) => ($transparent ? 0 : 20)}px 0;
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    order: 2;
+    width: 100%;
+    gap: 24px;
+
+    backdrop-filter: blur(0px);
+    background-color: transparent;
+  }
 `
 
 export const SlideFor = styled.span`
@@ -59,6 +85,10 @@ export const SlideFor = styled.span`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.yellow.medium};
   text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    font-size: 32px;
+  }
 `
 
 export const SlideMessage = styled.span`
@@ -71,6 +101,10 @@ export const SlideMessage = styled.span`
   strong {
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.yellow.medium};
+  }
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    font-size: 24px;
   }
 `
 

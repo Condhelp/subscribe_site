@@ -7,6 +7,11 @@ import { Icons } from "../../assets/icons/icons"
 
 const Header = () => {
   const [floating, setFloating] = useState(false)
+  const [showing, setShowing] = useState(false)
+
+  const toggleMenu = () => {
+    setShowing(!showing)
+  }
 
   useEffect(() => {
     const breakPoint = window.innerHeight
@@ -22,7 +27,11 @@ const Header = () => {
   }, [])
 
   return (
-    <S.Element $floating={floating}>
+    <S.Element $floating={floating} $opened={showing}>
+      <S.BurguerButton onClick={toggleMenu}>
+        <Icons.Burger width={24} height={24} />
+      </S.BurguerButton>
+
       <Icons.LogoFull width={190} />
 
       <S.Nav>
