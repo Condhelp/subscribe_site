@@ -1,28 +1,26 @@
 import * as S from "./styled"
-import mainLogo from "../../assets/images/full_logo.png"
+import { ReactComponent as Logo } from "../../assets/icons/logo_dark.svg"
 import Container from "../Container"
+import { footer } from "../../utils/system/menu"
+import { Link } from "react-router-dom"
 
 const Footer = () => {
   return (
     <S.Component>
       <Container>
         <S.Main>
-          <img src={mainLogo} alt={""} />
-          <S.Socials>
-            <S.Social
-              href={"https://www.linkedin.com/in/cond-help-34921630a/"}
-              target={"_blank"}
-            >
-              LinkedIn
-            </S.Social>
-            <S.Divider />
-            <S.Social
-              href={"https://www.instagram.com/condhelp/"}
-              target={"_blank"}
-            >
-              Instagram
-            </S.Social>
-          </S.Socials>
+          <Logo />
+
+          <S.Nav>
+            <span>2024 © Todos os direitos reservados</span>
+            <span>|</span>
+
+            {footer.map((mi, k) => (
+              <S.MenuItem key={k}>
+                <Link to={mi.link}>{mi.text}</Link>
+              </S.MenuItem>
+            ))}
+          </S.Nav>
         </S.Main>
       </Container>
     </S.Component>

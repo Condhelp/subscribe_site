@@ -13,13 +13,15 @@ import pointImage from "../../assets/images/point.png"
 import recaptchaLogo from "../../assets/images/recaptchaLogo.png"
 
 // speakers images
-import speaker1 from "../../assets/images/speakers/speaker_1.png"
-import speaker2 from "../../assets/images/speakers/speaker_2.png"
+import easy from "../../assets/images/easy.png"
 import Input from "../../components/Input"
 import { formatCpf } from "../../utils/masks/cpf"
 import { formatPhone } from "../../utils/masks/phone"
 import { checkDate, formatDate } from "../../utils/masks/date"
 import { checkEmail } from "../../utils/masks/email"
+import Header from "../../components/Header"
+import Section from "../../components/Section"
+import Services from "../../components/Services"
 
 const Home = () => {
   const [name, setName] = useState("")
@@ -85,9 +87,9 @@ const Home = () => {
 
   return (
     <S.Page>
-      <S.Hero>
-        <img src={bgHero} alt={""} />
+      <Header />
 
+      <S.Hero>
         <Container>
           <S.HeroContents>
             <S.Title>Vem aí, um novo conceito no mercado condominial</S.Title>
@@ -95,105 +97,42 @@ const Home = () => {
           </S.HeroContents>
         </Container>
       </S.Hero>
+
       <Container>
-        <S.GetIn onClick={handleGetIn}>Participe do Lançamento</S.GetIn>
+        <Section
+          title="Simples, Fácil e objetivo"
+          description="Com a CONDHELP, a forma de fazer orçamentos nos Condomínios, ficou ainda mais simples. Transformamos essa etapa importante em apenas alguns cliques."
+        >
+          <S.Line>
+            <img src={easy} alt="" />
+            <S.LineColumn>
+              <S.LineTitle>Faça orçamentos para seus condomínios!</S.LineTitle>
+              <S.LineDescription>
+                Conhecendo a responsabilidade que tem a função de Síndico,
+                criamos a conexão entre os desafios e as soluções para você
+                Síndico tirar nota 10 na sua prestação de contas.
+              </S.LineDescription>
+            </S.LineColumn>
+          </S.Line>
+        </Section>
       </Container>
 
       <Container>
-        <S.PointSection>
-          <S.PointImage src={pointImage} alt={""} />
-          <S.PointText>
-            <span>Não é mais do mesmo</span>. Conheça a experiência de fazer
-            parte do próximo nível em sua <span>Gestão Condominial</span>.
-          </S.PointText>
-          <S.Testimonials>
-            <Testimonial
-              data={{
-                image: speaker1,
-                name: "Regina Teixeira",
-                title: "Como conviver em condomínio",
-              }}
-            />
-            <Testimonial
-              data={{
-                image: speaker2,
-                name: "Daniel Teixeira",
-                title: "Como lapidar o Zelador?",
-              }}
-            />
-          </S.Testimonials>
-        </S.PointSection>
+        <S.VideoArea>
+          <span>Área para Vídeo</span>
+        </S.VideoArea>
+      </Container>
 
-        <S.FomSection>
-          <S.FormTitle>
-            <span>Faça sua inscrição e participe!</span>
-            <span>Dia XX/XX/2024 às XXhs - Microsoft Teams</span>
-          </S.FormTitle>
+      <Container>
+        <Services />
+      </Container>
 
-          <S.FormArea>
-            <S.FormLine>
-              <Input
-                label="Nome Completo"
-                value={name}
-                setValue={(value: string) => handleForm("name", value)}
-              />
-            </S.FormLine>
-            <S.FormLine>
-              <Input
-                label="CPF"
-                value={cpf}
-                setValue={(value: string) => handleForm("cpf", value)}
-              />
-              <Input
-                label="Data de nascimento"
-                value={birthdate}
-                setValue={(value: string) => handleForm("birthdate", value)}
-              />
-            </S.FormLine>
-            <S.FormLine>
-              <Input
-                label="E-mail"
-                value={email}
-                setValue={(value: string) => handleForm("email", value)}
-              />
-              <Input
-                label="Telefone"
-                value={phone}
-                setValue={(value: string) => handleForm("phone", value)}
-              />
-            </S.FormLine>
-            <S.FormLine>
-              <Input
-                label="Nome do seu condomínio"
-                value={condominium}
-                setValue={setCondominium}
-              />
-            </S.FormLine>
-          </S.FormArea>
-
-          <S.FormInfo>
-            <span>*A participação do evento de lançamento é </span>
-            <b>gratuita</b>
-            <span> e seus dados </span>
-            <b>não serão</b>
-            <span> compartilhados com terceiros.</span>
-            <br />
-            <span>Você receberá o convite no e-mail cadastrado.</span>
-          </S.FormInfo>
-
-          <S.FormButtons>
-            <S.RecaptchaArea>
-              <S.RLeft onClick={() => setRobot(!robot)}>
-                <S.RCheckbox type="checkbox" checked={!robot} />
-                <span>Não sou um robô</span>
-              </S.RLeft>
-              <S.RLogo src={recaptchaLogo} alt={""} />
-            </S.RecaptchaArea>
-            <S.SubmitBtn onClick={handleFormSubmit} $disabled={robot}>
-              Finalizar inscrição
-            </S.SubmitBtn>
-          </S.FormButtons>
-        </S.FomSection>
+      <Container>
+        <Section title="Quero me cadastrar" description="Crie uma conta, cadastre seus condomínios e tenha acesso gratuito aos seus orçamentos!">
+          <div style={{ margin: "auto" }}>
+            <S.Button>Criar minha conta</S.Button>
+          </div>
+        </Section>
       </Container>
 
       <Footer />

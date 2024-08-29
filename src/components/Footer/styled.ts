@@ -3,26 +3,45 @@ import styled from "styled-components"
 export const Component = styled.footer`
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: space-between;
   gap: 24px;
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.green.medium};
+  background-color: ${({ theme }) => theme.colors.green.dark};
+  border-radius: 16px;
 `
 
 export const Main = styled.div`
   display: flex;
-  flex-direction: column;
-  padding: 24px 0;
-  gap: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex: 1;
+  padding: 20px;
+`
 
-  img {
-    max-width: 320px;
-    margin: auto;
+export const Nav = styled.nav`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-right: 20px;
+
+  span {
+    text-decoration: none;
+    color: #90cc61;
+    font-size: 14px;
+    transition: color 0.3s;
   }
+`
 
-  @media (max-width: 420px) {
-    img {
-      max-width: 100%;
+export const MenuItem = styled.div`
+  a {
+    text-decoration: none;
+    color: #90cc61;
+    font-size: 14px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.white.main};
     }
   }
 `
@@ -43,7 +62,7 @@ export const Social = styled.a`
     text-decoration: underline;
   }
 
-  @media (max-width: ${({theme}) => theme.bp.small}px) {
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
     font-size: 16px;
   }
 `

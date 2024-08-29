@@ -5,9 +5,8 @@ import radar from "../../assets/images/radar.png"
 export const Page = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 60px;
-  padding: 20px;
-  background-color: #f4f5f7;
+  gap: 24px;
+  background-color: ${({ theme }) => theme.colors.green.dark};
 `
 
 export const Hero = styled.div`
@@ -15,13 +14,14 @@ export const Hero = styled.div`
   height: 100vh;
   overflow: hidden;
   display: flex;
-  border-radius: 36px;
-  background-image: linear-gradient(
-    115deg,
-    #1c321e 0%,
-    #4e7c3c 80%,
-    #f3d332 140%
-  );
+
+  & > img {
+    min-width: 100vw;
+    position: absolute;
+    z-index: 1;
+    height: auto;
+    min-height: 100vh;
+  }
 `
 
 export const HeroContents = styled.div`
@@ -47,7 +47,7 @@ export const Title = styled.h1`
 export const MainLogo = styled.img`
   width: 600px;
 
-  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
+  @media (max-width: ${({theme}) => theme.bp.medium}px) {
     min-width: 240px;
     width: 100%;
     max-width: 600px;
@@ -71,63 +71,12 @@ export const GetIn = styled.a`
   border-radius: 12px;
   white-space: nowrap;
 
-  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+  @media (max-width: ${({theme}) => theme.bp.small}px) {
     font-size: 16px;
   }
 `
 
 // Sections
-
-export const Line = styled.div`
-  display: flex;
-  gap: 48px;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-
-  img {
-    border-radius: 12px;
-  }
-`
-
-export const LineColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 360px;
-`
-
-export const LineTitle = styled.span`
-  font-size: 22px;
-  font-weight: 500;
-  color: #333;
-`
-
-export const LineDescription = styled.span`
-  font-size: 18px;
-  color: #61676a;
-`
-
-// Vídeo area
-export const VideoArea = styled.div`
-  width: 100%;
-  aspect-ratio: 16/9;
-  border: 1px solid #61676a;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-`
-
-export const Button = styled.button`
-  border: none;
-  outline: none;
-  background-color: ${({ theme }) => theme.colors.green.medium};
-  cursor: pointer;
-  width: fit-content;
-  padding: 14px 34px;
-  border-radius: 80px;
-  color: ${({ theme }) => theme.colors.white.main};
-`
 
 export const PointSection = styled.section`
   background-image: url(${radar});
@@ -140,7 +89,7 @@ export const PointSection = styled.section`
   align-items: center;
   gap: 32px;
 
-  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
+  @media (max-width: ${({theme}) => theme.bp.medium}px) {
     background-size: 100%;
     padding: 64px 0;
   }
@@ -150,7 +99,7 @@ export const PointImage = styled.img`
   width: 860px;
   height: auto;
 
-  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
+  @media (max-width: ${({theme}) => theme.bp.medium}px) {
     width: 100%;
   }
 `
@@ -161,7 +110,7 @@ export const PointText = styled.p`
   font-size: 32px;
   text-align: center;
 
-  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
+  @media (max-width: ${({theme}) => theme.bp.medium}px) {
     width: 100%;
     font-size: 24px;
   }
@@ -177,12 +126,12 @@ export const Testimonials = styled.div`
   gap: 32px;
   padding: 100px 0;
 
-  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
+  @media (max-width: ${({theme}) => theme.bp.medium}px) {
     flex-direction: column;
     gap: 124px;
   }
 
-  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+  @media (max-width: ${({theme}) => theme.bp.small}px) {
     padding-bottom: 0;
   }
 `
@@ -218,7 +167,7 @@ export const FormTitle = styled.div`
     font-weight: 400;
   }
 
-  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+  @media (max-width: ${({theme}) => theme.bp.small}px) {
     span:nth-child(1) {
       font-size: 24px;
     }
