@@ -20,6 +20,10 @@ export const SGrid = styled.div`
   gap: 36px;
   width: 100%;
   grid-template-columns: repeat(6, 1fr);
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 
 export const SGridItem = styled.div`

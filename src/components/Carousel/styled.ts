@@ -2,13 +2,16 @@ import styled from "styled-components"
 
 export const Area = styled.div`
   width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  height: fit-content;
+  margin: 64px 0;
 `
 
 export const SlideArea = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
-  margin: 64px 0;
 
   & > img {
     z-index: 1;
@@ -28,9 +31,10 @@ export const SlideArea = styled.div`
     justify-content: center;
 
     & > img {
-      position: relative;
-      border-radius: 16px;
-      display: none;
+      width: auto;
+      height: 100%;
+      /* position: relative; */
+      /* display: none; */
     }
   }
 `
@@ -64,19 +68,21 @@ export const SlideContent = styled.div<{ $transparent: boolean }>`
   justify-content: space-between;
   background-image: "unset";
   background-color: ${({ $transparent }) =>
-    $transparent ? "transparent" : "rgba(255, 255, 255, 0.2)"};
-  backdrop-filter: blur(${({ $transparent }) => ($transparent ? 0 : 10)}px);
+    $transparent ? "transparent" : "rgba(78, 124, 60, 0.6)"};
+  backdrop-filter: blur(${({ $transparent }) => ($transparent ? 0 : 6)}px);
   padding: 20px;
   border-radius: 16px;
   margin: ${({ $transparent }) => ($transparent ? 0 : 20)}px 0;
 
   @media (max-width: ${({ theme }) => theme.bp.small}px) {
     order: 2;
-    width: 100%;
+    width: 80%;
+    height: 80%;
+    margin: 10px auto;
     gap: 24px;
 
-    backdrop-filter: blur(0px);
-    background-color: transparent;
+    /* backdrop-filter: blur(0px);
+    background-color: transparent; */
   }
 `
 

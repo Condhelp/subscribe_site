@@ -9,9 +9,9 @@ import * as S from "./styled"
 import { Icons } from "../../assets/icons/icons"
 
 // Slides images
-import slide1 from "../../assets/images/broker.png"
-import slide2 from "../../assets/images/easy.png"
-import general from "../../assets/images/city.jpg"
+import slide1 from "../../assets/images/budget.jpg"
+import slide2 from "../../assets/images/deal.jpg"
+import slide3 from "../../assets/images/city.jpg"
 
 const Carousel = () => {
   const handleManager = () => {
@@ -41,10 +41,10 @@ const Carousel = () => {
       >
         <SwiperSlide>
           <S.SlideArea>
-            <S.SlidePlace>
+            {/* <S.SlidePlace> */}
               <img src={slide1} alt="" />
-            </S.SlidePlace>
-            <S.SlideContent $transparent={true}>
+            {/* </S.SlidePlace> */}
+            <S.SlideContent $transparent={false}>
               <S.SlideFor>Síndicos</S.SlideFor>
               <S.SlideMessage>
                 Solicite orçamentos de forma <strong>rápida</strong> para seus{" "}
@@ -58,7 +58,7 @@ const Carousel = () => {
         </SwiperSlide>
         <SwiperSlide>
           <S.SlideArea>
-            <S.SlideContent $transparent={true}>
+            <S.SlideContent $transparent={false}>
               <S.SlideFor>Prestadores</S.SlideFor>
               <S.SlideMessage>
                 Aumente seus <strong>leads</strong> com a nossa{" "}
@@ -68,14 +68,14 @@ const Carousel = () => {
                 {"Saiba mais -->"}
               </S.SlideAction>
             </S.SlideContent>
-            <S.SlidePlace>
+            {/* <S.SlidePlace> */}
               <img src={slide2} alt="" />
-            </S.SlidePlace>
+            {/* </S.SlidePlace> */}
           </S.SlideArea>
         </SwiperSlide>
         <SwiperSlide>
           <S.SlideArea>
-            <img src={general} alt="" />
+            <img src={slide3} alt="" />
 
             <S.SlideContent $transparent={false}>
               <Icons.LogoFull width="100%" height={"30%"} />

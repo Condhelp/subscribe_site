@@ -1,5 +1,4 @@
 import * as S from "./styled"
-import Container from "../Container"
 import { Icons } from "../../assets/icons/icons"
 
 const list = [
@@ -19,19 +18,17 @@ const list = [
 
 const Services = () => {
   return (
-    <Container>
-      <S.Component>
-        <S.Title>Serviços e manutenções mais procurados</S.Title>
-        <S.SGrid>
-          {list.map((i, k) => (
-            <S.SGridItem key={k}>
-              {i.icon}
-              <span>{i.title}</span>
-            </S.SGridItem>
-          ))}
-        </S.SGrid>
-      </S.Component>
-    </Container>
+    <S.Component>
+      <S.Title>Serviços e manutenções mais procurados</S.Title>
+      <S.SGrid>
+        {list.map((i, k) => (
+          <S.SGridItem key={k}>
+            {i.icon}
+            <span>{i.title}</span>
+          </S.SGridItem>
+        ))}
+      </S.SGrid>
+    </S.Component>
   )
 }
 

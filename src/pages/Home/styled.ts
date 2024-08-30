@@ -130,8 +130,8 @@ export const LineDescription = styled.span`
 export const VideoArea = styled.div`
   width: 100%;
   aspect-ratio: 16/9;
-  border: 1px solid #61676a;
   border-radius: 8px;
+  overflow: hidden;
   display: grid;
   place-items: center;
 `

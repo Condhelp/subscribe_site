@@ -2,7 +2,7 @@ import { useState } from "react"
 import * as S from "./styled"
 
 import Container from "../../components/Container"
-
+import ReactPlayer from "react-player"
 import Footer from "../../components/Footer"
 
 // speakers images
@@ -21,6 +21,7 @@ import { Icons } from "../../assets/icons/icons"
 import { availableServices } from "../../utils/system/services"
 import { useNavigate } from "react-router-dom"
 import Carousel from "../../components/Carousel"
+import Services from "../../components/Services"
 
 const f1: any[] = [
   {
@@ -129,24 +130,33 @@ const Home = () => {
             title="Simples, Fácil e objetivo"
             description="Com a CONDHELP, a forma de fazer orçamentos nos Condomínios, ficou ainda mais simples. Transformamos essa etapa importante em apenas alguns cliques."
           >
-            <S.FeatureLine $dark={true} $reverse={false}>
-              <img src={easy} alt="" />
-              <S.FeatureInfo>
-                <S.FeatureTitle>
-                  Faça orçamentos para seus condomínios!
-                </S.FeatureTitle>
-                <S.FeatureText>
-                  Conhecendo a responsabilidade que tem a função de Síndico,
-                  criamos a conexão entre os desafios e as soluções para você
-                  Síndico tirar nota 10 na sua prestação de contas.
-                </S.FeatureText>
-              </S.FeatureInfo>
-            </S.FeatureLine>
+            <S.Features>
+              <S.FeatureLine $dark={false} $reverse={false}>
+                <img src={easy} alt="" />
+                <S.FeatureInfo>
+                  <S.FeatureTitle>
+                    Faça orçamentos para seus condomínios!
+                  </S.FeatureTitle>
+                  <S.FeatureText>
+                    Conhecendo a responsabilidade que tem a função de Síndico,
+                    criamos a conexão entre os desafios e as soluções para você
+                    Síndico tirar nota 10 na sua prestação de contas.
+                  </S.FeatureText>
+                </S.FeatureInfo>
+              </S.FeatureLine>
+            </S.Features>
           </Section>
 
           <S.VideoArea>
-            <span>Área para Vídeo</span>
+            <ReactPlayer
+              url="https://www.youtube.com/watch?v=IwxWGHDfBCc"
+              width={"100%"}
+              height={"100%"}
+              controls={true}
+            />
           </S.VideoArea>
+
+          <Services />
 
           <Section
             title="Quero me cadastrar"

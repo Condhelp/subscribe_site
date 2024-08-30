@@ -37,7 +37,14 @@ const Header = () => {
       <S.Nav>
         {menu.map((mi, k) => (
           <S.MenuItem key={k}>
-            <Link to={mi.link}>{mi.text}</Link>
+            <Link
+              to={mi.link}
+              onClick={() => {
+                if (showing) toggleMenu()
+              }}
+            >
+              {mi.text}
+            </Link>
           </S.MenuItem>
         ))}
         <S.SignButton>

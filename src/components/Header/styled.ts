@@ -20,7 +20,7 @@ export const Element = styled.header<{ $floating: boolean; $opened: boolean }>`
     background-color: ${({ theme }) => theme.colors.green.medium};
     height: 100vh;
     position: fixed;
-    left: 100%;
+    left: calc(100%);
     width: 80vw;
     transition: transform 0.3s;
     gap: 64px;
@@ -38,8 +38,12 @@ export const BurguerButton = styled.button`
   width: 38px;
   position: absolute;
   top: 20px;
-  left: -42px;
+  left: -52px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.24);
+
+  @media (min-width: ${({ theme }) => theme.bp.small}px) {
+    display: none;
+  }
 `
 
 export const Nav = styled.nav`
