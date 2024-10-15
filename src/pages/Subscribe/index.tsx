@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from "react"
 import * as S from "./styled"
 
@@ -20,6 +21,7 @@ import { formatCpf } from "../../utils/masks/cpf"
 import { formatPhone } from "../../utils/masks/phone"
 import { checkDate, formatDate } from "../../utils/masks/date"
 import { checkEmail } from "../../utils/masks/email"
+import { Api } from "../../api"
 
 const Subscribe = () => {
   const [form, setForm] = useState({
@@ -35,6 +37,7 @@ const Subscribe = () => {
 
   const handleGetIn = () => {
     // ...
+    // scroll to form
   }
 
   const checkForm = () => {
@@ -70,7 +73,27 @@ const Subscribe = () => {
 
     if (formOk) {
       // ...
-      alert("Inscrição feita com sucesso!")
+
+      // check code
+
+      const checkCode = await Api.getCode({ code: form.code })
+
+      if (checkCode.ok) {
+        console.log("checkCode.data", checkCode.data)
+        const used = checkCode.data.used
+        if (used) alert("Este código não é mais válido")
+        else {
+          /*
+           *  Continue form submittion
+           */
+
+          await Api.useCode({ code: form.code })
+
+          alert("Inscrição feita com sucesso!")
+        }
+      } else {
+        alert("Código inválido")
+      }
     } else alert("Preencha todos os dados corretamente")
   }
 

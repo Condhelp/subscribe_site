@@ -110,7 +110,7 @@ const Home = () => {
   const [allServicesOpened, setAllServicesOpened] = useState(true)
 
   const handleGetIn = () => {
-    navigate("/contact")
+    navigate("/events")
   }
 
   return (
