@@ -23,6 +23,7 @@ import { checkDate, formatDate } from "../../utils/masks/date"
 import { checkEmail } from "../../utils/masks/email"
 import { Api } from "../../api"
 import Modal from "../../components/Modal"
+import { formatCode } from "../../utils/masks/code"
 
 const Subscribe = () => {
   const [modal, setModal] = useState<any>({
@@ -122,7 +123,7 @@ const Subscribe = () => {
                   phone: "",
                   robot: false,
                 })
-                
+
                 setModal({
                   title: "Incrição feita com sucesso",
                   code: form.code,
@@ -269,7 +270,7 @@ const Subscribe = () => {
             <S.FormLine>
               <Input
                 placeholder="Código"
-                value={form.code}
+                value={formatCode(form.code)}
                 setValue={(value: string) => handleForm("code", value)}
               />
             </S.FormLine>
