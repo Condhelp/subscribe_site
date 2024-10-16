@@ -112,6 +112,17 @@ const Subscribe = () => {
               const subscribe = await Api.subscription.subscribe(form)
 
               if (subscribe.ok) {
+                setForm({
+                  birthdate: "",
+                  code: "",
+                  condominium: "",
+                  cpf: "",
+                  email: "",
+                  name: "",
+                  phone: "",
+                  robot: false,
+                })
+                
                 setModal({
                   title: "Incrição feita com sucesso",
                   code: form.code,
