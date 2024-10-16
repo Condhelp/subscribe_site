@@ -14,6 +14,9 @@ export const theme: DefaultTheme = {
     white: {
       main: "#FFF",
     },
+    neutral: {
+      grey: "#61676a"
+    }
   },
   bp: {
     large: 1240,

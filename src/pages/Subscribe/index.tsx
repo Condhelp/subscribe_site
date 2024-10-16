@@ -22,8 +22,14 @@ import { formatPhone } from "../../utils/masks/phone"
 import { checkDate, formatDate } from "../../utils/masks/date"
 import { checkEmail } from "../../utils/masks/email"
 import { Api } from "../../api"
+import Modal from "../../components/Modal"
 
 const Subscribe = () => {
+  const [modal, setModal] = useState<any>({
+    title: "",
+    message: "",
+    visible: false,
+  })
   const [form, setForm] = useState({
     name: "",
     cpf: "",
@@ -36,8 +42,12 @@ const Subscribe = () => {
   })
 
   const handleGetIn = () => {
-    // ...
-    // scroll to form
+    const el = document.getElementById("formArea")
+
+    if (el) {
+      const pos = el.getBoundingClientRect().top + window.pageYOffset
+      window.scrollTo({ top: pos - 200, behavior: "smooth" })
+    }
   }
 
   const checkForm = () => {
@@ -79,22 +89,48 @@ const Subscribe = () => {
       const checkCode = await Api.getCode({ code: form.code })
 
       if (checkCode.ok) {
-        console.log("checkCode.data", checkCode.data)
         const used = checkCode.data.used
-        if (used) alert("Este código não é mais válido")
-        else {
+        if (used) {
+          setModal({
+            title: "Ops",
+            message: "Este código não é mais válido. Tente outro código",
+            visible: true,
+          })
+        } else {
           /*
            *  Continue form submittion
            */
 
-          await Api.useCode({ code: form.code })
+          const usage = await Api.useCode({ code: form.code })
 
-          alert("Inscrição feita com sucesso!")
+          if (usage.ok) {
+            setModal({
+              title: "Incrição feita com sucesso",
+              code: form.code,
+              visible: true,
+            })
+          } else {
+            setModal({
+              title: "Ops",
+              message: usage.error,
+              visible: true,
+            })
+          }
         }
       } else {
-        alert("Código inválido")
+        setModal({
+          title: "Atenção",
+          message: "Código inexistente. Digite um código válido",
+          visible: true,
+        })
       }
-    } else alert("Preencha todos os dados corretamente")
+    } else {
+      setModal({
+        title: "Atenção",
+        message: "Preencha todos os dados corretamente",
+        visible: true,
+      })
+    }
   }
 
   useEffect(() => {
@@ -103,6 +139,13 @@ const Subscribe = () => {
 
   return (
     <S.Page>
+      <Modal
+        role="submitStatus"
+        data={modal}
+        onClose={() => setModal((m: any) => ({ ...m, visible: false }))}
+        visible={modal.visible}
+      />
+
       <S.Hero>
         <img src={bgHero} alt={""} />
 
@@ -121,22 +164,22 @@ const Subscribe = () => {
         <S.PointSection>
           <S.PointImage src={pointImage} alt={""} />
           <S.PointText>
-            <span>Não é mais do mesmo</span>. Conheça a experiência de fazer
-            parte do próximo nível em sua <span>Gestão Condominial</span>.
+            Conheça a experiência de fazer parte do próximo nível em sua{" "}
+            <span>Gestão Condominial</span>.
           </S.PointText>
           <S.Testimonials>
             <Testimonial
               data={{
                 image: speaker1,
-                name: "Regina Teixeira",
-                title: "Como conviver em condomínio",
+                name: "Dr. Marcos Noronha",
+                title: "Palestrante",
               }}
             />
             <Testimonial
               data={{
                 image: speaker2,
-                name: "Daniel Teixeira",
-                title: "Como lapidar o Zelador?",
+                name: "Dra. Márcia Bernardes",
+                title: "Palestrante",
               }}
             />
           </S.Testimonials>
@@ -145,51 +188,54 @@ const Subscribe = () => {
         <S.FomSection>
           <S.FormTitle>
             <span>Faça sua inscrição e participe!</span>
-            <span>Dia XX/XX/2024 às XXhs - Microsoft Teams</span>
+            <span>
+              Dia 30/11/2024 às 14h – SEST SENAT – Jardim Atlântico –
+              Florianópolis – SC.
+            </span>
           </S.FormTitle>
 
-          <S.FormArea>
+          <S.FormArea id="formArea">
             <S.FormLine>
               <Input
-                label="Nome Completo"
+                placeholder="Nome Completo"
                 value={form.name}
                 setValue={(value: string) => handleForm("name", value)}
               />
             </S.FormLine>
             <S.FormLine>
               <Input
-                label="CPF"
+                placeholder="CPF"
                 value={form.cpf}
                 setValue={(value: string) => handleForm("cpf", value)}
               />
               <Input
-                label="Data de nascimento"
+                placeholder="Data de nascimento"
                 value={form.birthdate}
                 setValue={(value: string) => handleForm("birthdate", value)}
               />
             </S.FormLine>
             <S.FormLine>
               <Input
-                label="E-mail"
+                placeholder="E-mail"
                 value={form.email}
                 setValue={(value: string) => handleForm("email", value)}
               />
               <Input
-                label="Telefone"
+                placeholder="Telefone"
                 value={form.phone}
                 setValue={(value: string) => handleForm("phone", value)}
               />
             </S.FormLine>
             <S.FormLine>
               <Input
-                label="Nome do seu condomínio"
+                placeholder="Nome do seu condomínio"
                 value={form.condominium}
                 setValue={(value: string) => handleForm("condominium", value)}
               />
             </S.FormLine>
             <S.FormLine>
               <Input
-                label="Código"
+                placeholder="Código"
                 value={form.code}
                 setValue={(value: string) => handleForm("code", value)}
               />
@@ -203,7 +249,9 @@ const Subscribe = () => {
             <b>não serão</b>
             <span> compartilhados com terceiros.</span>
             <br />
-            <span>Você receberá o convite no e-mail cadastrado.</span>
+            <span>
+              Você receberá a confirmação de inscrição no aplicativo WhatsApp.
+            </span>
           </S.FormInfo>
 
           <S.FormButtons>

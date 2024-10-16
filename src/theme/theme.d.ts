@@ -15,6 +15,9 @@ declare module "styled-components" {
       white: {
         main: string
       }
+      neutral: {
+        grey: string
+      }
     }
     bp: {
       large: number

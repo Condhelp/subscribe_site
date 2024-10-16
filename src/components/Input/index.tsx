@@ -1,19 +1,36 @@
 import * as S from "./styled"
 
 type Props = {
-  label: string
+  placeholder?: string
+  label?: string
   value: string
   setValue: (v: string) => void
+  align?: string
+  padding?: number
 }
 
-const Input = ({ label, value, setValue }: Props) => {
+const Input = ({
+  placeholder,
+  label,
+  value,
+  setValue,
+  align,
+  padding,
+}: Props) => {
   const handleValue = (e: any) => {
     setValue(e.target.value)
   }
 
   return (
     <S.Component>
-      <S.Input value={value} onChange={handleValue} placeholder={label} />
+      {label && <S.Label>{label}</S.Label>}
+      <S.Input
+        value={value}
+        onChange={handleValue}
+        $padding={padding}
+        $align={align}
+        placeholder={placeholder}
+      />
     </S.Component>
   )
 }

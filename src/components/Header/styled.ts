@@ -14,6 +14,12 @@ export const Element = styled.header<{ $floating: boolean; $opened: boolean }>`
     $floating ? theme.colors.green.medium : "transparent"};
   transition: background-color 0.3s, backdrop-filter 0.3s;
 
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+
   @media (max-width: ${({ theme }) => theme.bp.small}px) {
     flex-direction: column;
     justify-content: center;
@@ -85,8 +91,26 @@ export const SignButton = styled.button`
   color: ${({ theme }) => theme.colors.yellow.light};
   cursor: pointer;
 
+  & button:nth-child(2) {
+    display: none;
+  }
+
+  @media (max-width: 1000px) {
+    & button:nth-child(1) {
+      display: none;
+    }
+
+    & button:nth-child(2) {
+      display: flex;
+    }
+  }
+
   @media (max-width: ${({ theme }) => theme.bp.small}px) {
     width: 100%;
     justify-content: center;
+
+    &:nth-child(2) {
+      display: none;
+    }
   }
 `

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import * as S from "./styled"
 
 import Container from "../../components/Container"
@@ -19,9 +19,14 @@ import direct from "../../assets/images/direct.png"
 import checks from "../../assets/images/checks.png"
 import { Icons } from "../../assets/icons/icons"
 import { availableServices } from "../../utils/system/services"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import Carousel from "../../components/Carousel"
 import Services from "../../components/Services"
+import FormBlock from "../../components/FormBlock"
+import { formatPhone } from "../../utils/masks/phone"
+
+import providerFormImage from "../../assets/images/providerForm.png"
+import { formatCnpj } from "../../utils/masks/cnpj"
 
 const f1: any[] = [
   {
@@ -64,7 +69,8 @@ const f1: any[] = [
 const f2: any[] = [
   {
     image: broker,
-    title: "Receba orçamentos sem intermediador e faça novos negócios!",
+    title:
+      "Sua demanda aumentará sem burocracia, resultando em novos negócios!",
     text: (() => (
       <span>
         Um novo conceito no mercado condominial, aproveite essa oportunidade e
@@ -106,12 +112,70 @@ const f2: any[] = [
 
 const Home = () => {
   const navigate = useNavigate()
+  const location = useLocation()
 
   const [allServicesOpened, setAllServicesOpened] = useState(true)
+
+  const [providerForm, setProviderForm] = useState({
+    name: "",
+    fantasy: "",
+    cnpj: "",
+    email: "",
+    phone: "",
+  })
+  const [managerForm, setManagerForm] = useState({
+    name: "",
+    surname: "",
+    condName: "",
+    cnpj: "",
+    email: "",
+    phone: "",
+  })
 
   const handleGetIn = () => {
     navigate("/events")
   }
+
+  const handleProviderField = (field: string, value: string | number) => {
+    setProviderForm((pf) => ({
+      ...pf,
+      [field]: value,
+    }))
+  }
+
+  const handleProviderSubmit = () => {
+    // check errors
+    // ...
+  }
+
+  const handleManagerField = (field: string, value: string | number) => {
+    setManagerForm((mf) => ({
+      ...mf,
+      [field]: value,
+    }))
+  }
+
+  const handleManagerSubmit = () => {
+    // check errors
+    // ...
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (location.state && location.state.scrollId) {
+        const id = location.state.scrollId
+
+        const el = document.getElementById(id)
+
+        console.log(el)
+        if (el) {
+          const pos = el.getBoundingClientRect().top + window.pageYOffset
+          window.scrollTo({ top: pos - 200, behavior: "smooth" })
+        }
+      }
+      console.log(location)
+    }, 200)
+  }, [location])
 
   return (
     <S.Page>
@@ -127,7 +191,7 @@ const Home = () => {
         <S.PageContent>
           <Section
             id={"generalRef"}
-            title="Simples, Fácil e objetivo"
+            title="Simples, fácil e objetivo"
             description="Com a CONDHELP, a forma de fazer orçamentos nos Condomínios, ficou ainda mais simples. Transformamos essa etapa importante em apenas alguns cliques."
           >
             <S.Features>
@@ -159,6 +223,7 @@ const Home = () => {
           <Services />
 
           <Section
+            id="wantRegister"
             title="Quero me cadastrar"
             description="Crie uma conta, cadastre seus condomínios e tenha acesso gratuito aos seus orçamentos!"
           >
@@ -193,11 +258,112 @@ const Home = () => {
             </div>
           </Section>
 
+          <Section>
+            <FormBlock
+              image={providerFormImage}
+              title="Solicite agora mesmo seus orçamentos!"
+              description="Os nossos prestadores vão receber uma notificação do seu pedido de orçamento e enviarão seus valores o mais breve possível."
+              onChange={handleProviderField}
+              handleSubmit={handleProviderSubmit}
+              fields={[
+                {
+                  type: "input",
+                  field: "name",
+                  label: "Nome do responsável",
+                  placeholder: "Digite aqui",
+                  value: providerForm.name,
+                },
+                {
+                  type: "input",
+                  field: "fantasy",
+                  label: "Nome fantasia",
+                  placeholder: "Digite aqui fantasia",
+                  value: providerForm.fantasy,
+                },
+                {
+                  type: "input",
+                  field: "cnpj",
+                  label: "CNPJ",
+                  placeholder: "Digite aqui",
+                  value: formatCnpj(providerForm.cnpj),
+                },
+                {
+                  type: "input",
+                  field: "email",
+                  label: "Email",
+                  placeholder: "Digite aqui",
+                  value: providerForm.email,
+                },
+                {
+                  type: "input",
+                  field: "phone",
+                  label: "Telefone",
+                  placeholder: "Digite aqui",
+                  value: formatPhone(providerForm.phone),
+                },
+              ]}
+            />
+          </Section>
+
+          <Section>
+            <FormBlock
+              reverse={true}
+              image={providerFormImage}
+              title="Solicite agora mesmo seus orçamentos!"
+              description="Os nossos prestadores vão receber uma notificação do seu pedido de orçamento e enviarão seus valores o mais breve possível."
+              onChange={handleManagerField}
+              handleSubmit={handleManagerSubmit}
+              fields={[
+                {
+                  type: "input",
+                  field: "name",
+                  label: "Nome",
+                  placeholder: "Digite aqui",
+                  value: managerForm.name,
+                },
+                {
+                  type: "input",
+                  field: "surname",
+                  label: "Sobrenome",
+                  placeholder: "Digite aqui",
+                  value: managerForm.surname,
+                },
+                {
+                  type: "input",
+                  field: "condName",
+                  label: "Nome Condomínio",
+                  placeholder: "Digite aqui",
+                  value: managerForm.condName,
+                },
+                {
+                  type: "input",
+                  field: "cnpj",
+                  label: "CNPJ",
+                  placeholder: "Digite aqui",
+                  value: formatCnpj(managerForm.cnpj),
+                },
+                {
+                  type: "input",
+                  field: "email",
+                  label: "Email",
+                  placeholder: "Digite aqui",
+                  value: managerForm.email,
+                },
+                {
+                  type: "input",
+                  field: "phone",
+                  label: "Telefone",
+                  placeholder: "Digite aqui",
+                  value: formatPhone(managerForm.phone),
+                },
+              ]}
+            />
+          </Section>
+
           <Section
+            id="services"
             title="Conexão, comunicação e responsabilidade"
-            description="A CONDHELP, conhece a importância dos Prestadores de Serviços e dos desafios de ofertar
-            produtos ou serviços no setor condominial. Criamos a solução que conecta o Prestador ao
-            Síndico, facilitando o contato, comunicação e criando esse elo tão importante."
+            description="A CONDHELP, conhece a importância dos Prestadores de Serviços e dos desafios de ofertar produtos ou serviços no setor condominial. Criamos uma solução exclusiva facilitando essa comunicação tão importante."
             big={true}
           >
             <S.Features>
@@ -231,7 +397,9 @@ const Home = () => {
                   <Icons.Whatsapp width={48} height={48} />
                   <span>Atendimento comercial</span>
                 </div>
-                <S.Button onClick={handleGetIn}>Realizar pré-cadastro</S.Button>
+                <S.Button id="preRegister" onClick={handleGetIn}>
+                  Realizar pré-cadastro
+                </S.Button>
               </S.StartGapContact>
             </S.StartGap>
           </Section>
@@ -242,7 +410,9 @@ const Home = () => {
                 $opened={allServicesOpened}
                 onClick={() => setAllServicesOpened(!allServicesOpened)}
               >
-                <span>Todos os serviços e manutenções</span>
+                <span>
+                  Veja alguns dos serviços e manutenções disponíveis aqui!
+                </span>
                 <Icons.Dropdown />
               </S.SPGExpandButton>
               <S.SPGWrapper $opened={allServicesOpened}>

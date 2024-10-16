@@ -1,7 +1,5 @@
 import styled from "styled-components"
 
-import radar from "../../assets/images/radar.png"
-
 export const Page = styled.div`
   display: flex;
   flex-direction: column;
@@ -47,7 +45,7 @@ export const Title = styled.h1`
 export const MainLogo = styled.img`
   width: 600px;
 
-  @media (max-width: ${({theme}) => theme.bp.medium}px) {
+  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
     min-width: 240px;
     width: 100%;
     max-width: 600px;
@@ -71,7 +69,7 @@ export const GetIn = styled.a`
   border-radius: 12px;
   white-space: nowrap;
 
-  @media (max-width: ${({theme}) => theme.bp.small}px) {
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
     font-size: 16px;
   }
 `
@@ -79,17 +77,13 @@ export const GetIn = styled.a`
 // Sections
 
 export const PointSection = styled.section`
-  background-image: url(${radar});
-  background-repeat: no-repeat;
-  background-position: center -60px;
-  background-size: 110%;
   padding: 100px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 32px;
 
-  @media (max-width: ${({theme}) => theme.bp.medium}px) {
+  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
     background-size: 100%;
     padding: 64px 0;
   }
@@ -99,7 +93,7 @@ export const PointImage = styled.img`
   width: 860px;
   height: auto;
 
-  @media (max-width: ${({theme}) => theme.bp.medium}px) {
+  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
     width: 100%;
   }
 `
@@ -110,7 +104,7 @@ export const PointText = styled.p`
   font-size: 32px;
   text-align: center;
 
-  @media (max-width: ${({theme}) => theme.bp.medium}px) {
+  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
     width: 100%;
     font-size: 24px;
   }
@@ -126,12 +120,12 @@ export const Testimonials = styled.div`
   gap: 32px;
   padding: 100px 0;
 
-  @media (max-width: ${({theme}) => theme.bp.medium}px) {
+  @media (max-width: ${({ theme }) => theme.bp.medium}px) {
     flex-direction: column;
     gap: 124px;
   }
 
-  @media (max-width: ${({theme}) => theme.bp.small}px) {
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
     padding-bottom: 0;
   }
 `
@@ -167,7 +161,7 @@ export const FormTitle = styled.div`
     font-weight: 400;
   }
 
-  @media (max-width: ${({theme}) => theme.bp.small}px) {
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
     span:nth-child(1) {
       font-size: 24px;
     }

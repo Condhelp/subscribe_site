@@ -19,7 +19,7 @@ const list = [
 const Services = () => {
   return (
     <S.Component>
-      <S.Title>Serviços e manutenções mais procurados</S.Title>
+      <S.Title>Serviços e manutenções mais procurados:</S.Title>
       <S.SGrid>
         {list.map((i, k) => (
           <S.SGridItem key={k}>

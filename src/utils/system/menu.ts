@@ -6,7 +6,7 @@ type TNavItem = {
 export const menu: TNavItem[] = [
   {
     text: "Serviços",
-    link: "/services",
+    link: "#services",
   },
   {
     text: "Quem somos",
@@ -22,7 +22,11 @@ export const menu: TNavItem[] = [
   },
   {
     text: "Quero ser prestador",
-    link: "/myaccount",
+    link: "#preRegister",
+  },
+  {
+    text: "Sou Síndico",
+    link: "#wantRegister",
   },
 ]
 
@@ -33,7 +37,7 @@ export const footer: TNavItem[] = [
   },
   {
     text: "Serviços",
-    link: "/services",
+    link: "#services",
   },
   {
     text: "Quem somos",
@@ -49,6 +53,6 @@ export const footer: TNavItem[] = [
   },
   {
     text: "Quero ser prestador",
-    link: "/myaccount",
+    link: "#preRegister",
   },
 ]

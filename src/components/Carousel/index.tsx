@@ -42,13 +42,13 @@ const Carousel = () => {
         <SwiperSlide>
           <S.SlideArea>
             {/* <S.SlidePlace> */}
-              <img src={slide1} alt="" />
+            <img src={slide1} alt="" />
             {/* </S.SlidePlace> */}
             <S.SlideContent $transparent={false}>
               <S.SlideFor>Síndicos</S.SlideFor>
               <S.SlideMessage>
-                Solicite orçamentos de forma <strong>rápida</strong> para seus{" "}
-                <strong>condomínios</strong>
+                Receba o contato <strong>RÁPIDO</strong> para{" "}
+                <strong>AGILIZAR</strong> seus orçamentos!
               </S.SlideMessage>
               <S.SlideAction onClick={handleManager}>
                 {"Saiba mais -->"}
@@ -69,7 +69,7 @@ const Carousel = () => {
               </S.SlideAction>
             </S.SlideContent>
             {/* <S.SlidePlace> */}
-              <img src={slide2} alt="" />
+            <img src={slide2} alt="" />
             {/* </S.SlidePlace> */}
           </S.SlideArea>
         </SwiperSlide>

@@ -1,21 +1,24 @@
 import styled from "styled-components"
 
-export const Component = styled.div<{ $fullHeight?: boolean }>`
+export const Component = styled.div<{
+  $fullHeight?: boolean
+  $smallGap?: boolean
+}>`
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: ${({ $smallGap }) => ($smallGap ? 32 : 64)}px;
 `
 
-export const Head = styled.div`
+export const Head = styled.div<{ $align?: string }>`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  text-align: center;
-  margin: auto;
+  text-align: ${({ $align }) => $align ?? "center"};
+  margin: ${({ $align }) => ($align ? "unset" : "auto")};
 `
 
-export const Title = styled.span`
-  font-size: 48px;
+export const Title = styled.span<{ $small?: boolean }>`
+  font-size: ${({ $small }) => ($small ? 32 : 48)}px;
   font-weight: 800;
   color: ${({ theme }) => theme.colors.green.light};
 
