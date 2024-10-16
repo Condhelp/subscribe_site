@@ -1,9 +1,20 @@
 import { TInvitation } from "../utils/@types/invitation"
+import { TSubscription } from "../utils/@types/subscription"
 
 export type TApi = {
-  addCode: (p: TParams["addCode"]) => TResponse["addCode"]
-  getCode: (p: TParams["getCode"]) => TResponse["getCode"]
-  useCode: (p: TParams["useCode"]) => TResponse["useCode"]
+  code: {
+    addCode: (p: TParams["addCode"]) => TResponse["code"]["addCode"]
+    getCode: (p: TParams["getCode"]) => TResponse["code"]["getCode"]
+    useCode: (p: TParams["useCode"]) => TResponse["code"]["useCode"]
+  }
+  subscription: {
+    checkEmail: (
+      p: TParams["checkEmail"]
+    ) => TResponse["subscription"]["checkEmail"]
+    subscribe: (
+      p: TParams["subscribe"]
+    ) => TResponse["subscription"]["subscribe"]
+  }
 }
 
 /*
@@ -11,9 +22,23 @@ export type TApi = {
  */
 
 type TParams = {
+  // code
   getCode: { code: string }
   addCode: { code: string }
   useCode: { code: string }
+
+  // Subscription
+  checkEmail: { email: string }
+  subscribe: {
+    name: string
+    cpf: string
+    birthdate: string
+    email: string
+    phone: string
+    condominium: string
+    code: string
+    robot: boolean
+  }
 }
 
 /*
@@ -23,7 +48,13 @@ type TParams = {
 type TDefaultRes<T> = { ok: false; error: string } | { ok: true; data: T }
 
 type TResponse = {
-  addCode: Promise<TDefaultRes<TInvitation>>
-  useCode: Promise<TDefaultRes<TInvitation>>
-  getCode: Promise<TDefaultRes<Partial<TInvitation>>>
+  code: {
+    addCode: Promise<TDefaultRes<TInvitation>>
+    useCode: Promise<TDefaultRes<TInvitation>>
+    getCode: Promise<TDefaultRes<Partial<TInvitation>>>
+  }
+  subscription: {
+    checkEmail: Promise<TDefaultRes<{ used: boolean }>>
+    subscribe: Promise<TDefaultRes<TSubscription>>
+  }
 }

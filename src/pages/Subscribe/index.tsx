@@ -86,7 +86,7 @@ const Subscribe = () => {
 
       // check code
 
-      const checkCode = await Api.getCode({ code: form.code })
+      const checkCode = await Api.code.getCode({ code: form.code })
 
       if (checkCode.ok) {
         const used = checkCode.data.used
@@ -101,18 +101,40 @@ const Subscribe = () => {
            *  Continue form submittion
            */
 
-          const usage = await Api.useCode({ code: form.code })
+          const emailCheckage = await Api.subscription.checkEmail({
+            email: form.email,
+          })
 
-          if (usage.ok) {
-            setModal({
-              title: "Incrição feita com sucesso",
-              code: form.code,
-              visible: true,
-            })
+          if (emailCheckage.ok) {
+            const usage = await Api.code.useCode({ code: form.code })
+
+            if (usage.ok) {
+              const subscribe = await Api.subscription.subscribe(form)
+
+              if (subscribe.ok) {
+                setModal({
+                  title: "Incrição feita com sucesso",
+                  code: form.code,
+                  visible: true,
+                })
+              } else {
+                setModal({
+                  title: "Ops",
+                  message: subscribe.error,
+                  visible: true,
+                })
+              }
+            } else {
+              setModal({
+                title: "Ops",
+                message: usage.error,
+                visible: true,
+              })
+            }
           } else {
             setModal({
-              title: "Ops",
-              message: usage.error,
+              title: "Atenção",
+              message: emailCheckage.error,
               visible: true,
             })
           }

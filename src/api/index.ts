@@ -15,9 +15,10 @@ const db = getFirestore(app)
 
 const collsNames = {
   invitations: "invitations",
+  subscriptions: "subscriptions",
 }
 
-const addCode: TApi["addCode"] = async ({ code }) => {
+const addCode: TApi["code"]["addCode"] = async ({ code }) => {
   return new Promise(async (resolve) => {
     try {
       const q = query(
@@ -45,7 +46,7 @@ const addCode: TApi["addCode"] = async ({ code }) => {
   })
 }
 
-const getCode: TApi["getCode"] = async ({ code }) => {
+const getCode: TApi["code"]["getCode"] = async ({ code }) => {
   return new Promise(async (resolve) => {
     try {
       const q = query(
@@ -72,7 +73,7 @@ const getCode: TApi["getCode"] = async ({ code }) => {
   })
 }
 
-const useCode: TApi["useCode"] = async ({ code }) => {
+const useCode: TApi["code"]["useCode"] = async ({ code }) => {
   return new Promise(async (resolve) => {
     try {
       const q = query(
@@ -106,8 +107,79 @@ const useCode: TApi["useCode"] = async ({ code }) => {
   })
 }
 
-export const Api = {
-  addCode,
-  getCode,
-  useCode,
+/*
+ *  --------------------
+ *  Subscription
+ *  --------------------
+ */
+
+const checkEmail: TApi["subscription"]["checkEmail"] = async ({ email }) => {
+  return new Promise(async (resolve) => {
+    try {
+      const q = query(
+        collection(db, collsNames.subscriptions),
+        where("email", "==", email)
+      )
+
+      const querySnap = await getDocs(q)
+
+      const qt = querySnap.docs.length
+
+      if (qt === 0) {
+        resolve({
+          ok: true,
+          data: {
+            used: false,
+          },
+        })
+      } else {
+        throw new Error("Esse email já foi cadastrado")
+      }
+    } catch (error) {
+      resolve({ ok: false, error: (error as any).message })
+    }
+  })
+}
+
+const subscribe: TApi["subscription"]["subscribe"] = async (form) => {
+  return new Promise(async (resolve) => {
+    try {
+      const obj = {
+        name: form.name,
+        cpf: form.cpf,
+        birthdate: form.birthdate,
+        email: form.email,
+        phone: form.phone,
+        condominium: form.condominium,
+        code: form.code,
+      }
+
+      const newSubscription = await addDoc(
+        collection(db, collsNames.subscriptions),
+        obj
+      )
+
+      resolve({
+        ok: true,
+        data: { ...obj, id: newSubscription.id },
+      })
+    } catch (error) {
+      resolve({
+        ok: false,
+        error: (error as any).message,
+      })
+    }
+  })
+}
+
+export const Api: TApi = {
+  code: {
+    addCode,
+    getCode,
+    useCode,
+  },
+  subscription: {
+    checkEmail,
+    subscribe,
+  },
 }
