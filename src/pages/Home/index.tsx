@@ -170,13 +170,13 @@ const Home = () => {
 
         const el = document.getElementById(id)
 
-        console.log(el)
         if (el) {
           const pos = el.getBoundingClientRect().top + window.pageYOffset
           window.scrollTo({ top: pos - 200, behavior: "smooth" })
         }
+
+        window.history.replaceState({}, "")
       }
-      console.log(location)
     }, 200)
   }, [location])
 
@@ -484,8 +484,7 @@ const faqStyles = {
   bgColor: "transparent",
   titleTextColor: theme.colors.neutral.grey,
   rowTitleColor: theme.colors.neutral.grey,
-  // rowContentColor: 'grey',
-  // arrowColor: "red",
+  rowContentColor: theme.colors.neutral.grey,
   rowContentPaddingTop: "10px",
   rowContentPaddingBottom: "10px",
   rowContentPaddingLeft: "32px",

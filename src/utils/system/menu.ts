@@ -14,7 +14,7 @@ export const menu: TNavItem[] = [
   },
   {
     text: "FAQ",
-    link: "/faq",
+    link: "#faqSection",
   },
   {
     text: "Eventos",
@@ -45,7 +45,7 @@ export const footer: TNavItem[] = [
   },
   {
     text: "FAQ",
-    link: "/faq",
+    link: "#faqSection",
   },
   {
     text: "Eventos",
