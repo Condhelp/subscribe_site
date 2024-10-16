@@ -307,3 +307,25 @@ export const SPItem = styled.span`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.green.dark};
 `
+
+export const FaqContainer = styled.div`
+  .faq-row-wrapper {
+    .faq-title {
+      padding: 10px;
+    }
+
+    .faq-body {
+      .faq-row {
+        .row-title {
+          padding: 10px;
+          font-weight: 700;
+        }
+
+        .row-content {
+          .row-content-text {
+          }
+        }
+      }
+    }
+  }
+`

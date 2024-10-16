@@ -1,9 +1,19 @@
 import { useEffect, useState } from "react"
 import * as S from "./styled"
+import { useLocation, useNavigate } from "react-router-dom"
+import { availableServices } from "../../utils/system/services"
+import { formatPhone } from "../../utils/masks/phone"
+import { formatCnpj } from "../../utils/masks/cnpj"
 
 import Container from "../../components/Container"
 import ReactPlayer from "react-player"
 import Footer from "../../components/Footer"
+import Carousel from "../../components/Carousel"
+import Services from "../../components/Services"
+import FormBlock from "../../components/FormBlock"
+
+// @ts-ignore
+import Faq from "react-faq-component"
 
 // speakers images
 import easy from "../../assets/images/easy.png"
@@ -17,16 +27,9 @@ import graphic from "../../assets/images/graphic.png"
 import broker from "../../assets/images/broker.png"
 import direct from "../../assets/images/direct.png"
 import checks from "../../assets/images/checks.png"
-import { Icons } from "../../assets/icons/icons"
-import { availableServices } from "../../utils/system/services"
-import { useLocation, useNavigate } from "react-router-dom"
-import Carousel from "../../components/Carousel"
-import Services from "../../components/Services"
-import FormBlock from "../../components/FormBlock"
-import { formatPhone } from "../../utils/masks/phone"
-
 import providerFormImage from "../../assets/images/providerForm.png"
-import { formatCnpj } from "../../utils/masks/cnpj"
+import { Icons } from "../../assets/icons/icons"
+import { theme } from "../../theme"
 
 const f1: any[] = [
   {
@@ -437,6 +440,12 @@ const Home = () => {
               </S.SPGWrapper>
             </S.SPGArea>
           </Section>
+
+          <Section id={"faqSection"}>
+            <S.FaqContainer>
+              <Faq data={faqData} styles={faqStyles} config={faqConfig} />
+            </S.FaqContainer>
+          </Section>
         </S.PageContent>
       </Container>
       <Footer />
@@ -445,3 +454,46 @@ const Home = () => {
 }
 
 export default Home
+
+const faqData = {
+  title: "Perguntas frequentes",
+  rows: [
+    {
+      title: "Pergunta 1",
+      content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed tempor sem. Aenean vel turpis feugiat,
+            ultricies metus at, consequat velit. Curabitur est nibh, varius in tellus nec, mattis pulvinar metus.
+            In maximus cursus lorem, nec laoreet velit eleifend vel. Ut aliquet mauris tortor, sed egestas libero interdum vitae.
+            Fusce sed commodo purus, at tempus turpis.`,
+    },
+    {
+      title: "Pergunta 2",
+      content:
+        "Nunc maximus, magna at ultricies elementum, risus turpis vulputate quam, vitae convallis ex tortor sed dolor.",
+    },
+    {
+      title: "Pergunta 3",
+      content: `Curabitur laoreet, mauris vel blandit fringilla, leo elit rhoncus nunc, ac sagittis leo elit vel lorem.
+          Fusce tempor lacus ut libero posuere viverra. Nunc velit dolor, tincidunt at varius vel, laoreet vel quam.
+          Sed dolor urna, lobortis in arcu auctor, tincidunt mattis ante. Vivamus venenatis ultricies nibh in volutpat.
+          Cras eu metus quis leo vestibulum feugiat nec sagittis lacus.Mauris vulputate arcu sed massa euismod dignissim. `,
+    },
+  ],
+}
+
+const faqStyles = {
+  bgColor: "transparent",
+  titleTextColor: theme.colors.neutral.grey,
+  rowTitleColor: theme.colors.neutral.grey,
+  // rowContentColor: 'grey',
+  // arrowColor: "red",
+  rowContentPaddingTop: "10px",
+  rowContentPaddingBottom: "10px",
+  rowContentPaddingLeft: "32px",
+  rowContentPaddingRight: "32px",
+}
+
+const faqConfig = {
+  // animate: true,
+  // arrowIcon: "V",
+  // tabFocus: true
+}
