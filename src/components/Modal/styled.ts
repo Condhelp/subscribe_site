@@ -7,6 +7,7 @@ export const Element = styled.div`
   box-shadow: 0 6px 50px rgba(0, 0, 0, 0.18);
   min-width: 540px;
   overflow: visible;
+  position: relative;
 
   @media (max-width: ${({ theme }) => theme.bp.small}px) {
     min-width: unset;
@@ -31,7 +32,7 @@ export const HeaderMain = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 48px;
 `
 
@@ -49,6 +50,9 @@ export const CloseBtn = styled.button`
   display: grid;
   place-items: center;
   cursor: pointer;
+  position: absolute;
+  top: 14px;
+  right: 14px;
 
   svg {
     width: 18px;

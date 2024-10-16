@@ -1,8 +1,6 @@
 import * as C from "../../styled"
 import * as S from "./styled"
 
-import { ReactComponent as CloseIcon } from "../../../../assets/icons/close.svg"
-
 type Props = {
   data: {
     title: string
@@ -13,19 +11,12 @@ type Props = {
 }
 
 const SubmitStatus = ({ data, onClose }: Props) => {
-  const handleClose = () => {
-    onClose()
-  }
-
   return (
     <S.Element>
       <C.Header>
         <C.HeaderDefault>
           <C.HeaderMain>
             <C.ModalTitle>{data.title}</C.ModalTitle>
-            <C.CloseBtn onClick={handleClose}>
-              <CloseIcon />
-            </C.CloseBtn>
           </C.HeaderMain>
         </C.HeaderDefault>
       </C.Header>

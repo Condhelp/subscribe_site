@@ -81,6 +81,7 @@ export const Goodbye = styled.span`
   font-size: 18px;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.neutral.grey};
+  text-align: center;
 `
 
 export const Bottom = styled.div`
