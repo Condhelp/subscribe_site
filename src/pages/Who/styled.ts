@@ -78,4 +78,10 @@ export const ImagesContainer = styled.div`
     width: 100%;
     max-width: 520px;
   }
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    img {
+      max-width: 70%;
+    }
+  }
 `

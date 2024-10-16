@@ -7,7 +7,7 @@ import Header from "../../components/Header"
 import Section from "../../components/Section"
 
 import computers from "../../assets/images/who_computers.png"
-import logo from "../../assets/images/full_logo.png"
+import logo from "../../assets/images/logo_colorfull.png"
 import { useEffect } from "react"
 
 const WhoPage = () => {
