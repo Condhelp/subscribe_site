@@ -66,7 +66,9 @@ const Header = ({ scrollPoint = 0, floatFixed }: Props) => {
                   if (currentPage !== "/") {
                     e.preventDefault()
                     navigate("/", {
-                      state: { scrollId: mi.link.slice(mi.link.indexOf("#") + 1) },
+                      state: {
+                        scrollId: mi.link.slice(mi.link.indexOf("#") + 1),
+                      },
                     })
                   } else {
                     e.preventDefault()
@@ -87,16 +89,15 @@ const Header = ({ scrollPoint = 0, floatFixed }: Props) => {
             </Link>
           </S.MenuItem>
         ))}
-        <S.SignButton>
+        <S.SignButton
+          onClick={() => {
+            window.location.href = "https://condhelp-front.vercel.app/login"
+          }}
+        >
           <Icons.UserCircle />
           <span>Entrar</span>
         </S.SignButton>
       </S.Nav>
-      {/* 
-      <S.SignButton>
-        <Icons.UserCircle />
-        <span>Entrar</span>
-      </S.SignButton> */}
     </S.Element>
   )
 }
