@@ -14,17 +14,17 @@ const Footer = () => {
         <S.Disclaimer>
           <span>Atenção</span>
           <span>
-            A CONDHELP é apenas uma plataforma de conexão, e não oferece
-            quaisquer garantias, implícitas ou explicitas, sobre os produtos e
-            serviços disponibilizados em nossa Solução. Assim, a CONDHELP não se
-            responsabiliza, a qualquer título, pelos serviços ou produtos
-            comercializados pelos fornecedores listados em nosso Sistema, sendo
-            sua contratação por conta e risco do Síndico, que fica ciente que
-            todos os eventuais danos ou prejuízos, de qualquer natureza, que
-            possam decorrer da contratação/aquisição dos serviços e produtos
-            listados em nosso Sistema são de responsabilidade exclusiva do
-            fornecedor contratado, sem qualquer solidariedade ou subsidiariedade
-            da CONDHELP.
+            A CONDHELP se orgulha de ser uma plataforma inovadora que conecta
+            você às melhores soluções do mercado. Embora não ofereçamos
+            garantias diretas sobre os produtos e serviços fornecidos, estamos
+            comprometidos em facilitar seu acesso a uma ampla rede de
+            fornecedores confiáveis. Vale lembrar que a responsabilidade pela
+            contratação dos serviços ou aquisição de produtos fica a cargo do
+            Síndico, permitindo que você tenha autonomia e liberdade para
+            escolher o que melhor atende às suas necessidades. Qualquer questão
+            relacionada à qualidade ou eventuais contratempos será diretamente
+            gerida com o fornecedor escolhido, garantindo que a relação entre
+            ambas as partes seja clara e transparente.
           </span>
         </S.Disclaimer>
         <S.Main>

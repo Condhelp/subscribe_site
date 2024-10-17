@@ -40,6 +40,8 @@ export const ModalTitle = styled.span`
   font-size: 18px;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.neutral.grey};
+  width: 100%;
+  text-align: center;
 `
 
 export const CloseBtn = styled.button`

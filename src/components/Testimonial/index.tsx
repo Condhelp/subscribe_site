@@ -14,7 +14,6 @@ const Testimonial = ({ data }: Props) => {
       <S.Main>
         <S.Image src={data.image} alt={""} />
         <S.Speaker>
-          <span>Palestra de</span>
           <span>{data.name}</span>
         </S.Speaker>
       </S.Main>

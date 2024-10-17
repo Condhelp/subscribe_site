@@ -10,7 +10,7 @@ export const Main = styled.div`
   background-color: ${({ theme }) => theme.colors.green.light};
   display: flex;
   gap: 20px;
-  padding: 12px 20px 32px;
+  padding: 32px 20px 32px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   position: relative;
@@ -25,7 +25,7 @@ export const Image = styled.img`
   aspect-ratio: 1;
   border-radius: 80px;
   position: absolute;
-  transform: translateY(-50%);
+  transform: translateY(-75%);
 
   @media (max-width: ${({ theme }) => theme.bp.medium}px) {
     width: 120px;
@@ -35,6 +35,8 @@ export const Image = styled.img`
 export const Speaker = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 100%;
   margin-left: 180px;
 
   span {
