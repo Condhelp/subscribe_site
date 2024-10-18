@@ -21,7 +21,7 @@ const collsNames = {
   eventInfo: "eventInfo",
 }
 
-const mailUrl = "http://localhost:8102/api/sendemail"
+const mailUrl = process.env.REACT_APP_BACK_URL + "/api/sendemail"
 
 const addCode: TApi["code"]["addCode"] = async ({ code }) => {
   return new Promise(async (resolve) => {
