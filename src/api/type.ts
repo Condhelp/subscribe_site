@@ -48,8 +48,6 @@ type TParams = {
 
   // Email
   sendEmail: {
-    edition: string
-    organizer: string
     date: string
     local: string
     code: string

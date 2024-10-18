@@ -107,8 +107,6 @@ const Subscribe = () => {
 
       if (eventEdition.ok) {
         const mailing = await Api.email.sendEmail({
-          edition: eventEdition.data.editionNumber,
-          organizer: eventEdition.data.organizer,
           date: eventEdition.data.date,
           local: eventEdition.data.local,
           code: form.code.toUpperCase(),
