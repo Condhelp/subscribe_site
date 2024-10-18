@@ -53,6 +53,7 @@ const FormBlock = ({
           {fields.map((f, k) =>
             f.type === "input" ? (
               <Input
+                key={k}
                 padding={10}
                 align={"left"}
                 label={f.label}
