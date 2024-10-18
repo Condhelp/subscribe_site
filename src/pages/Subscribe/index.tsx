@@ -26,6 +26,7 @@ import Modal from "../../components/Modal"
 import { formatCode } from "../../utils/masks/code"
 
 const Subscribe = () => {
+  const [isMailing, setIsMailing] = useState<any>(false)
   const [modal, setModal] = useState<any>({
     title: "",
     message: "",
@@ -76,6 +77,55 @@ const Subscribe = () => {
     if (field === "phone") v = formatPhone(value as string)
 
     setForm((f) => ({ ...f, [field]: v }))
+  }
+
+  const pad = (v: number) => String(v).padStart(2, "0")
+
+  const getInscriptionDate = () => {
+    let str = ""
+
+    const d = new Date()
+
+    const [year, month, day, hour, minute] = [
+      d.getFullYear(),
+      pad(d.getMonth() + 1),
+      pad(d.getDate()),
+      pad(d.getHours()),
+      pad(d.getMinutes()),
+    ]
+
+    str = `${day}/${month}/${year} ${hour}:${minute}`
+
+    return str
+  }
+
+  const sendEmail = async () => {
+    setIsMailing(true)
+
+    try {
+      const eventEdition = await Api.event.getInfo({})
+
+      if (eventEdition.ok) {
+        const mailing = await Api.email.sendEmail({
+          edition: eventEdition.data.editionNumber,
+          organizer: eventEdition.data.organizer,
+          date: eventEdition.data.date,
+          local: eventEdition.data.local,
+          code: form.code.toUpperCase(),
+          inscriptionDate: getInscriptionDate(),
+          subscriberName: form.name,
+          subscriberEmail: form.email,
+        })
+
+        if (!mailing.ok) throw new Error(mailing.error)
+      } else {
+        throw new Error(
+          "Houve um erro ao enviar seu email, mas sua inscrição está garantida. Entre em contato para mais informações"
+        )
+      }
+    } catch (error) {}
+
+    setIsMailing(false)
   }
 
   const handleFormSubmit = async () => {
@@ -129,6 +179,8 @@ const Subscribe = () => {
                   code: form.code,
                   visible: true,
                 })
+
+                if (!isMailing) sendEmail()
               } else {
                 setModal({
                   title: "Ops",
@@ -283,9 +335,7 @@ const Subscribe = () => {
             <b>não serão</b>
             <span> compartilhados com terceiros.</span>
             <br />
-            <span>
-              Você receberá a confirmação de inscrição no aplicativo WhatsApp.
-            </span>
+            <span>Você receberá a confirmação de inscrição no e-mail.</span>
           </S.FormInfo>
 
           <S.FormButtons>
@@ -297,9 +347,9 @@ const Subscribe = () => {
               <S.RLogo src={recaptchaLogo} alt={""} />
             </S.RecaptchaArea>
             <S.SubmitBtn
-              onClick={handleFormSubmit}
-              disabled={checkForm()}
-              $disabled={checkForm()}
+              onClick={!isMailing ? handleFormSubmit : undefined}
+              disabled={checkForm() || isMailing}
+              $disabled={checkForm() || isMailing}
             >
               Finalizar inscrição
             </S.SubmitBtn>

@@ -22,6 +22,7 @@ export const Disclaimer = styled.div`
 
   span {
     color: ${({ theme }) => theme.colors.green.light};
+    font-weight: 600;
   }
 `
 

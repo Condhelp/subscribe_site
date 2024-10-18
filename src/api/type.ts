@@ -15,6 +15,12 @@ export type TApi = {
       p: TParams["subscribe"]
     ) => TResponse["subscription"]["subscribe"]
   }
+  email: {
+    sendEmail: (p: TParams["sendEmail"]) => TResponse["email"]["sendEmail"]
+  }
+  event: {
+    getInfo: (p: TParams["getEventInfo"]) => TResponse["event"]["getInfo"]
+  }
 }
 
 /*
@@ -39,6 +45,21 @@ type TParams = {
     code: string
     robot: boolean
   }
+
+  // Email
+  sendEmail: {
+    edition: string
+    organizer: string
+    date: string
+    local: string
+    code: string
+    inscriptionDate: string
+    subscriberName: string
+    subscriberEmail: string
+  }
+
+  // Event
+  getEventInfo: {}
 }
 
 /*
@@ -56,5 +77,18 @@ type TResponse = {
   subscription: {
     checkEmail: Promise<TDefaultRes<{ used: boolean }>>
     subscribe: Promise<TDefaultRes<TSubscription>>
+  }
+  email: {
+    sendEmail: Promise<TDefaultRes<{ sended: boolean }>>
+  }
+  event: {
+    getInfo: Promise<
+      TDefaultRes<{
+        editionNumber: string
+        organizer: string
+        date: string
+        local: string
+      }>
+    >
   }
 }
