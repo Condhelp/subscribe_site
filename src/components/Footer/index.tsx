@@ -12,7 +12,7 @@ const Footer = () => {
     <S.Component>
       <Container>
         <S.Disclaimer>
-          <span>Atenção</span>
+          <span>Atenção!</span>
           <span>
             A CONDHELP se orgulha de ser uma plataforma inovadora que conecta
             você às melhores soluções do mercado. Embora não ofereçamos
