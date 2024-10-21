@@ -62,7 +62,6 @@ const Subscribe = () => {
     if (form.email.trim().length === 0 || !checkEmail(form.email))
       hasErrors = true
     if (form.phone.trim().length === 0) hasErrors = true
-    if (form.condominium.trim().length === 0) hasErrors = true
     if (form.code.trim().length === 0) hasErrors = true
     if (form.robot) hasErrors = true
 
@@ -173,7 +172,7 @@ const Subscribe = () => {
                 })
 
                 setModal({
-                  title: "Incrição feita com sucesso",
+                  title: "Inscrição feita com sucesso!",
                   code: form.code,
                   visible: true,
                 })
