@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+
 import { useEffect, useState } from "react"
 import * as S from "./styled"
 
@@ -108,6 +109,7 @@ const Subscribe = () => {
         const mailing = await Api.email.sendEmail({
           date: eventEdition.data.date,
           local: eventEdition.data.local,
+          localLink: eventEdition.data.localLink,
           code: form.code.toUpperCase(),
           inscriptionDate: getInscriptionDate(),
           subscriberName: form.name,
