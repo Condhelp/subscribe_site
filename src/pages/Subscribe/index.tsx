@@ -169,7 +169,7 @@ const Subscribe = () => {
                   email: "",
                   name: "",
                   phone: "",
-                  robot: false,
+                  robot: true,
                 })
 
                 setModal({
