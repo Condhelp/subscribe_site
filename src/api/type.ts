@@ -50,6 +50,7 @@ type TParams = {
   sendEmail: {
     date: string
     local: string
+    localLink: string
     code: string
     inscriptionDate: string
     subscriberName: string
@@ -82,10 +83,9 @@ type TResponse = {
   event: {
     getInfo: Promise<
       TDefaultRes<{
-        editionNumber: string
-        organizer: string
         date: string
         local: string
+        localLink: string
       }>
     >
   }

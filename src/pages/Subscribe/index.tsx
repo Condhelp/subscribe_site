@@ -108,6 +108,7 @@ const Subscribe = () => {
         const mailing = await Api.email.sendEmail({
           date: eventEdition.data.date,
           local: eventEdition.data.local,
+          localLink: eventEdition.data.localLink,
           code: form.code.toUpperCase(),
           inscriptionDate: getInscriptionDate(),
           subscriberName: form.name,
