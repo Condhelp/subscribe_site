@@ -141,7 +141,7 @@ const Subscribe = () => {
         if (used) {
           setModal({
             title: "Ops",
-            message: "Este código não é mais válido. Tente outro código",
+            message: "Este código não é mais válido. Tente outro código.",
             visible: true,
           })
         } else {
@@ -194,7 +194,7 @@ const Subscribe = () => {
             }
           } else {
             setModal({
-              title: "Atenção",
+              title: "Atenção!",
               message: emailCheckage.error,
               visible: true,
             })
@@ -202,15 +202,15 @@ const Subscribe = () => {
         }
       } else {
         setModal({
-          title: "Atenção",
-          message: "Código inexistente. Digite um código válido",
+          title: "Atenção!",
+          message: "Código inexistente. Digite um código válido.",
           visible: true,
         })
       }
     } else {
       setModal({
-        title: "Atenção",
-        message: "Preencha todos os dados corretamente",
+        title: "Atenção!",
+        message: "Preencha todos os dados corretamente.",
         visible: true,
       })
     }
