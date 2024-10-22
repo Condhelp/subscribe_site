@@ -71,6 +71,7 @@ const Subscribe = () => {
   const handleForm = (field: string, value: string | boolean) => {
     let v = value
 
+    if (field === "name") v = (value as string).replace(/[^a-zA-Z0-9 ]/g, "")
     if (field === "cpf") v = formatCpf(value as string)
     if (field === "birthdate") v = formatDate(value as string)
     if (field === "phone") v = formatPhone(value as string)
@@ -303,6 +304,7 @@ const Subscribe = () => {
                 placeholder="E-mail"
                 value={form.email}
                 setValue={(value: string) => handleForm("email", value)}
+                autoCapitalize={false}
               />
               <Input
                 placeholder="Telefone"
