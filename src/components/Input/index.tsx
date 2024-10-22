@@ -7,6 +7,7 @@ type Props = {
   setValue: (v: string) => void
   align?: string
   padding?: number
+  autoCapitalize?: boolean
 }
 
 const Input = ({
@@ -16,6 +17,7 @@ const Input = ({
   setValue,
   align,
   padding,
+  autoCapitalize,
 }: Props) => {
   const handleValue = (e: any) => {
     setValue(e.target.value)
@@ -30,6 +32,7 @@ const Input = ({
         $padding={padding}
         $align={align}
         placeholder={placeholder}
+        autoCapitalize={autoCapitalize === false ? "off" : "unset"}
       />
     </S.Component>
   )
