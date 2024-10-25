@@ -157,6 +157,7 @@ const subscribe: TApi["subscription"]["subscribe"] = async (form) => {
         phone: form.phone,
         condominium: form.condominium,
         code: form.code,
+        terms: form.terms,
       }
 
       const newSubscription = await addDoc(

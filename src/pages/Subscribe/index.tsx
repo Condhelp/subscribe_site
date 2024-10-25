@@ -32,6 +32,9 @@ const Subscribe = () => {
     message: "",
     visible: false,
   })
+  const [termsModal, setTermsModal] = useState<any>({
+    visible: false,
+  })
   const [form, setForm] = useState({
     name: "",
     cpf: "",
@@ -41,6 +44,7 @@ const Subscribe = () => {
     condominium: "",
     code: "",
     robot: true,
+    terms: false,
   })
 
   const handleGetIn = () => {
@@ -64,6 +68,7 @@ const Subscribe = () => {
     if (form.phone.trim().length === 0) hasErrors = true
     if (form.code.trim().length === 0) hasErrors = true
     if (form.robot) hasErrors = true
+    if (!form.terms) hasErrors = true
 
     return hasErrors
   }
@@ -171,6 +176,7 @@ const Subscribe = () => {
                   name: "",
                   phone: "",
                   robot: true,
+                  terms: false,
                 })
 
                 setModal({
@@ -231,6 +237,12 @@ const Subscribe = () => {
         visible={modal.visible}
       />
 
+      <Modal
+        role="terms"
+        onClose={() => setTermsModal((m: any) => ({ ...m, visible: false }))}
+        visible={termsModal.visible}
+      />
+
       <S.Hero>
         <img src={bgHero} alt={""} />
 
@@ -270,7 +282,7 @@ const Subscribe = () => {
           </S.Testimonials>
         </S.PointSection>
 
-        <S.FomSection>
+        <S.FormSection>
           <S.FormTitle>
             <span>Faça sua inscrição e participe!</span>
             <span>
@@ -354,7 +366,23 @@ const Subscribe = () => {
               Finalizar inscrição
             </S.SubmitBtn>
           </S.FormButtons>
-        </S.FomSection>
+
+          <S.TermsArea>
+            <S.TermsCheckbox onClick={() => handleForm("terms", !form.terms)}>
+              <S.RCheckbox type="checkbox" checked={form.terms} />
+            </S.TermsCheckbox>
+            <S.TermsMessage>
+              <span>Eu aceito os termos da</span>
+              <S.PrivacyButton
+                onClick={() =>
+                  setTermsModal((tm: any) => ({ ...tm, visible: true }))
+                }
+              >
+                <span>política de privacidade</span>
+              </S.PrivacyButton>
+            </S.TermsMessage>
+          </S.TermsArea>
+        </S.FormSection>
       </Container>
 
       <Footer />

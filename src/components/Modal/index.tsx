@@ -1,4 +1,5 @@
 import SubmitStatus from "./variations/SubmitStatus"
+import TermsModal from "./variations/Terms"
 
 import { Dialog } from "@mui/material"
 
@@ -7,10 +8,10 @@ type Props = {
   onClose: () => void
   children?: JSX.Element | JSX.Element[]
   role: TModals
-  data: any
+  data?: any
 }
 
-type TModals = "submitStatus"
+type TModals = "submitStatus" | "terms"
 
 const Modal = (props: Props) => {
   const { visible, onClose } = props
@@ -21,6 +22,9 @@ const Modal = (props: Props) => {
     switch (props.role) {
       case "submitStatus":
         el = <SubmitStatus data={props.data} onClose={onClose} />
+        break
+      case "terms":
+        el = <TermsModal onClose={onClose} />
         break
       default:
         break

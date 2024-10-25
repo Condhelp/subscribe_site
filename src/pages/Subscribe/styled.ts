@@ -132,7 +132,7 @@ export const Testimonials = styled.div`
 
 // Form
 
-export const FomSection = styled.section`
+export const FormSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -263,4 +263,48 @@ export const SubmitBtn = styled.button<{ $disabled: boolean }>`
   border-radius: 12px;
   flex: 1;
   transition: opacity 0.3s;
+`
+
+export const TermsArea = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  span {
+    font-family: Roboto;
+    font-size: 16px;
+    color: #000;
+  }
+`
+
+export const TermsCheckbox = styled.div`
+  display: flex;
+  cursor: pointer;
+  padding: 8px;
+
+  input {
+    cursor: pointer;
+  }
+`
+
+export const TermsMessage = styled.div`
+  span,
+  button {
+    color: ${({ theme }) => theme.colors.white.main};
+    font-size: 16px;
+    font-family: "Roboto";
+  }
+`
+
+export const PrivacyButton = styled.button`
+  border: none;
+  background: none;
+  outline: none;
+  padding: 4px;
+  span {
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.yellow.medium};
+    text-decoration: underline;
+    font-weight: 500;
+  }
 `

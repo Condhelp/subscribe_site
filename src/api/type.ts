@@ -44,6 +44,7 @@ type TParams = {
     condominium: string
     code: string
     robot: boolean
+    terms: boolean
   }
 
   // Email
