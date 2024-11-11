@@ -276,7 +276,7 @@ const Subscribe = () => {
               data={{
                 image: speaker2,
                 name: "Dra. Márcia Bernardes",
-                title: "Palestrante",
+                title: "Psicodramista",
               }}
             />
           </S.Testimonials>
