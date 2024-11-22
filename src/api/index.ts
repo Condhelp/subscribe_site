@@ -24,7 +24,7 @@ const collsNames = {
 
 const mailUrl = process.env.REACT_APP_BACK_URL + "/api/sendemail"
 
-const subscribersLimit = 23
+const subscribersLimit = 138
 
 const addCode: TApi["code"]["addCode"] = async ({ code }) => {
   return new Promise(async (resolve) => {
