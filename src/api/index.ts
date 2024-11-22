@@ -18,10 +18,13 @@ const db = getFirestore(app)
 const collsNames = {
   invitations: "invitations",
   subscriptions: "subscriptions",
+  waitingLine: "waitingLine",
   eventInfo: "eventInfo",
 }
 
 const mailUrl = process.env.REACT_APP_BACK_URL + "/api/sendemail"
+
+const subscribersLimit = 23
 
 const addCode: TApi["code"]["addCode"] = async ({ code }) => {
   return new Promise(async (resolve) => {
@@ -160,15 +163,31 @@ const subscribe: TApi["subscription"]["subscribe"] = async (form) => {
         terms: form.terms,
       }
 
-      const newSubscription = await addDoc(
-        collection(db, collsNames.subscriptions),
-        obj
+      const subscribers = await getDocs(
+        collection(db, collsNames.subscriptions)
       )
 
-      resolve({
-        ok: true,
-        data: { ...obj, id: newSubscription.id },
-      })
+      if (subscribers.size === subscribersLimit) {
+        const newSubscription = await addDoc(
+          collection(db, collsNames.waitingLine),
+          obj
+        )
+
+        resolve({
+          ok: true,
+          data: { ...obj, id: newSubscription.id, waitingLine: true },
+        })
+      } else {
+        const newSubscription = await addDoc(
+          collection(db, collsNames.subscriptions),
+          obj
+        )
+
+        resolve({
+          ok: true,
+          data: { ...obj, id: newSubscription.id },
+        })
+      }
     } catch (error) {
       resolve({
         ok: false,

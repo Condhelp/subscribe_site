@@ -76,7 +76,13 @@ type TResponse = {
   }
   subscription: {
     checkEmail: Promise<TDefaultRes<{ used: boolean }>>
-    subscribe: Promise<TDefaultRes<TSubscription>>
+    subscribe: Promise<
+      TDefaultRes<
+        TSubscription & {
+          waitingLine?: boolean
+        }
+      >
+    >
   }
   email: {
     sendEmail: Promise<TDefaultRes<{ sended: boolean }>>

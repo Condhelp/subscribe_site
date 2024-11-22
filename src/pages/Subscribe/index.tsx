@@ -1,8 +1,16 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from "react"
 import * as S from "./styled"
+import { formatCpf } from "../../utils/masks/cpf"
+import { formatPhone } from "../../utils/masks/phone"
+import { checkDate, formatDate } from "../../utils/masks/date"
+import { checkEmail } from "../../utils/masks/email"
+
+import { Api } from "../../api"
 
 import Container from "../../components/Container"
+import Input from "../../components/Input"
+import Modal from "../../components/Modal"
 
 import Footer from "../../components/Footer"
 import Testimonial from "../../components/Testimonial"
@@ -16,14 +24,6 @@ import recaptchaLogo from "../../assets/images/recaptchaLogo.png"
 // speakers images
 import speaker1 from "../../assets/images/speakers/speaker_1.png"
 import speaker2 from "../../assets/images/speakers/speaker_2.png"
-import Input from "../../components/Input"
-import { formatCpf } from "../../utils/masks/cpf"
-import { formatPhone } from "../../utils/masks/phone"
-import { checkDate, formatDate } from "../../utils/masks/date"
-import { checkEmail } from "../../utils/masks/email"
-import { Api } from "../../api"
-import Modal from "../../components/Modal"
-import { formatCode } from "../../utils/masks/code"
 
 const Subscribe = () => {
   const [isMailing, setIsMailing] = useState<any>(false)
@@ -60,13 +60,13 @@ const Subscribe = () => {
     let hasErrors = false
 
     if (form.name.trim().length === 0) hasErrors = true
-    if (form.cpf.trim().length === 0) hasErrors = true
+    if (form.cpf.replace(/\D/g, "").trim().length < 11) hasErrors = true
     if (form.birthdate.trim().length === 0 || !checkDate(form.birthdate))
       hasErrors = true
     if (form.email.trim().length === 0 || !checkEmail(form.email))
       hasErrors = true
-    if (form.phone.trim().length === 0) hasErrors = true
-    if (form.code.trim().length === 0) hasErrors = true
+    if (form.phone.replace(/\D/g, "").trim().length < 10) hasErrors = true
+    if (form.condominium.trim().length === 0) hasErrors = true
     if (form.robot) hasErrors = true
     if (!form.terms) hasErrors = true
 
@@ -137,81 +137,52 @@ const Subscribe = () => {
     const formOk = !checkForm()
 
     if (formOk) {
-      // ...
+      const emailCheckage = await Api.subscription.checkEmail({
+        email: form.email,
+      })
 
-      // check code
+      if (emailCheckage.ok) {
+        const subscribe = await Api.subscription.subscribe(form)
 
-      const checkCode = await Api.code.getCode({ code: form.code })
-
-      if (checkCode.ok) {
-        const used = checkCode.data.used
-        if (used) {
-          setModal({
-            title: "Ops",
-            message: "Este código não é mais válido. Tente outro código.",
-            visible: true,
+        if (subscribe.ok) {
+          setForm({
+            birthdate: "",
+            code: "",
+            condominium: "",
+            cpf: "",
+            email: "",
+            name: "",
+            phone: "",
+            robot: true,
+            terms: false,
           })
-        } else {
-          /*
-           *  Continue form submittion
-           */
-
-          const emailCheckage = await Api.subscription.checkEmail({
-            email: form.email,
-          })
-
-          if (emailCheckage.ok) {
-            const usage = await Api.code.useCode({ code: form.code })
-
-            if (usage.ok) {
-              const subscribe = await Api.subscription.subscribe(form)
-
-              if (subscribe.ok) {
-                setForm({
-                  birthdate: "",
-                  code: "",
-                  condominium: "",
-                  cpf: "",
-                  email: "",
-                  name: "",
-                  phone: "",
-                  robot: true,
-                  terms: false,
-                })
-
-                setModal({
-                  title: "Inscrição feita com sucesso!",
-                  code: form.code,
-                  visible: true,
-                })
-
-                if (!isMailing) sendEmail()
-              } else {
-                setModal({
-                  title: "Ops",
-                  message: subscribe.error,
-                  visible: true,
-                })
-              }
-            } else {
-              setModal({
-                title: "Ops",
-                message: usage.error,
-                visible: true,
-              })
-            }
+          if (subscribe.data.waitingLine) {
+            setModal({
+              title: "A Condhelp agradece seu interesse!",
+              message:
+                "Informamos que o limite das vagas para o nosso evento foram completadas. Esperamos você em outra oportunidade, até breve!",
+              visible: true,
+            })
           } else {
             setModal({
-              title: "Atenção!",
-              message: emailCheckage.error,
+              title: "Inscrição feita com sucesso!",
+              code: form.code,
               visible: true,
             })
           }
+
+          if (!isMailing) sendEmail()
+        } else {
+          setModal({
+            title: "Ops",
+            message: subscribe.error,
+            visible: true,
+          })
         }
       } else {
         setModal({
           title: "Atenção!",
-          message: "Código inexistente. Digite um código válido.",
+          message: emailCheckage.error,
           visible: true,
         })
       }
@@ -331,13 +302,7 @@ const Subscribe = () => {
                 setValue={(value: string) => handleForm("condominium", value)}
               />
             </S.FormLine>
-            <S.FormLine>
-              <Input
-                placeholder="Código"
-                value={formatCode(form.code)}
-                setValue={(value: string) => handleForm("code", value)}
-              />
-            </S.FormLine>
+            <S.FormLine></S.FormLine>
           </S.FormArea>
 
           <S.FormInfo>
