@@ -158,7 +158,7 @@ const Subscribe = () => {
           })
           if (subscribe.data.waitingLine) {
             setModal({
-              title: "A Condhelp agradece seu interesse!",
+              title: "A CONDHELP agradece seu interesse!",
               message:
                 "Informamos que o limite das vagas para o nosso evento foram completadas. Esperamos você em outra oportunidade, até breve!",
               visible: true,
