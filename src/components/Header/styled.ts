@@ -5,14 +5,17 @@ export const Element = styled.header<{ $floating: boolean; $opened: boolean }>`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: ${({ $floating }) => ($floating ? "0 0" : "40px 40px")} 40px
+    40px;
   position: fixed;
   z-index: 20;
+  top: ${({ $floating }) => ($floating ? 0 : 20)}px;
   width: calc(100vw - 56px);
   backdrop-filter: blur(${({ $floating }) => ($floating ? 10 : 0)}px);
   background-color: ${({ $floating, theme }) =>
     $floating ? theme.colors.green.medium : "transparent"};
-  transition: background-color 0.3s, backdrop-filter 0.3s;
+  transition: background-color 0.3s, backdrop-filter 0.3s, top 0.3s,
+    border-radius 0.3s;
 
   @media (max-width: 1000px) {
     flex-direction: column;
@@ -28,7 +31,7 @@ export const Element = styled.header<{ $floating: boolean; $opened: boolean }>`
     position: fixed;
     left: calc(100%);
     width: 80vw;
-    transition: transform 0.3s;
+    transition: transform 0.3s, top 0.3s, border-radius 0.3s;
     gap: 64px;
     transform: translateX(${({ $opened }) => ($opened ? "-100%" : "0%")});
   }

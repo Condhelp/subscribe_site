@@ -136,15 +136,16 @@ export const VideoArea = styled.div`
   place-items: center;
 `
 
-export const Button = styled.button`
+export const Button = styled.button<{ $disabled?: boolean }>`
   border: none;
   outline: none;
   background-color: ${({ theme }) => theme.colors.green.medium};
-  cursor: pointer;
+  cursor: ${({ $disabled }) => ($disabled ? "unset" : "pointer")};
   width: fit-content;
   padding: 14px 34px;
   border-radius: 80px;
   color: ${({ theme }) => theme.colors.white.main};
+  opacity: ${({ $disabled }) => ($disabled ? 0.5 : 1)};
 `
 
 export const Features = styled.div`

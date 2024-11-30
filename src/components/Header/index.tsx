@@ -26,10 +26,8 @@ const Header = ({ scrollPoint = 0, floatFixed }: Props) => {
   }
 
   useEffect(() => {
-    const breakPoint = window.innerHeight
-
     const ev = () => {
-      setFloating(window.scrollY > (scrollPoint > 0 ? scrollPoint : breakPoint))
+      setFloating(window.scrollY > 1)
     }
     window.addEventListener("scroll", ev)
 
@@ -89,14 +87,6 @@ const Header = ({ scrollPoint = 0, floatFixed }: Props) => {
             </Link>
           </S.MenuItem>
         ))}
-        <S.SignButton
-          onClick={() => {
-            window.location.href = "https://condhelp-front.vercel.app/login"
-          }}
-        >
-          <Icons.UserCircle />
-          <span>Entrar</span>
-        </S.SignButton>
       </S.Nav>
     </S.Element>
   )

@@ -22,7 +22,7 @@ export const PageMain = styled.h1`
   font-size: 26px;
   font-weight: 400;
   line-height: 55px;
-  text-align: center;
+  text-align: left;
   width: 100%;
   color: #61676a;
 

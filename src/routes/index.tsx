@@ -1,9 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 
 // Pages
-import Home from "../pages/Home"
 import Subscribe from "../pages/Subscribe"
 import WhoPage from "../pages/Who"
+import Home from "../pages/Home"
 
 const Router = () => {
   return (

@@ -1,19 +1,13 @@
 import { useEffect, useState } from "react"
 import * as S from "./styled"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 import { availableServices } from "../../utils/system/services"
-import { formatPhone } from "../../utils/masks/phone"
-import { formatCnpj } from "../../utils/masks/cnpj"
 
 import Container from "../../components/Container"
 import ReactPlayer from "react-player"
 import Footer from "../../components/Footer"
 import Carousel from "../../components/Carousel"
 import Services from "../../components/Services"
-import FormBlock from "../../components/FormBlock"
-
-// @ts-ignore
-import Faq from "react-faq-component"
 
 // speakers images
 import easy from "../../assets/images/easy.png"
@@ -27,9 +21,7 @@ import graphic from "../../assets/images/graphic.png"
 import broker from "../../assets/images/broker.png"
 import direct from "../../assets/images/direct.png"
 import checks from "../../assets/images/checks.png"
-import providerFormImage from "../../assets/images/providerForm.png"
 import { Icons } from "../../assets/icons/icons"
-import { theme } from "../../theme"
 
 const f1: any[] = [
   {
@@ -114,53 +106,18 @@ const f2: any[] = [
 ]
 
 const Home = () => {
-  const navigate = useNavigate()
   const location = useLocation()
 
   const [allServicesOpened, setAllServicesOpened] = useState(true)
 
-  const [providerForm, setProviderForm] = useState({
-    name: "",
-    fantasy: "",
-    cnpj: "",
-    email: "",
-    phone: "",
-  })
-  const [managerForm, setManagerForm] = useState({
-    name: "",
-    surname: "",
-    condName: "",
-    cnpj: "",
-    email: "",
-    phone: "",
-  })
-
   const handleGetIn = () => {
-    navigate("/events")
-  }
+    const aLink = document.createElement("a")
+    aLink.href =
+      "https://wa.me/5548999918804?text=Olá gostaria de ser um prestador de serviço."
+    aLink.target = "_blank"
+    aLink.click()
 
-  const handleProviderField = (field: string, value: string | number) => {
-    setProviderForm((pf) => ({
-      ...pf,
-      [field]: value,
-    }))
-  }
-
-  const handleProviderSubmit = () => {
-    // check errors
-    // ...
-  }
-
-  const handleManagerField = (field: string, value: string | number) => {
-    setManagerForm((mf) => ({
-      ...mf,
-      [field]: value,
-    }))
-  }
-
-  const handleManagerSubmit = () => {
-    // check errors
-    // ...
+    aLink.remove()
   }
 
   useEffect(() => {
@@ -216,7 +173,7 @@ const Home = () => {
 
           <S.VideoArea>
             <ReactPlayer
-              url="https://www.youtube.com/watch?v=IwxWGHDfBCc"
+              url="https://youtu.be/VGDKa2CwTNU"
               width={"100%"}
               height={"100%"}
               controls={true}
@@ -231,7 +188,7 @@ const Home = () => {
             description="Crie uma conta, cadastre seus condomínios e tenha acesso gratuito aos seus orçamentos!"
           >
             <div style={{ margin: "auto" }}>
-              <S.Button>Criar minha conta</S.Button>
+              <S.Button $disabled={true}>Aguarde Janeiro de 2025</S.Button>
             </div>
           </Section>
 
@@ -257,110 +214,8 @@ const Home = () => {
             description="Crie uma conta, cadastre seus condomínios e tenha acesso gratuito aos seus orçamentos!"
           >
             <div style={{ margin: "auto" }}>
-              <S.Button>Criar minha conta</S.Button>
+              <S.Button $disabled={true}>Aguarde Janeiro de 2025</S.Button>
             </div>
-          </Section>
-
-          <Section>
-            <FormBlock
-              image={providerFormImage}
-              title="Solicite agora mesmo seus orçamentos!"
-              description="Os nossos prestadores vão receber uma notificação do seu pedido de orçamento e enviarão seus valores o mais breve possível."
-              onChange={handleProviderField}
-              handleSubmit={handleProviderSubmit}
-              fields={[
-                {
-                  type: "input",
-                  field: "name",
-                  label: "Nome do responsável",
-                  placeholder: "Digite aqui",
-                  value: providerForm.name,
-                },
-                {
-                  type: "input",
-                  field: "fantasy",
-                  label: "Nome fantasia",
-                  placeholder: "Digite aqui fantasia",
-                  value: providerForm.fantasy,
-                },
-                {
-                  type: "input",
-                  field: "cnpj",
-                  label: "CNPJ",
-                  placeholder: "Digite aqui",
-                  value: formatCnpj(providerForm.cnpj),
-                },
-                {
-                  type: "input",
-                  field: "email",
-                  label: "Email",
-                  placeholder: "Digite aqui",
-                  value: providerForm.email,
-                },
-                {
-                  type: "input",
-                  field: "phone",
-                  label: "Telefone",
-                  placeholder: "Digite aqui",
-                  value: formatPhone(providerForm.phone),
-                },
-              ]}
-            />
-          </Section>
-
-          <Section>
-            <FormBlock
-              reverse={true}
-              image={providerFormImage}
-              title="Solicite agora mesmo seus orçamentos!"
-              description="Os nossos prestadores vão receber uma notificação do seu pedido de orçamento e enviarão seus valores o mais breve possível."
-              onChange={handleManagerField}
-              handleSubmit={handleManagerSubmit}
-              fields={[
-                {
-                  type: "input",
-                  field: "name",
-                  label: "Nome",
-                  placeholder: "Digite aqui",
-                  value: managerForm.name,
-                },
-                {
-                  type: "input",
-                  field: "surname",
-                  label: "Sobrenome",
-                  placeholder: "Digite aqui",
-                  value: managerForm.surname,
-                },
-                {
-                  type: "input",
-                  field: "condName",
-                  label: "Nome Condomínio",
-                  placeholder: "Digite aqui",
-                  value: managerForm.condName,
-                },
-                {
-                  type: "input",
-                  field: "cnpj",
-                  label: "CNPJ",
-                  placeholder: "Digite aqui",
-                  value: formatCnpj(managerForm.cnpj),
-                },
-                {
-                  type: "input",
-                  field: "email",
-                  label: "Email",
-                  placeholder: "Digite aqui",
-                  value: managerForm.email,
-                },
-                {
-                  type: "input",
-                  field: "phone",
-                  label: "Telefone",
-                  placeholder: "Digite aqui",
-                  value: formatPhone(managerForm.phone),
-                },
-              ]}
-            />
           </Section>
 
           <Section
@@ -440,12 +295,6 @@ const Home = () => {
               </S.SPGWrapper>
             </S.SPGArea>
           </Section>
-
-          <Section id={"faqSection"}>
-            <S.FaqContainer>
-              <Faq data={faqData} styles={faqStyles} config={faqConfig} />
-            </S.FaqContainer>
-          </Section>
         </S.PageContent>
       </Container>
       <Footer />
@@ -454,45 +303,3 @@ const Home = () => {
 }
 
 export default Home
-
-const faqData = {
-  title: "Perguntas frequentes",
-  rows: [
-    {
-      title: "Pergunta 1",
-      content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed tempor sem. Aenean vel turpis feugiat,
-            ultricies metus at, consequat velit. Curabitur est nibh, varius in tellus nec, mattis pulvinar metus.
-            In maximus cursus lorem, nec laoreet velit eleifend vel. Ut aliquet mauris tortor, sed egestas libero interdum vitae.
-            Fusce sed commodo purus, at tempus turpis.`,
-    },
-    {
-      title: "Pergunta 2",
-      content:
-        "Nunc maximus, magna at ultricies elementum, risus turpis vulputate quam, vitae convallis ex tortor sed dolor.",
-    },
-    {
-      title: "Pergunta 3",
-      content: `Curabitur laoreet, mauris vel blandit fringilla, leo elit rhoncus nunc, ac sagittis leo elit vel lorem.
-          Fusce tempor lacus ut libero posuere viverra. Nunc velit dolor, tincidunt at varius vel, laoreet vel quam.
-          Sed dolor urna, lobortis in arcu auctor, tincidunt mattis ante. Vivamus venenatis ultricies nibh in volutpat.
-          Cras eu metus quis leo vestibulum feugiat nec sagittis lacus.Mauris vulputate arcu sed massa euismod dignissim. `,
-    },
-  ],
-}
-
-const faqStyles = {
-  bgColor: "transparent",
-  titleTextColor: theme.colors.neutral.grey,
-  rowTitleColor: theme.colors.neutral.grey,
-  rowContentColor: theme.colors.neutral.grey,
-  rowContentPaddingTop: "10px",
-  rowContentPaddingBottom: "10px",
-  rowContentPaddingLeft: "32px",
-  rowContentPaddingRight: "32px",
-}
-
-const faqConfig = {
-  // animate: true,
-  // arrowIcon: "V",
-  // tabFocus: true
-}
