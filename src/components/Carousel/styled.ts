@@ -33,8 +33,6 @@ export const SlideArea = styled.div`
     & > img {
       width: auto;
       height: 100%;
-      /* position: relative; */
-      /* display: none; */
     }
   }
 `

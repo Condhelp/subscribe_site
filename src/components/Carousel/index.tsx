@@ -61,7 +61,7 @@ const Carousel = () => {
             <S.SlideContent $transparent={false}>
               <S.SlideFor>Prestadores</S.SlideFor>
               <S.SlideMessage>
-                Aumente seus <strong>leads</strong> com a nossa{" "}
+                Aumente seus <strong>RESULTADOS</strong> com a nossa{" "}
                 <strong>solução!</strong>
               </S.SlideMessage>
               <S.SlideAction onClick={handleProvider}>

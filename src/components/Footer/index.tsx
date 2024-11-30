@@ -1,13 +1,8 @@
 import * as S from "./styled"
 import { ReactComponent as Logo } from "../../assets/icons/logo_dark.svg"
 import Container from "../Container"
-import { footer } from "../../utils/system/menu"
-import { Link, useLocation, useNavigate } from "react-router-dom"
 
 const Footer = () => {
-  const location = useLocation()
-  const navigate = useNavigate()
-
   return (
     <S.Component>
       <Container>
@@ -32,44 +27,6 @@ const Footer = () => {
 
           <S.Nav>
             <span>2024 © Todos os direitos reservados</span>
-            <span>|</span>
-
-            {footer.map((mi, k) => (
-              <S.MenuItem key={k}>
-                <Link
-                  to={mi.link}
-                  onClick={(e) => {
-                    if (mi.link.startsWith("#")) {
-                      // check current page
-                      const currentPage = location.pathname
-
-                      if (currentPage !== "/") {
-                        e.preventDefault()
-                        navigate("/", {
-                          state: {
-                            scrollId: mi.link.slice(mi.link.indexOf("#") + 1),
-                          },
-                        })
-                      } else {
-                        e.preventDefault()
-                        const el = document.getElementById(mi.link.slice(1))
-
-                        if (el) {
-                          const pos =
-                            el.getBoundingClientRect().top + window.pageYOffset
-                          window.scrollTo({
-                            top: pos - 200,
-                            behavior: "smooth",
-                          })
-                        }
-                      }
-                    }
-                  }}
-                >
-                  {mi.text}
-                </Link>
-              </S.MenuItem>
-            ))}
           </S.Nav>
         </S.Main>
       </Container>
