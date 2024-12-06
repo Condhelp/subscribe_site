@@ -173,7 +173,7 @@ const Home = () => {
 
           <S.VideoArea>
             <ReactPlayer
-              url="https://youtu.be/VGDKa2CwTNU"
+              url="https://youtu.be/rEwsNzDn-kE"
               width={"100%"}
               height={"100%"}
               controls={true}
