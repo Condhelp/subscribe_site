@@ -23,6 +23,10 @@ import direct from "../../assets/images/direct.png"
 import checks from "../../assets/images/checks.png"
 import { Icons } from "../../assets/icons/icons"
 
+// Popup
+import popupImg from "../../assets/images/popups/popup.jpeg"
+import Modal from "../../components/Modal"
+
 const f1: any[] = [
   {
     image: schedule,
@@ -109,6 +113,7 @@ const Home = () => {
   const location = useLocation()
 
   const [allServicesOpened, setAllServicesOpened] = useState(true)
+  const [showPopup, setShowPopup] = useState(false)
 
   const handleGetIn = () => {
     const aLink = document.createElement("a")
@@ -137,8 +142,28 @@ const Home = () => {
     }, 200)
   }, [location])
 
+  useEffect(() => {
+    const alreadyShowedPopup = localStorage.getItem("showedPopup")
+
+    if (!alreadyShowedPopup || alreadyShowedPopup !== "true") setShowPopup(true)
+  }, [])
+
   return (
     <S.Page>
+      {showPopup && (
+        <Modal
+          role="popup"
+          visible={showPopup}
+          data={{
+            img: popupImg,
+          }}
+          onClose={() => {
+            localStorage.setItem("showedPopup", "true")
+            setShowPopup(false)
+          }}
+        />
+      )}
+
       <Header />
 
       <S.Hero>

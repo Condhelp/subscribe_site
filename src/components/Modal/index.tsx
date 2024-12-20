@@ -1,3 +1,4 @@
+import Popup from "./variations/Popup"
 import SubmitStatus from "./variations/SubmitStatus"
 import TermsModal from "./variations/Terms"
 
@@ -11,7 +12,7 @@ type Props = {
   data?: any
 }
 
-type TModals = "submitStatus" | "terms"
+type TModals = "submitStatus" | "terms" | "popup"
 
 const Modal = (props: Props) => {
   const { visible, onClose } = props
@@ -26,6 +27,9 @@ const Modal = (props: Props) => {
       case "terms":
         el = <TermsModal onClose={onClose} />
         break
+      case "popup":
+        el = <Popup img={props.data.img} onClose={onClose} />
+        break
       default:
         break
     }
@@ -33,7 +37,25 @@ const Modal = (props: Props) => {
     return el
   }
 
-  return <Dialog open={visible}>{renderModalContent({ onClose })}</Dialog>
+  return (
+    <Dialog
+      open={visible}
+      sx={
+        props.role === "popup"
+          ? {
+              "& .MuiPaper-root": {
+                boxShadow: "none",
+                backgroundColor: "transparent",
+                padding: "10px 30px",
+                overflow: "visible",
+              },
+            }
+          : undefined
+      }
+    >
+      {renderModalContent({ onClose })}
+    </Dialog>
+  )
 }
 
 export default Modal
