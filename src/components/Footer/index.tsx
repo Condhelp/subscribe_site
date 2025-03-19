@@ -26,7 +26,9 @@ const Footer = () => {
           <Logo />
 
           <S.Nav>
-            <span>2024 © Todos os direitos reservados</span>
+            <span>
+              {new Date().getFullYear()} © Todos os direitos reservados
+            </span>
           </S.Nav>
         </S.Main>
       </Container>
