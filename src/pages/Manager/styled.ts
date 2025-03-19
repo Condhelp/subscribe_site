@@ -5,6 +5,7 @@ export const Page = styled.div`
   flex-direction: column;
   padding: 20px;
   background-color: #f4f5f7;
+  min-height: 100svh;
 
   @media (max-width: ${({ theme }) => theme.bp.small}px) {
     padding: 0px;
@@ -17,6 +18,11 @@ export const PageContent = styled.div`
   align-items: center;
   gap: 120px;
   margin: 130px 0 60px 0;
+  flex: 1;
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    margin: 120px 0 0;
+  }
 `
 
 export const PageMain = styled.h1`

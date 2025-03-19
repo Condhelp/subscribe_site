@@ -1,6 +1,6 @@
 import Popup from "./variations/Popup"
 import SubmitStatus from "./variations/SubmitStatus"
-import SubscribeStatus from "./variations/SubmitStatus copy"
+import SubscribeStatus from "./variations/SubscribeStatus"
 import TermsModal from "./variations/Terms"
 
 import { Dialog } from "@mui/material"

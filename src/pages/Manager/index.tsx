@@ -81,7 +81,7 @@ const ManagerPage = () => {
         visible={subscribeStatus}
       />
 
-      <Container>
+      <Container fullHeight={true}>
         <S.PageContent>
           <S.FormArea>
             <FormBlock
