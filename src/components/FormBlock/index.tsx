@@ -9,7 +9,7 @@ type Props = {
   title?: string
   description?: string
   big?: boolean
-  image: string
+  image?: string
   fields: (
     | {
         type: "input"
@@ -28,6 +28,8 @@ type Props = {
   )[]
   onChange: (field: string, value: string | number) => void
   handleSubmit: () => void
+  buttonText?: string
+  disabled?: boolean
 }
 
 const FormBlock = ({
@@ -40,10 +42,12 @@ const FormBlock = ({
   image,
   onChange,
   handleSubmit,
+  buttonText,
+  disabled,
 }: Props) => {
   return (
     <S.Component $reverse={reverse} id={id ?? ""}>
-      <S.Image $img={image} />
+      {image && <S.Image $img={image} />}
       <S.FormContent>
         <S.FormHeader>
           <S.Title>{title}</S.Title>
@@ -73,7 +77,13 @@ const FormBlock = ({
             ) : null
           )}
 
-          <S.Button onClick={handleSubmit}>Solicitar orçamento</S.Button>
+          <S.Button
+            onClick={handleSubmit}
+            disabled={disabled}
+            $disabled={disabled}
+          >
+            {buttonText ?? "Solicitar orçamento"}
+          </S.Button>
         </S.FormFields>
       </S.FormContent>
     </S.Component>

@@ -16,7 +16,7 @@ export const DataArea = styled.div<{ $disabled?: boolean }>`
   background-color: ${({ $disabled, theme }) =>
     !$disabled ? theme.colors.white.main : theme.colors.white.main};
   cursor: ${({ $disabled }) => ($disabled ? undefined : "pointer")};
-  border-radius: 4px;
+  border-radius: 12px;
   padding: 10px;
   transition: background-color 0.3s;
 
@@ -47,7 +47,7 @@ export const Label = styled.span`
 
 export const SelectedInfo = styled.span`
   font-size: 14px;
-  font-weight: 300;
+  color: #333;
 `
 
 export const OptionsArea = styled.div<{ $reverse: boolean }>`

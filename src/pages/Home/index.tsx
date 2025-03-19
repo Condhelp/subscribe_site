@@ -111,6 +111,7 @@ const f2: any[] = [
 
 const Home = () => {
   const location = useLocation()
+  // const navigate = useNavigate()
 
   const [allServicesOpened, setAllServicesOpened] = useState(true)
   // const [showPopup, setShowPopup] = useState(false)
@@ -141,6 +142,10 @@ const Home = () => {
       }
     }, 200)
   }, [location])
+
+  // const handleManagerSubscribe = () => {
+  //   navigate("/sindico")
+  // }
 
   // useEffect(() => {
   //   const alreadyShowedPopup = localStorage.getItem("showedPopup")
@@ -213,7 +218,7 @@ const Home = () => {
             description="Crie uma conta, cadastre seus condomínios e tenha acesso gratuito aos seus orçamentos!"
           >
             <div style={{ margin: "auto" }}>
-              <S.Button $disabled={true}>Aguarde Janeiro de 2025</S.Button>
+              <S.Button $disabled={true}>Em breve</S.Button>
             </div>
           </Section>
 
@@ -239,7 +244,7 @@ const Home = () => {
             description="Crie uma conta, cadastre seus condomínios e tenha acesso gratuito aos seus orçamentos!"
           >
             <div style={{ margin: "auto" }}>
-              <S.Button $disabled={true}>Aguarde Janeiro de 2025</S.Button>
+              <S.Button $disabled={true}>Em breve</S.Button>
             </div>
           </Section>
 

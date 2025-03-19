@@ -34,6 +34,7 @@ export const FormContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
+  width: 100%;
   max-width: 440px;
 `
 
@@ -74,11 +75,12 @@ export const Content = styled.div`
   display: flex;
 `
 
-export const Button = styled.button`
+export const Button = styled.button<{ $disabled?: boolean }>`
   border: none;
   outline: none;
   background-color: ${({ theme }) => theme.colors.yellow.medium};
-  cursor: pointer;
+  cursor: ${({ $disabled }) => ($disabled ? "unset" : "pointer")};
+  opacity: ${({ $disabled }) => ($disabled ? 0.6 : 1)};
   width: fit-content;
   padding: 14px 34px;
   border-radius: 80px;

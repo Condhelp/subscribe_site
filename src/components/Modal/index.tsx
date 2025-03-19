@@ -1,5 +1,6 @@
 import Popup from "./variations/Popup"
 import SubmitStatus from "./variations/SubmitStatus"
+import SubscribeStatus from "./variations/SubmitStatus copy"
 import TermsModal from "./variations/Terms"
 
 import { Dialog } from "@mui/material"
@@ -12,7 +13,7 @@ type Props = {
   data?: any
 }
 
-type TModals = "submitStatus" | "terms" | "popup"
+type TModals = "submitStatus" | "subscribeStatus" | "terms" | "popup"
 
 const Modal = (props: Props) => {
   const { visible, onClose } = props
@@ -23,6 +24,9 @@ const Modal = (props: Props) => {
     switch (props.role) {
       case "submitStatus":
         el = <SubmitStatus data={props.data} onClose={onClose} />
+        break
+      case "subscribeStatus":
+        el = <SubscribeStatus onClose={onClose} />
         break
       case "terms":
         el = <TermsModal onClose={onClose} />
