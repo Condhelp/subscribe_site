@@ -17,6 +17,7 @@ type Props = {
         label: string
         placeholder: string
         value: string
+        padding?: number
       }
     | {
         type: "select"
@@ -24,6 +25,7 @@ type Props = {
         label: string
         value: string | number
         options: TSelectOption[]
+        padding?: number
       }
   )[]
   onChange: (field: string, value: string | number) => void
@@ -58,7 +60,7 @@ const FormBlock = ({
             f.type === "input" ? (
               <Input
                 key={k}
-                padding={10}
+                padding={f.padding ?? 10}
                 align={"left"}
                 label={f.label}
                 placeholder={f.placeholder}
@@ -73,6 +75,7 @@ const FormBlock = ({
                 value={f.value}
                 options={f.options}
                 onChange={onChange}
+                padding={f.padding}
               />
             ) : null
           )}

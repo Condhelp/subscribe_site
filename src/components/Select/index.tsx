@@ -14,6 +14,7 @@ export type TInputSelect = {
   field: string
   options: TSelectOption[]
   value: string | number | null
+  padding?: number
   disabled?: boolean
 }
 
@@ -28,6 +29,7 @@ const SelectDefault = ({
   options,
   disabled,
   onChange,
+  padding,
 }: Props) => {
   const selectRef = useRef<HTMLDivElement>(null)
 
@@ -71,6 +73,7 @@ const SelectDefault = ({
             onClick={!disabled ? toggleDropdown : undefined}
             className={showing ? "turnedIcon" : ""}
             $disabled={disabled}
+            $padding={padding}
           >
             <S.Left>
               <S.SelectedInfo>

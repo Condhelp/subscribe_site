@@ -5,10 +5,14 @@ export const Component = styled.footer`
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  flex: 1;
   background-color: ${({ theme }) => theme.colors.green.dark};
   border-radius: 16px;
   padding: 20px;
+  height: fit-content;
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    margin: 0 20px 20px;
+  }
 `
 
 export const Disclaimer = styled.div`

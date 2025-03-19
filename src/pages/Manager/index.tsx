@@ -97,6 +97,7 @@ const ManagerPage = () => {
                   label: "Nome",
                   placeholder: "Digite aqui",
                   value: form.name,
+                  padding: 14,
                 },
                 {
                   type: "input",
@@ -104,6 +105,7 @@ const ManagerPage = () => {
                   label: "Sobrenome",
                   placeholder: "Digite aqui",
                   value: form.surname,
+                  padding: 14,
                 },
                 {
                   type: "select",
@@ -111,6 +113,7 @@ const ManagerPage = () => {
                   label: "Cidade",
                   options: citiesOptions,
                   value: form.city,
+                  padding: 14,
                 },
                 {
                   type: "input",
@@ -118,6 +121,7 @@ const ManagerPage = () => {
                   label: "Email",
                   placeholder: "Digite aqui",
                   value: form.email.trim(),
+                  padding: 14,
                 },
                 {
                   type: "input",
@@ -125,6 +129,7 @@ const ManagerPage = () => {
                   label: "Telefone",
                   placeholder: "Digite aqui",
                   value: formatPhone(form.phone),
+                  padding: 14,
                 },
               ]}
             />

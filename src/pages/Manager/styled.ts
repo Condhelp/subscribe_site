@@ -16,8 +16,9 @@ export const PageContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 120px;
-  margin: 130px 0 60px 0;
+  margin: 120px 0 0;
   flex: 1;
 
   @media (max-width: ${({ theme }) => theme.bp.small}px) {

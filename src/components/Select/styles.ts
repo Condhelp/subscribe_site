@@ -8,7 +8,7 @@ export const SelectArea = styled.div`
   gap: 8px;
 `
 
-export const DataArea = styled.div<{ $disabled?: boolean }>`
+export const DataArea = styled.div<{ $disabled?: boolean; $padding?: number }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,7 +17,7 @@ export const DataArea = styled.div<{ $disabled?: boolean }>`
     !$disabled ? theme.colors.white.main : theme.colors.white.main};
   cursor: ${({ $disabled }) => ($disabled ? undefined : "pointer")};
   border-radius: 12px;
-  padding: 10px;
+  padding: ${({ $padding }) => $padding ?? 10}px;
   transition: background-color 0.3s;
 
   svg {
