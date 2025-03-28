@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import { app } from "../services/firebase"
 import { TApi } from "./type"
 import {
@@ -23,6 +23,7 @@ const collsNames = {
 }
 
 const mailUrl = process.env.REACT_APP_BACK_URL + "/api/sendemail"
+const baseUrl = process.env.REACT_APP_API_BASE_URL
 
 const subscribersLimit = 138
 
@@ -251,6 +252,61 @@ const getEventInfo: TApi["event"]["getInfo"] = async (data) => {
   })
 }
 
+/*
+ *  --------------------
+ *  Manager sign up
+ *  --------------------
+ */
+
+const exampleToken = process.env.REACT_APP_API_BASE_TOKEN
+
+const managerSignUp: TApi["manager"]["signUp"] = async (data) => {
+  return new Promise(async (resolve) => {
+    await axios
+      .post(`${baseUrl}/auth/register-manager`, data, {
+        headers: {
+          Authorization: `Bearer ${exampleToken}`,
+        },
+      })
+      .then((req) => {
+        if (req.status === 200) {
+          resolve({ ok: true, data: null as any })
+        } else {
+          let errorMessage = ""
+
+          if (req.data.error && typeof req.data.error === "string") {
+            errorMessage = req.data.error
+          } else {
+            errorMessage =
+              "Não foi possível realizar o cadastro no momento. Tente novamente mais tarde."
+          }
+
+          resolve({ ok: false, error: errorMessage })
+        }
+      })
+      .catch((res: AxiosError) => {
+        let errorMessage = ""
+
+        if (res.response) {
+          if (
+            (res.response as AxiosResponse).data.error &&
+            typeof (res.response as AxiosResponse).data.error === "string"
+          ) {
+            errorMessage = (res.response as AxiosResponse).data.error
+          } else {
+            errorMessage =
+              "Não foi possível realizar o cadastro no momento. Tente novamente mais tarde."
+          }
+        } else {
+          errorMessage =
+            "Não foi possível realizar o cadastro no momento. Tente novamente mais tarde."
+        }
+
+        resolve({ ok: false, error: errorMessage })
+      })
+  })
+}
+
 export const Api: TApi = {
   code: {
     addCode,
@@ -266,5 +322,8 @@ export const Api: TApi = {
   },
   event: {
     getInfo: getEventInfo,
+  },
+  manager: {
+    signUp: managerSignUp,
   },
 }

@@ -70,7 +70,6 @@ export const OptionsArea = styled.div<{ $reverse: boolean }>`
 
 export const Option = styled.div`
   background-color: ${({ theme }) => theme.colors.white.main};
-  transition: background-color 0.3s;
   padding: 8px;
   font-size: 14px;
   font-weight: 300;
@@ -79,5 +78,9 @@ export const Option = styled.div`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.green.light};
+
+    span {
+      color: ${({ theme }) => theme.colors.white.main};
+    }
   }
 `

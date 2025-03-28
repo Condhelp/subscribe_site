@@ -8,6 +8,10 @@ type Props = {
   align?: string
   padding?: number
   autoCapitalize?: boolean
+  error?: {
+    has: boolean
+    message: string
+  }
 }
 
 const Input = ({
@@ -18,6 +22,7 @@ const Input = ({
   align,
   padding,
   autoCapitalize,
+  error,
 }: Props) => {
   const handleValue = (e: any) => {
     setValue(e.target.value)
@@ -25,15 +30,21 @@ const Input = ({
 
   return (
     <S.Component>
-      {label && <S.Label>{label}</S.Label>}
-      <S.Input
-        value={value}
-        onChange={handleValue}
-        $padding={padding}
-        $align={align}
-        placeholder={placeholder}
-        autoCapitalize={autoCapitalize === false ? "off" : "unset"}
-      />
+      {label && <S.Label $error={error?.has}>{label}</S.Label>}
+      <S.InputWrapper>
+        <S.Input
+          value={value}
+          onChange={handleValue}
+          $padding={padding}
+          $align={align}
+          placeholder={placeholder}
+          autoCapitalize={autoCapitalize === false ? "off" : "unset"}
+          $error={error?.has}
+        />
+      </S.InputWrapper>
+      {error && (
+        <S.ErrorMessage $visible={error.has}>{error.message}</S.ErrorMessage>
+      )}
     </S.Component>
   )
 }

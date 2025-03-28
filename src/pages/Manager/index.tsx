@@ -10,17 +10,31 @@ import FormBlock from "../../components/FormBlock"
 import { checkEmail } from "../../utils/masks/email"
 import { formatPhone } from "../../utils/masks/phone"
 import Modal from "../../components/Modal"
+import { Api } from "../../api"
+import { formatCpf } from "../../utils/masks/cpf"
+import Feedback from "../../components/Feedback"
 
 const ManagerPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [subscribeStatus, setSubscribeStatus] = useState(false)
 
+  const [subscribeError, setSubscribeError] = useState({
+    has: false,
+    message: "",
+  })
+
+  const [errors, setErrors] = useState<any>({
+    has: false,
+    fields: [],
+  })
+
   const [form, setForm] = useState({
     name: "",
-    surname: "",
+    lastName: "",
     city: "",
     email: "",
     phone: "",
+    document: "",
   })
 
   useEffect(() => {
@@ -30,10 +44,27 @@ const ManagerPage = () => {
   }, [])
 
   const handleField = (field: string, value: any) => {
+    if (errors.has) {
+      if (errors.fields.includes(field)) {
+        setErrors((prev: any) => ({
+          ...prev,
+          fields: prev.fields.filter((f: any) => f !== field),
+        }))
+      }
+    }
     setForm((frm) => ({
       ...frm,
       [field]: value,
     }))
+  }
+
+  const timedCloseFeedback = () => {
+    setTimeout(() => {
+      setSubscribeError((prev) => ({ ...prev, has: false }))
+      setTimeout(() => {
+        setSubscribeError(() => ({ has: false, message: "" }))
+      }, 500)
+    }, 4000)
   }
 
   const handleSubmit = async () => {
@@ -42,16 +73,41 @@ const ManagerPage = () => {
     try {
       const obj = {
         name: form.name.trim(),
-        surname: form.surname.trim(),
+        lastName: form.lastName.trim(),
         city: form.city.trim(),
         email: form.email.trim(),
         phone: form.phone.replace(/\D/g, ""),
+        document: form.document,
       }
 
-      // call api...
-      console.log(obj)
-      setSubscribeStatus(true)
-    } catch (error) {}
+      const req = await Api.manager.signUp(obj)
+
+      if (req.ok) {
+        setSubscribeStatus(true)
+      } else {
+        setSubscribeError({
+          has: true,
+          message: req.error,
+        })
+
+        timedCloseFeedback()
+
+        if (req.error === "Número do documento já está registrado.") {
+          setErrors({
+            has: true,
+            fields: ["document"],
+          })
+        }
+      }
+    } catch (error) {
+      setSubscribeError({
+        has: true,
+        message:
+          "Não foi possível concluir o cadastro. Tente novamente mais tarde.",
+      })
+
+      timedCloseFeedback()
+    }
 
     setIsSubmitting(false)
   }
@@ -60,7 +116,7 @@ const ManagerPage = () => {
     let hasErrors = false
 
     if (form.name.trim().length === 0) hasErrors = true
-    if (form.surname.trim().length === 0) hasErrors = true
+    if (form.lastName.trim().length === 0) hasErrors = true
     if (form.city.trim().length === 0) hasErrors = true
     if (form.email.trim().length === 0 || !checkEmail(form.email))
       hasErrors = true
@@ -71,6 +127,14 @@ const ManagerPage = () => {
 
   return (
     <S.Page>
+      <Feedback
+        data={{
+          visible: subscribeError.has,
+          message: subscribeError.message,
+          state: "alert",
+        }}
+      />
+
       <Header floatFixed={true} />
 
       <Modal
@@ -101,10 +165,10 @@ const ManagerPage = () => {
                 },
                 {
                   type: "input",
-                  field: "surname",
+                  field: "lastName",
                   label: "Sobrenome",
                   placeholder: "Digite aqui",
-                  value: form.surname,
+                  value: form.lastName,
                   padding: 14,
                 },
                 {
@@ -130,6 +194,18 @@ const ManagerPage = () => {
                   placeholder: "Digite aqui",
                   value: formatPhone(form.phone),
                   padding: 14,
+                },
+                {
+                  type: "input",
+                  field: "document",
+                  label: "CPF",
+                  placeholder: "Digite aqui",
+                  value: formatCpf(form.document),
+                  padding: 14,
+                  error: {
+                    has: errors.fields.includes("document"),
+                    message: "Número do documento já está registrado.",
+                  },
                 },
               ]}
             />

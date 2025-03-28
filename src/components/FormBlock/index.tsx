@@ -18,6 +18,10 @@ type Props = {
         placeholder: string
         value: string
         padding?: number
+        error?: {
+          has: boolean
+          message: string
+        }
       }
     | {
         type: "select"
@@ -26,6 +30,10 @@ type Props = {
         value: string | number
         options: TSelectOption[]
         padding?: number
+        error?: {
+          has: boolean
+          message: string
+        }
       }
   )[]
   onChange: (field: string, value: string | number) => void
@@ -66,6 +74,7 @@ const FormBlock = ({
                 placeholder={f.placeholder}
                 value={f.value}
                 setValue={(v) => onChange(f.field, v)}
+                error={f.error}
               />
             ) : f.type === "select" ? (
               <SelectDefault

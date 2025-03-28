@@ -21,6 +21,9 @@ export type TApi = {
   event: {
     getInfo: (p: TParams["getEventInfo"]) => TResponse["event"]["getInfo"]
   }
+  manager: {
+    signUp: (p: TParams["manager"]["signUp"]) => TResponse["manager"]["signUp"]
+  }
 }
 
 /*
@@ -60,6 +63,18 @@ type TParams = {
 
   // Event
   getEventInfo: {}
+
+  // Manager subscription
+  manager: {
+    signUp: {
+      name: string
+      lastName: string
+      email: string
+      document: string
+      phone: string
+      city: string
+    }
+  }
 }
 
 /*
@@ -89,6 +104,15 @@ type TResponse = {
   }
   event: {
     getInfo: Promise<
+      TDefaultRes<{
+        date: string
+        local: string
+        localLink: string
+      }>
+    >
+  }
+  manager: {
+    signUp: Promise<
       TDefaultRes<{
         date: string
         local: string

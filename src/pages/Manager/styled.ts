@@ -4,6 +4,7 @@ export const Page = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
+  gap: 60px;
   background-color: #f4f5f7;
   min-height: 100svh;
 
