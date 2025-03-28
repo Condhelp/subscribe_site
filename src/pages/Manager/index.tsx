@@ -13,6 +13,7 @@ import Modal from "../../components/Modal"
 import { Api } from "../../api"
 import { formatCpf } from "../../utils/masks/cpf"
 import Feedback from "../../components/Feedback"
+import { cpfValidator } from "../../utils/validators/cpf"
 
 const ManagerPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -42,6 +43,17 @@ const ManagerPage = () => {
       window.scrollTo({ top: 0 })
     }
   }, [])
+
+  const clearForm = () => {
+    setForm({
+      name: "",
+      lastName: "",
+      city: "",
+      email: "",
+      phone: "",
+      document: "",
+    })
+  }
 
   const handleField = (field: string, value: any) => {
     if (errors.has) {
@@ -121,6 +133,11 @@ const ManagerPage = () => {
     if (form.email.trim().length === 0 || !checkEmail(form.email))
       hasErrors = true
     if (form.phone.replace(/\D/g, "").trim().length < 11) hasErrors = true
+    if (
+      form.document.replace(/\D/g, "").trim().length < 11 ||
+      !cpfValidator(form.document)
+    )
+      hasErrors = true
 
     return hasErrors
   }
@@ -141,6 +158,7 @@ const ManagerPage = () => {
         role="subscribeStatus"
         onClose={() => {
           setSubscribeStatus(false)
+          clearForm()
         }}
         visible={subscribeStatus}
       />

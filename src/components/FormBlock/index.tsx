@@ -90,7 +90,7 @@ const FormBlock = ({
           )}
 
           <S.Button
-            onClick={handleSubmit}
+            onClick={!disabled ? handleSubmit : () => {}}
             disabled={disabled}
             $disabled={disabled}
           >
