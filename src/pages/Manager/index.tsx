@@ -16,6 +16,8 @@ import Feedback from "../../components/Feedback"
 import { cpfValidator } from "../../utils/validators/cpf"
 
 const ManagerPage = () => {
+  const [showTerms, setShowTerms] = useState(false)
+
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [subscribeStatus, setSubscribeStatus] = useState(false)
 
@@ -79,6 +81,24 @@ const ManagerPage = () => {
     }, 4000)
   }
 
+  const checkForm = () => {
+    let hasErrors = false
+
+    if (form.name.trim().length === 0) hasErrors = true
+    if (form.lastName.trim().length === 0) hasErrors = true
+    if (form.city.trim().length === 0) hasErrors = true
+    if (form.email.trim().length === 0 || !checkEmail(form.email))
+      hasErrors = true
+    if (form.phone.replace(/\D/g, "").trim().length < 11) hasErrors = true
+    if (
+      form.document.replace(/\D/g, "").trim().length < 11 ||
+      !cpfValidator(form.document)
+    )
+      hasErrors = true
+
+    return hasErrors
+  }
+
   const handleSubmit = async () => {
     setIsSubmitting(true)
 
@@ -124,26 +144,19 @@ const ManagerPage = () => {
     setIsSubmitting(false)
   }
 
-  const checkForm = () => {
-    let hasErrors = false
-
-    if (form.name.trim().length === 0) hasErrors = true
-    if (form.lastName.trim().length === 0) hasErrors = true
-    if (form.city.trim().length === 0) hasErrors = true
-    if (form.email.trim().length === 0 || !checkEmail(form.email))
-      hasErrors = true
-    if (form.phone.replace(/\D/g, "").trim().length < 11) hasErrors = true
-    if (
-      form.document.replace(/\D/g, "").trim().length < 11 ||
-      !cpfValidator(form.document)
-    )
-      hasErrors = true
-
-    return hasErrors
+  const handleTerms = () => {
+    setShowTerms(true)
   }
 
   return (
     <S.Page>
+      <Modal
+        onClose={() => setShowTerms(false)}
+        role="terms"
+        visible={showTerms}
+        onSubmit={handleSubmit}
+      />
+
       <Feedback
         data={{
           visible: subscribeError.has,
@@ -169,7 +182,7 @@ const ManagerPage = () => {
             <FormBlock
               title="Cadastro Síndico"
               onChange={handleField}
-              handleSubmit={handleSubmit}
+              handleSubmit={handleTerms}
               buttonText={"Realizar o cadastro"}
               disabled={checkForm() || isSubmitting}
               fields={[

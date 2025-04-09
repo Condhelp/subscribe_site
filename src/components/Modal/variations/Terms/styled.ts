@@ -57,15 +57,53 @@ export const Bottom = styled.div`
   margin-top: 16px;
 `
 
-export const Button = styled.button`
+export const Button = styled.button<{ $disabled: boolean }>`
   border: none;
   outline: none;
   background-color: ${({ theme }) => theme.colors.yellow.medium};
-  cursor: pointer;
+  cursor: ${({ $disabled }) => ($disabled ? "default" : "pointer")};
   width: fit-content;
   padding: 14px 34px;
   border-radius: 80px;
   color: ${({ theme }) => theme.colors.green.medium};
   font-weight: 600;
   margin: auto;
+  filter: saturate(${({ $disabled }) => ($disabled ? 0 : 1)});
+  transition: filter 0.3s;
+`
+
+export const TermsAcceptArea = styled.div<{ $active: boolean }>`
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 6px 16px;
+  cursor: pointer;
+`
+
+export const TAIndicator = styled.div<{ $active: boolean }>`
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  border: 1px solid
+    ${({ $active, theme }) =>
+      $active ? theme.colors.green.medium : theme.colors.neutral.grey};
+  transition: border-color 0.3s;
+
+  &::after {
+    content: "";
+    position: relative;
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    opacity: ${({ $active }) => ($active ? 1 : 0)};
+    background-color: ${({ theme }) => theme.colors.green.medium};
+    transition: opacity 0.3s;
+  }
+`
+
+export const TALabel = styled.span`
+  color: ${({ theme }) => theme.colors.neutral.grey};
 `

@@ -1,18 +1,35 @@
+import { useState } from "react"
 import * as C from "../../styled"
 import * as S from "./styled"
+
 import { termsText } from "./text"
+import { Icons } from "../../../../assets/icons/icons"
 
 type Props = {
   onClose: () => void
+  onSubmit?: () => void
 }
 
-const SubmitStatus = ({ onClose }: Props) => {
+const SubmitStatus = ({ onClose, onSubmit }: Props) => {
+  const [accepted, setAccepted] = useState(false)
+
+  const handleSubmit = () => {
+    if (accepted && onClose && onSubmit) {
+      onSubmit()
+      onClose()
+      setAccepted(false)
+    }
+  }
+
   return (
     <S.Element>
       <C.Header>
         <C.HeaderDefault>
           <C.HeaderMain>
             <S.ModalTitle>Política de privacidade</S.ModalTitle>
+            <C.CloseBtn onClick={onClose}>
+              <Icons.Close />
+            </C.CloseBtn>
           </C.HeaderMain>
         </C.HeaderDefault>
       </C.Header>
@@ -25,8 +42,21 @@ const SubmitStatus = ({ onClose }: Props) => {
           )
         )}
 
+        <S.TermsAcceptArea
+          $active={accepted}
+          onClick={() => setAccepted(!accepted)}
+        >
+          <S.TAIndicator $active={accepted} />
+          <S.TALabel>Aceito os termos.</S.TALabel>
+        </S.TermsAcceptArea>
+
         <S.Bottom>
-          <S.Button onClick={onClose}>Fechar</S.Button>
+          <S.Button
+            $disabled={!accepted}
+            onClick={accepted ? handleSubmit : () => {}}
+          >
+            Continuar
+          </S.Button>
         </S.Bottom>
       </S.Content>
     </S.Element>

@@ -8,6 +8,7 @@ import { Dialog } from "@mui/material"
 type Props = {
   visible: boolean
   onClose: () => void
+  onSubmit?: () => void
   children?: JSX.Element | JSX.Element[]
   role: TModals
   data?: any
@@ -16,7 +17,7 @@ type Props = {
 type TModals = "submitStatus" | "subscribeStatus" | "terms" | "popup"
 
 const Modal = (props: Props) => {
-  const { visible, onClose } = props
+  const { visible, onClose, onSubmit } = props
 
   const renderModalContent = ({ onClose }: any) => {
     let el: any = null
@@ -29,7 +30,7 @@ const Modal = (props: Props) => {
         el = <SubscribeStatus onClose={onClose} />
         break
       case "terms":
-        el = <TermsModal onClose={onClose} />
+        el = <TermsModal onSubmit={onSubmit} onClose={onClose} />
         break
       case "popup":
         el = <Popup img={props.data.img} onClose={onClose} />
