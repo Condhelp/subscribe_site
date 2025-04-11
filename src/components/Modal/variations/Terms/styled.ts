@@ -33,19 +33,18 @@ export const Content = styled.div`
   overflow: auto;
 `
 
-export const TermTitle = styled.h2`
+export const TermTitle = styled.h2<{$documentTitle?: boolean}>`
   font-size: 18px;
   font-weight: 600;
+  text-align: ${({ $documentTitle }) => ($documentTitle ? "center" : "left")};
   color: ${({ theme }) => theme.colors.neutral.grey};
-  font-family: "Roboto";
-  margin-top: 16px;
+  margin: 16px 0 ${({ $documentTitle }) => ($documentTitle ? 16 : 0)}px;
 `
 
 export const TermText = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.neutral.grey};
-  font-family: "Roboto";
 `
 
 export const Bottom = styled.div`
@@ -106,4 +105,10 @@ export const TAIndicator = styled.div<{ $active: boolean }>`
 
 export const TALabel = styled.span`
   color: ${({ theme }) => theme.colors.neutral.grey};
+`
+
+export const Divider = styled.div`
+  height: 2px;
+  border-radius: 2px;
+  background-color: #ccc;
 `

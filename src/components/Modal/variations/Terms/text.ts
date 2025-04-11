@@ -1,7 +1,11 @@
-type TContent = {
-  type: "title" | "text"
-  content: string
-}
+type TContent =
+  | {
+      type: "title" | "text" | "documentTitle"
+      content: string
+    }
+  | {
+      type: "divider"
+    }
 
 export const termsText: TContent[] = [
   {
@@ -401,5 +405,39 @@ export const termsText: TContent[] = [
     da comarca de São José, no Estado de Santa Catarina, no Brasil, para resolver
     controvérsias ou queixas oriundas da utilização de nossos objetivos ou
     relacionadas a este Termo de Privacidade para Participantes.`,
+  },
+  {
+    type: "divider",
+  },
+  {
+    type: "text",
+    content: "São José, 2024.",
+  },
+  {
+    type: "text",
+    content: "Versão 1.0",
+  },
+  {
+    type: "text",
+    content: "Última atualização 30.11.2024",
+  },
+  {
+    type: "title",
+    content: "Lei aplicável",
+  },
+  {
+    type: "text",
+    content:
+      "Este regulamento será regido, interpretado e executado de acordo com as leis da República Federativa do Brasil, independentemente dos conflitos dessas leis com leis de outros estados ou países, sendo competente o Foro da Comarca de São José, Estado de Santa Catarina, no Brasil, para dirimir qualquer dúvida decorrente deste instrumento",
+  },
+  {
+    type: "text",
+    content:
+      "Quando você busca apoio através da Central de Atendimento via e-mail, os dados coletados são encaminhados para nossa central que tratará sua demanda. Os dados fornecidos não ficam arquivados para eventuais consultas sendo descartados de forma automática após atendimento.",
+  },
+  {
+    type: "text",
+    content:
+      "Solicitações relativas a inclusões, alterações ou exclusões de cadastro, deverão ser encaminhadas através do e-mail suporte@condhelp.com",
   },
 ]

@@ -35,10 +35,16 @@ const SubmitStatus = ({ onClose, onSubmit }: Props) => {
       </C.Header>
       <S.Content>
         {termsText.map((t, tk) =>
-          t.type === "title" ? (
+          t.type === "documentTitle" ? (
+            <S.TermTitle key={tk} $documentTitle={true}>
+              {t.content}
+            </S.TermTitle>
+          ) : t.type === "title" ? (
             <S.TermTitle key={tk}>{t.content}</S.TermTitle>
-          ) : (
+          ) : t.type === "text" ? (
             <S.TermText key={tk}>{t.content}</S.TermText>
+          ) : (
+            <S.Divider />
           )
         )}
 

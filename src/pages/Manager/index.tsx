@@ -204,8 +204,7 @@ const ManagerPage = () => {
   }
 
   const handleTerms = () => {
-    handleSubmit()
-    // setShowTerms(true)
+    setShowTerms(true)
   }
 
   return (
