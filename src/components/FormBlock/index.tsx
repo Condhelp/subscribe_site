@@ -2,6 +2,32 @@ import Input from "../Input"
 import SelectDefault, { TSelectOption } from "../Select"
 import * as S from "./styled"
 
+export type TFormField =
+  | {
+      type: "input"
+      field: string
+      label: string
+      placeholder: string
+      value: string
+      padding?: number
+      error?: {
+        has: boolean
+        message: string
+      }
+    }
+  | {
+      type: "select"
+      field: string
+      label: string
+      value: string | number
+      options: TSelectOption[]
+      padding?: number
+      error?: {
+        has: boolean
+        message: string
+      }
+    }
+
 type Props = {
   reverse?: boolean
   id?: string
@@ -10,32 +36,7 @@ type Props = {
   description?: string
   big?: boolean
   image?: string
-  fields: (
-    | {
-        type: "input"
-        field: string
-        label: string
-        placeholder: string
-        value: string
-        padding?: number
-        error?: {
-          has: boolean
-          message: string
-        }
-      }
-    | {
-        type: "select"
-        field: string
-        label: string
-        value: string | number
-        options: TSelectOption[]
-        padding?: number
-        error?: {
-          has: boolean
-          message: string
-        }
-      }
-  )[]
+  fields: TFormField[]
   onChange: (field: string, value: string | number) => void
   handleSubmit: () => void
   buttonText?: string
@@ -85,6 +86,7 @@ const FormBlock = ({
                 options={f.options}
                 onChange={onChange}
                 padding={f.padding}
+                error={f.error}
               />
             ) : null
           )}

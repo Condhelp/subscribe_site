@@ -6,15 +6,21 @@ export const SelectArea = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  background-color: ${({ theme }) => theme.colors.white.main};
+  border-radius: 12px;
 `
 
-export const DataArea = styled.div<{ $disabled?: boolean; $padding?: number }>`
+export const DataArea = styled.div<{
+  $disabled?: boolean
+  $padding?: number
+  $error?: boolean
+}>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: ${({ theme }) => theme.colors.white.main};
-  background-color: ${({ $disabled, theme }) =>
-    !$disabled ? theme.colors.white.main : theme.colors.white.main};
+  background-color: ${({ $error, theme }) =>
+    $error ? `rgba(255, 235, 0, 0.5)` : theme.colors.white.main};
   cursor: ${({ $disabled }) => ($disabled ? undefined : "pointer")};
   border-radius: 12px;
   padding: ${({ $padding }) => $padding ?? 10}px;
@@ -38,10 +44,11 @@ export const Left = styled.div`
   gap: 8px;
 `
 
-export const Label = styled.span`
+export const Label = styled.span<{ $error?: boolean }>`
   font-size: 14px;
 
-  color: ${({ theme }) => theme.colors.white.main};
+  color: ${({ $error, theme }) =>
+    $error ? theme.colors.yellow.light : theme.colors.white.main};
   white-space: nowrap;
 `
 
@@ -77,10 +84,19 @@ export const Option = styled.div`
   z-index: 2;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.green.light};
+    background-color: #389d35;
 
     span {
       color: ${({ theme }) => theme.colors.white.main};
     }
   }
+`
+
+export const ErrorMessage = styled.span<{ $visible?: boolean }>`
+  font-size: 12px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.colors.yellow.light};
+  width: fit-content;
+  opacity: ${({ $visible }) => ($visible ? 1 : 0)};
+  transition: opacity 0.3s;
 `

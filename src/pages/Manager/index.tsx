@@ -6,7 +6,7 @@ import Footer from "../../components/Footer"
 
 import Header from "../../components/Header"
 import { citiesOptions } from "../../utils/system/cities"
-import FormBlock from "../../components/FormBlock"
+import FormBlock, { TFormField } from "../../components/FormBlock"
 import { checkEmail } from "../../utils/masks/email"
 import { formatPhone } from "../../utils/masks/phone"
 import Modal from "../../components/Modal"
@@ -15,8 +15,20 @@ import { formatCpf } from "../../utils/masks/cpf"
 import Feedback from "../../components/Feedback"
 import { cpfValidator } from "../../utils/validators/cpf"
 
+type TErrorsCheck = {
+  has: boolean
+  fields: string[]
+}
+
+export type TFieldError = {
+  has: boolean
+  message?: string
+}
+
 const ManagerPage = () => {
   const [showTerms, setShowTerms] = useState(false)
+
+  const [isOtherCity, setIsOtherCity] = useState(false)
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [subscribeStatus, setSubscribeStatus] = useState(false)
@@ -26,7 +38,7 @@ const ManagerPage = () => {
     message: "",
   })
 
-  const [errors, setErrors] = useState<any>({
+  const [errors, setErrors] = useState<TErrorsCheck>({
     has: false,
     fields: [],
   })
@@ -35,6 +47,7 @@ const ManagerPage = () => {
     name: "",
     lastName: "",
     city: "",
+    otherCity: "",
     email: "",
     phone: "",
     document: "",
@@ -51,6 +64,7 @@ const ManagerPage = () => {
       name: "",
       lastName: "",
       city: "",
+      otherCity: "",
       email: "",
       phone: "",
       document: "",
@@ -60,76 +74,121 @@ const ManagerPage = () => {
   const handleField = (field: string, value: any) => {
     if (errors.has) {
       if (errors.fields.includes(field)) {
+        const newFields = errors.fields.filter((f: any) => f !== field)
+        setErrors({
+          fields: newFields,
+          has: newFields.length > 0,
+        })
+      }
+    }
+
+    if (field === "city") {
+      if (value === "otherCity") {
+        setIsOtherCity(true)
+      } else {
+        setIsOtherCity(false)
         setErrors((prev: any) => ({
           ...prev,
-          fields: prev.fields.filter((f: any) => f !== field),
+          fields: prev.fields.filter((f: any) => f !== "otherCity"),
         }))
       }
     }
+
     setForm((frm) => ({
       ...frm,
       [field]: value,
     }))
   }
 
-  const timedCloseFeedback = () => {
+  const timedCloseFeedback = (msg?: string) => {
     setTimeout(() => {
-      setSubscribeError((prev) => ({ ...prev, has: false }))
+      setSubscribeError((prev) => ({
+        ...prev,
+        has: false,
+        message: msg ?? prev.message,
+      }))
       setTimeout(() => {
         setSubscribeError(() => ({ has: false, message: "" }))
       }, 500)
     }, 4000)
   }
 
-  const checkForm = () => {
-    let hasErrors = false
+  const getInvalidCheck = (actualState: TErrorsCheck, field: string) => {
+    return {
+      ...actualState,
+      has: true,
+      fields: [...actualState.fields, field],
+    }
+  }
 
-    if (form.name.trim().length === 0) hasErrors = true
-    if (form.lastName.trim().length === 0) hasErrors = true
-    if (form.city.trim().length === 0) hasErrors = true
+  const checkForm = () => {
+    let state: TErrorsCheck = {
+      has: false,
+      fields: [],
+    }
+
+    if (form.name.trim().length === 0) state = getInvalidCheck(state, "name")
+    if (form.lastName.trim().length === 0)
+      state = getInvalidCheck(state, "lastName")
+    if (form.city.trim().length === 0) state = getInvalidCheck(state, "city")
+    if (isOtherCity && form.otherCity.trim().length === 0)
+      state = getInvalidCheck(state, "otherCity")
     if (form.email.trim().length === 0 || !checkEmail(form.email))
-      hasErrors = true
-    if (form.phone.replace(/\D/g, "").trim().length < 11) hasErrors = true
+      state = getInvalidCheck(state, "email")
+    if (form.phone.replace(/\D/g, "").trim().length < 11)
+      state = getInvalidCheck(state, "phone")
     if (
       form.document.replace(/\D/g, "").trim().length < 11 ||
       !cpfValidator(form.document)
     )
-      hasErrors = true
+      state = getInvalidCheck(state, "document")
 
-    return hasErrors
+    return state
   }
 
   const handleSubmit = async () => {
     setIsSubmitting(true)
 
     try {
-      const obj = {
-        name: form.name.trim(),
-        lastName: form.lastName.trim(),
-        city: form.city.trim(),
-        email: form.email.trim(),
-        phone: form.phone.replace(/\D/g, ""),
-        document: form.document,
-      }
+      const errorInfo = checkForm()
 
-      const req = await Api.manager.signUp(obj)
-
-      if (req.ok) {
-        setSubscribeStatus(true)
-      } else {
-        setSubscribeError({
-          has: true,
-          message: req.error,
-        })
-
-        timedCloseFeedback()
-
-        if (req.error === "Número do documento já está registrado.") {
-          setErrors({
-            has: true,
-            fields: ["document"],
-          })
+      if (!errorInfo.has) {
+        let obj: any = {
+          name: form.name.trim(),
+          lastName: form.lastName.trim(),
+          email: form.email.trim(),
+          phone: form.phone.replace(/\D/g, ""),
+          document: form.document,
         }
+
+        if (isOtherCity) {
+          obj.otherCity = form.otherCity.trim()
+        } else {
+          obj.city = form.city.trim()
+        }
+
+        const req = await Api.manager.signUp(obj)
+
+        if (req.ok) {
+          setSubscribeStatus(true)
+        } else {
+          setSubscribeError({
+            has: true,
+            message: req.error,
+          })
+
+          timedCloseFeedback()
+
+          if (req.error === "Número do documento já está registrado.") {
+            setErrors({
+              has: true,
+              fields: ["document"],
+            })
+          }
+        }
+      } else {
+        setErrors(errorInfo)
+        timedCloseFeedback("Corrija os campos e tente novamente")
       }
     } catch (error) {
       setSubscribeError({
@@ -145,7 +204,8 @@ const ManagerPage = () => {
   }
 
   const handleTerms = () => {
-    setShowTerms(true)
+    handleSubmit()
+    // setShowTerms(true)
   }
 
   return (
@@ -184,7 +244,7 @@ const ManagerPage = () => {
               onChange={handleField}
               handleSubmit={handleTerms}
               buttonText={"Realizar o cadastro"}
-              disabled={checkForm() || isSubmitting}
+              disabled={errors.has || isSubmitting}
               fields={[
                 {
                   type: "input",
@@ -193,6 +253,10 @@ const ManagerPage = () => {
                   placeholder: "Digite aqui",
                   value: form.name,
                   padding: 14,
+                  error: {
+                    has: errors.fields.includes("name"),
+                    message: "Este campo é obrigatório",
+                  },
                 },
                 {
                   type: "input",
@@ -201,6 +265,10 @@ const ManagerPage = () => {
                   placeholder: "Digite aqui",
                   value: form.lastName,
                   padding: 14,
+                  error: {
+                    has: errors.fields.includes("lastName"),
+                    message: "Este campo é obrigatório",
+                  },
                 },
                 {
                   type: "select",
@@ -209,7 +277,27 @@ const ManagerPage = () => {
                   options: citiesOptions,
                   value: form.city,
                   padding: 14,
+                  error: {
+                    has: errors.fields.includes("city"),
+                    message: "Este campo é obrigatório",
+                  },
                 },
+                ...((isOtherCity
+                  ? [
+                      {
+                        type: "input",
+                        field: "otherCity",
+                        label: "Nome da cidade",
+                        placeholder: "Digite aqui",
+                        value: form.otherCity,
+                        padding: 14,
+                        error: {
+                          has: errors.fields.includes("otherCity"),
+                          message: "Este campo é obrigatório",
+                        },
+                      },
+                    ]
+                  : []) as TFormField[]),
                 {
                   type: "input",
                   field: "email",
@@ -217,6 +305,14 @@ const ManagerPage = () => {
                   placeholder: "Digite aqui",
                   value: form.email.trim(),
                   padding: 14,
+                  error: {
+                    has: errors.fields.includes("email"),
+                    message:
+                      form.email.replace(/\D/g, "").length > 0 &&
+                      !checkEmail(form.email)
+                        ? "Digite um email válido"
+                        : "Este campo é obrigatório",
+                  },
                 },
                 {
                   type: "input",
@@ -225,6 +321,14 @@ const ManagerPage = () => {
                   placeholder: "Digite aqui",
                   value: formatPhone(form.phone),
                   padding: 14,
+                  error: {
+                    has: errors.fields.includes("phone"),
+                    message:
+                      form.email.replace(/\D/g, "").length > 0 &&
+                      form.email.replace(/\D/g, "").length < 11
+                        ? "Digite um telefone válido"
+                        : "Este campo é obrigatório",
+                  },
                 },
                 {
                   type: "input",
@@ -235,7 +339,13 @@ const ManagerPage = () => {
                   padding: 14,
                   error: {
                     has: errors.fields.includes("document"),
-                    message: "Número do documento já está registrado.",
+                    message:
+                      form.document.replace(/\D/g, "").length === 0
+                        ? "Este campo é obrigatório"
+                        : form.document.replace(/\D/g, "").length === 11 &&
+                          cpfValidator(form.document)
+                        ? "Número do documento já está registrado."
+                        : "Digite um documento válido",
                   },
                 },
               ]}

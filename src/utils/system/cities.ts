@@ -1,11 +1,11 @@
 import { TSelectOption } from "../../components/Select"
 
 const citiesList: { id: string; name: string }[] = [
-  { id: "id1", name: "Florianópolis" },
-  { id: "id2", name: "Palhoça" },
-  { id: "id3", name: "São José" },
-  { id: "id4", name: "Biguaçu" },
-  { id: "id5", name: "Tijucas" },
+  { id: "Florianópolis", name: "Florianópolis" },
+  { id: "Palhoça", name: "Palhoça" },
+  { id: "São José", name: "São José" },
+  { id: "Tijucas", name: "Tijucas" },
+  { id: "otherCity", name: "Outra cidade" },
 ]
 
 export const citiesOptions: TSelectOption[] = citiesList.map((c) => ({

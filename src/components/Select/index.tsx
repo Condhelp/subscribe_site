@@ -16,6 +16,10 @@ export type TInputSelect = {
   value: string | number | null
   padding?: number
   disabled?: boolean
+  error?: {
+    has: boolean
+    message: string
+  }
 }
 
 type Props = TInputSelect & {
@@ -30,6 +34,7 @@ const SelectDefault = ({
   disabled,
   onChange,
   padding,
+  error,
 }: Props) => {
   const selectRef = useRef<HTMLDivElement>(null)
 
@@ -66,7 +71,7 @@ const SelectDefault = ({
 
   return (
     <C.Wrapper>
-      <S.Label>{label}</S.Label>
+      <S.Label $error={error?.has}>{label}</S.Label>
       <C.Area>
         <S.SelectArea ref={selectRef}>
           <S.DataArea
@@ -74,6 +79,7 @@ const SelectDefault = ({
             className={showing ? "turnedIcon" : ""}
             $disabled={disabled}
             $padding={padding}
+            $error={error?.has}
           >
             <S.Left>
               <S.SelectedInfo>
@@ -90,6 +96,10 @@ const SelectDefault = ({
             ))}
           </S.OptionsArea>
         </S.SelectArea>
+
+        {error && (
+          <S.ErrorMessage $visible={error.has}>{error.message}</S.ErrorMessage>
+        )}
       </C.Area>
     </C.Wrapper>
   )
