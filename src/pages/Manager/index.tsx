@@ -150,45 +150,38 @@ const ManagerPage = () => {
     setIsSubmitting(true)
 
     try {
-      const errorInfo = checkForm()
+      let obj: any = {
+        name: form.name.trim(),
+        lastName: form.lastName.trim(),
+        email: form.email.trim(),
+        phone: form.phone.replace(/\D/g, ""),
+        document: form.document,
+      }
 
-      if (!errorInfo.has) {
-        let obj: any = {
-          name: form.name.trim(),
-          lastName: form.lastName.trim(),
-          email: form.email.trim(),
-          phone: form.phone.replace(/\D/g, ""),
-          document: form.document,
-        }
-
-        if (isOtherCity) {
-          obj.otherCity = form.otherCity.trim()
-        } else {
-          obj.city = form.city.trim()
-        }
-
-        const req = await Api.manager.signUp(obj)
-
-        if (req.ok) {
-          setSubscribeStatus(true)
-        } else {
-          setSubscribeError({
-            has: true,
-            message: req.error,
-          })
-
-          timedCloseFeedback()
-
-          if (req.error === "Número do documento já está registrado.") {
-            setErrors({
-              has: true,
-              fields: ["document"],
-            })
-          }
-        }
+      if (isOtherCity) {
+        obj.otherCity = form.otherCity.trim()
       } else {
-        setErrors(errorInfo)
-        timedCloseFeedback("Corrija os campos e tente novamente")
+        obj.city = form.city.trim()
+      }
+
+      const req = await Api.manager.signUp(obj)
+
+      if (req.ok) {
+        setSubscribeStatus(true)
+      } else {
+        setSubscribeError({
+          has: true,
+          message: req.error,
+        })
+
+        timedCloseFeedback()
+
+        if (req.error === "Número do documento já está registrado.") {
+          setErrors({
+            has: true,
+            fields: ["document"],
+          })
+        }
       }
     } catch (error) {
       setSubscribeError({
@@ -204,7 +197,14 @@ const ManagerPage = () => {
   }
 
   const handleTerms = () => {
-    setShowTerms(true)
+    const errorInfo = checkForm()
+
+    if (!errorInfo.has) {
+      setShowTerms(true)
+    } else {
+      setErrors(errorInfo)
+      timedCloseFeedback("Corrija os campos e tente novamente")
+    }
   }
 
   return (
