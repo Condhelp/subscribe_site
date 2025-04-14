@@ -258,16 +258,10 @@ const getEventInfo: TApi["event"]["getInfo"] = async (data) => {
  *  --------------------
  */
 
-const exampleToken = process.env.REACT_APP_API_BASE_TOKEN
-
 const managerSignUp: TApi["manager"]["signUp"] = async (data) => {
   return new Promise(async (resolve) => {
     await axios
-      .post(`${baseUrl}/auth/register-manager`, data, {
-        headers: {
-          Authorization: `Bearer ${exampleToken}`,
-        },
-      })
+      .post(`${baseUrl}/public/manager/register`, data)
       .then((req) => {
         if (req.status === 200) {
           resolve({ ok: true, data: null as any })
