@@ -4,6 +4,8 @@ import SubscribeStatus from "./variations/SubscribeStatus"
 import TermsModal from "./variations/Terms"
 
 import { Dialog } from "@mui/material"
+import TermsPrivacy from "./variations/TermsPrivacy"
+import TermsCookies from "./variations/TermsCookies"
 
 type Props = {
   visible: boolean
@@ -14,7 +16,13 @@ type Props = {
   data?: any
 }
 
-type TModals = "submitStatus" | "subscribeStatus" | "terms" | "popup"
+type TModals =
+  | "submitStatus"
+  | "subscribeStatus"
+  | "terms"
+  | "popup"
+  | "privacy"
+  | "cookies"
 
 const Modal = (props: Props) => {
   const { visible, onClose, onSubmit } = props
@@ -31,6 +39,12 @@ const Modal = (props: Props) => {
         break
       case "terms":
         el = <TermsModal onSubmit={onSubmit} onClose={onClose} />
+        break
+      case "privacy":
+        el = <TermsPrivacy onSubmit={onSubmit} onClose={onClose} />
+        break
+      case "cookies":
+        el = <TermsCookies onSubmit={onSubmit} onClose={onClose} />
         break
       case "popup":
         el = <Popup img={props.data.img} onClose={onClose} />

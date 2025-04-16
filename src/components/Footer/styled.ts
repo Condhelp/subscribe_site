@@ -106,3 +106,29 @@ export const Divider = styled.div`
   width: 2px;
   background-color: ${({ theme }) => theme.colors.white.main};
 `
+
+export const TermsArea = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+`
+
+export const TermButton = styled.button`
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  span {
+    text-decoration: none;
+    color: #90cc61;
+    font-size: 14px;
+    transition: color 0.3s;
+  }
+
+  &:hover {
+    span {
+      text-decoration: underline;
+    }
+  }
+`

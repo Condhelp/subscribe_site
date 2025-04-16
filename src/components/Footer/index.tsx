@@ -1,10 +1,32 @@
 import * as S from "./styled"
 import { ReactComponent as Logo } from "../../assets/icons/logo_dark.svg"
 import Container from "../Container"
+import Modal from "../Modal"
+import { useState } from "react"
 
 const Footer = () => {
+  const [modal, setModal] = useState<{
+    state: boolean
+    role: "privacy" | "cookies"
+  }>({
+    state: false,
+    role: "privacy",
+  })
+
+  const openTerms = (term: "privacy" | "cookies") => {
+    setModal({
+      state: true,
+      role: term,
+    })
+  }
+
   return (
     <S.Component>
+      <Modal
+        role={modal.role}
+        visible={modal.state}
+        onClose={() => setModal((prev) => ({ ...prev, state: false }))}
+      />
       <Container>
         <S.Disclaimer>
           <span>Atenção!</span>
@@ -24,6 +46,15 @@ const Footer = () => {
         </S.Disclaimer>
         <S.Main>
           <Logo />
+
+          <S.TermsArea>
+            <S.TermButton onClick={() => openTerms("privacy")}>
+              <span>Política de privacidade</span>
+            </S.TermButton>
+            <S.TermButton onClick={() => openTerms("cookies")}>
+              <span>Política de cookies</span>
+            </S.TermButton>
+          </S.TermsArea>
 
           <S.Nav>
             <span>

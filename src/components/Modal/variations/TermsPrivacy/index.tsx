@@ -2,20 +2,28 @@ import * as C from "../../styled"
 import * as S from "./styled"
 
 import { terms } from "../../../../utils/terms"
+import { Icons } from "../../../../assets/icons/icons"
 
 type Props = {
   onClose: () => void
   onSubmit?: () => void
 }
 
-const TermsCookies = ({ onClose }: Props) => {
+const TermsPrivacy = ({ onClose }: Props) => {
   return (
     <S.Element>
       <C.Header>
-        <C.HeaderDefault></C.HeaderDefault>
+        <C.HeaderDefault>
+          <C.HeaderMain>
+            <S.ModalTitle></S.ModalTitle>
+            <C.CloseBtn onClick={onClose}>
+              <Icons.Close />
+            </C.CloseBtn>
+          </C.HeaderMain>
+        </C.HeaderDefault>
       </C.Header>
       <S.Content>
-        {terms.cookies.map((t, tk) =>
+        {terms.privacy.map((t, tk) =>
           t.type === "documentTitle" ? (
             <S.TermTitle key={tk} $documentTitle={true}>
               {t.content}
@@ -58,4 +66,4 @@ const TermsCookies = ({ onClose }: Props) => {
   )
 }
 
-export default TermsCookies
+export default TermsPrivacy

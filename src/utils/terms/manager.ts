@@ -1,13 +1,6 @@
-type TContent =
-  | {
-      type: "title" | "text" | "documentTitle"
-      content: string
-    }
-  | {
-      type: "divider"
-    }
+import { TContent } from "."
 
-export const termsText: TContent[] = [
+const managerTerms: TContent[] = [
   {
     type: "text",
     content: `Seu direito de privacidade é muito importante para nós! Nossa política visa
@@ -441,3 +434,5 @@ export const termsText: TContent[] = [
       "Solicitações relativas a inclusões, alterações ou exclusões de cadastro, deverão ser encaminhadas através do e-mail suporte@condhelp.com",
   },
 ]
+
+export default managerTerms
