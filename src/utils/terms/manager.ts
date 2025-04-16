@@ -2,6 +2,10 @@ import { TContent } from "."
 
 const managerTerms: TContent[] = [
   {
+    type: "documentTitle",
+    content: "CONTRATO DE FORNECIMENTO E AUTORIZAÇÃO DE USO DE SOFTWARE",
+  },
+  {
     type: "text",
     content: `Seu direito de privacidade é muito importante para nós! Nossa política visa
     proporcionar ao participante o melhor aproveitamento dos nossos eventos, com

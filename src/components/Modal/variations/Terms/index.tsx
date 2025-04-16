@@ -1,6 +1,8 @@
+import { useState } from "react"
 import * as C from "../../styled"
 import * as S from "./styled"
 
+import { Icons } from "../../../../assets/icons/icons"
 import { terms } from "../../../../utils/terms"
 
 type Props = {
@@ -8,14 +10,31 @@ type Props = {
   onSubmit?: () => void
 }
 
-const TermsCookies = ({ onClose }: Props) => {
+const SubscribeTerms = ({ onClose, onSubmit }: Props) => {
+  const [accepted, setAccepted] = useState(false)
+
+  const handleSubmit = () => {
+    if (accepted && onClose && onSubmit) {
+      onSubmit()
+      onClose()
+      setAccepted(false)
+    }
+  }
+
   return (
     <S.Element>
       <C.Header>
-        <C.HeaderDefault></C.HeaderDefault>
+        <C.HeaderDefault>
+          <C.HeaderMain>
+            <S.ModalTitle></S.ModalTitle>
+            <C.CloseBtn onClick={onClose}>
+              <Icons.Close />
+            </C.CloseBtn>
+          </C.HeaderMain>
+        </C.HeaderDefault>
       </C.Header>
       <S.Content>
-        {terms.cookies.map((t, tk) =>
+        {terms.manager.map((t, tk) =>
           t.type === "documentTitle" ? (
             <S.TermTitle key={tk} $documentTitle={true}>
               {t.content}
@@ -24,33 +43,25 @@ const TermsCookies = ({ onClose }: Props) => {
             <S.TermTitle key={tk}>{t.content}</S.TermTitle>
           ) : t.type === "text" ? (
             <S.TermText key={tk}>{t.content}</S.TermText>
-          ) : t.type === "table" ? (
-            <table style={{ borderCollapse: "collapse" }}>
-              <thead>
-                <tr>
-                  {t.content.columns.map((c, ck) => (
-                    <th key={ck}>{c}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {t.content.items.map((item, itemK) => (
-                  <tr key={itemK}>
-                    {item.map((d, dk) => (
-                      <td key={dk}>{d}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           ) : (
             <S.Divider />
           )
         )}
 
+        <S.TermsAcceptArea
+          $active={accepted}
+          onClick={() => setAccepted(!accepted)}
+        >
+          <S.TAIndicator $active={accepted} />
+          <S.TALabel>Aceito os termos.</S.TALabel>
+        </S.TermsAcceptArea>
+
         <S.Bottom>
-          <S.Button $disabled={false} onClick={onClose}>
-            Fechar
+          <S.Button
+            $disabled={!accepted}
+            onClick={accepted ? handleSubmit : () => {}}
+          >
+            Continuar
           </S.Button>
         </S.Bottom>
       </S.Content>
@@ -58,4 +69,4 @@ const TermsCookies = ({ onClose }: Props) => {
   )
 }
 
-export default TermsCookies
+export default SubscribeTerms
