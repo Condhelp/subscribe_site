@@ -23,7 +23,7 @@ const collsNames = {
 }
 
 const mailUrl = process.env.REACT_APP_BACK_URL + "/api/sendemail"
-const baseUrl = process.env.REACT_APP_API_BASE_URL
+const baseUrl = process.env.REACT_APP_API_BASE_URL ?? "https://api.condhelp.com"
 
 const subscribersLimit = 138
 
