@@ -3,32 +3,19 @@ import { TContent } from "."
 const managerTerms: TContent[] = [
   {
     type: "documentTitle",
-    content: "CONTRATO DE FORNECIMENTO E AUTORIZAÇÃO DE USO DE SOFTWARE",
+    content: "POLÍTICA DE PRIVACIDADE",
   },
   {
     type: "text",
-    content: `Seu direito de privacidade é muito importante para nós! Nossa política visa
-    proporcionar ao participante o melhor aproveitamento dos nossos eventos, com
-    a maior segurança, protegendo as informações disponibilizadas e respeitando
-    sua privacidade.`,
+    content: `Seu direito de privacidade é muito importante para nós! Nossa política visa proporcionar ao usuário o melhor aproveitamento dos nossos serviços, com a maior segurança, protegendo as informações disponibilizadas e respeitando sua privacidade.`,
   },
   {
     type: "title",
-    content: "PARTICIPANTE",
+    content: "USUÁRIOS",
   },
   {
     type: "text",
-    content: `Aquele que se inscreve voluntariamente e participa dos eventos promovidos pela CONDHELP.`,
-  },
-  {
-    type: "title",
-    content: "WEBSITE CONDHELP",
-  },
-  {
-    type: "text",
-    content: `Plataforma tecnológica disponível para o participante realizar sua inscrição
-    para eventos, cobrança de contribuições para eventos e a gestão de
-    participantes, acessível no endereço eletrônico www.condhelp.com/events.`,
+    content: `Aquele que acessa e utiliza o Sistema CONDHELP, disponibilizado no site www.condhelp.com.`,
   },
   {
     type: "title",
@@ -36,45 +23,15 @@ const managerTerms: TContent[] = [
   },
   {
     type: "text",
-    content: `CONDHELP SOLUÇÕES LTDA, pessoa jurídica de direito privado, inscrita no
-    CNPJ nº 53.288.559/0001-25, sediada na Rua Vidal Vicente de Andrade, 1290,
-    Forquilhas - São José/SC, CEP: 88107-0001.`,
+    content: `CONDHELP SOLUÇÕES LTDA é uma empresa de tecnologia, desenvolvedora do Sistema CONDHELP, inscrita no CNPJ nº 53.288.559/0001-25, sediada na Rua Vidal Vicente de Andrade, 1290, Forquilhas - São José/SC, CEP: 88107-0001.`,
   },
   {
     type: "title",
-    content: "TRATAMENTO DE DADOS",
+    content: "OBJETIVOS",
   },
   {
     type: "text",
-    content: `Toda operação realizada com dados pessoais, como as que se referem a
-    coleta, produção, recepção, classificação, utilização, acesso, reprodução,
-    transmissão, distribuição, processamento, arquivamento, armazenamento,
-    eliminação, avaliação ou controle da informação, modificação, comunicação,
-    transferência, difusão ou extração.`,
-  },
-  {
-    type: "text",
-    content: `A CONDHELP poderá utilizar cookies e outras tecnologias de rastreamento
-    para melhorar a experiência do usuário em nossa plataforma, personalizar
-    conteúdo, analisar nosso tráfego e entender o comportamento dos
-    participantes durante a navegação. O participante poderá configurar seu
-    navegador para recusar cookies, mas isso poderá limitar algumas
-    funcionalidades do nosso website.`,
-  },
-  {
-    type: "title",
-    content: "GLOSSÁRIO",
-  },
-  {
-    type: "text",
-    content: `Nossa Política de Privacidade, procura esclarecer nossas práticas com relação
-    aos dados fornecidos voluntariamente pelo USUÁRIO à CONDHELP Soluções
-    Ltda., usados, compartilhados e armazenados. Como eles nos ajudam a
-    proporcionar o cumprimento amplo dos deveres estabelecidos com nossos
-    clientes e usuários, que ao se cadastrar terá acesso restrito ao Sistema
-    CONDHELP, isso indicará que você está ciente e em total e irrestrito acordo
-    com a forma como utilizaremos as suas informações e seus dados, previstas
-    nesta política.`,
+    content: `Nossa Política de Privacidade, procura esclarecer nossas práticas com relação aos dados fornecidos voluntariamente pelo USUÁRIO à CONDHELP Soluções Ltda., usados, compartilhados e armazenados. Como eles nos ajudam a proporcionar o cumprimento amplo dos deveres estabelecidos com nossos clientes e usuários, que ao se cadastrar terá acesso restrito ao Sistema CONDHELP, isso indicará que você está ciente e em total e irrestrito acordo com a forma como utilizaremos as suas informações e seus dados, previstas nesta política.`,
   },
   {
     type: "title",
@@ -82,360 +39,249 @@ const managerTerms: TContent[] = [
   },
   {
     type: "text",
-    content: `Obtenção de informações pessoais e não pessoais`,
+    content: `Os dados fornecidos pelo USUÁRIO, será utilizado para fornecer um serviço personalizado e de qualidade. Contudo a CONDHELP Soluções Ltda., se compromete a tomar todas as medidas cabíveis, de forma a proteger a privacidade do USUÁRIO e os dados eventualmente fornecidos pelo usuário à CONDHELP Soluções Ltda., zelando pela natureza de um Sistema online e intuitivo para o segmento Condominial.`,
   },
   {
     type: "text",
-    content: `Ao participar dos nossos eventos, serão coletados alguns dados, inclusive
-    pessoais. A CONDHELP coletará tais informações em nome próprio.`,
+    content: `Para ter acesso aos serviços CONDHELP, o USUÁRIO terá que realizar o cadastro para criar sua conta. O USUÁRIO, após esta etapa, terá acesso as modalidades do Sistema destinadas ao perfil do USUÁRIO cadastrado e declara ciente da abertura do seu cadastro, servindo tal ciência de notificação prévia, sendo dispensável qualquer
+outra comunicação ao consumidor, como prevista no parágrafo segundo, do artigo 43, do Código de Proteção e Defesa do Consumidor, ou no inciso I, do artigo 1º, da Portaria nº 5/02, da Secretaria do Direito Econômico.`,
   },
   {
     type: "text",
-    content: `A CONDHELP coletará os dados pessoais de todos os participantes sempre
-    que estes fornecerem tais informações de forma voluntária, por exemplo,
-    quando inseridas pelo próprio participante no formulário inscrição, quando
-    fornecidas por ele durante o processo de análise, validação, confirmação ou
-    em fases posteriores. Os dados pessoais que podemos coletar incluem: nome
-    pessoal, e-mail, telefone, data de nascimento, local (cidade), número de CPF,
-    nome de condomínios, entre outros necessários para atingir os propósitos
-    dispostos neste Termo.`,
+    content: `Diversas informações poderão ser coletadas ao longo do uso do Sistema, incluindo nome completo, foto de perfil, CPF, RG, data de nascimento, CNPJ, nome da razão social, nome fantasia, insc. Estadual e Federal, CND’s, logo marcas, telefones, e-mails, preferências de contato, atas de eleição de Síndicos, endereço físico, identificadores do dispositivo, endereço IP e informações sobre localização.`,
   },
   {
     type: "text",
-    content: `Ocasionalmente, podemos coletar informações sobre o participante de fontes
-    manifestamente públicas ou de terceiros. Além disso, o meio de coleta dessas
-    informações pode ser oferecido pelo próprio participante, quando ele
-    compartilha em suas redes pessoais ou profissionais.`,
+    content: `A CONDHELP também poderá solicitar informações de cartão de crédito, dados bancários como, banco, conta e agência. Cada uma dessas informações possui um objetivo específico e informado na ocasião, sendo opcional ao USUÁRIO informar ou não. No entanto, algumas dessas informações, quando não fornecidas, podem impedir usufruir de alguns serviços oferecidos pela CONDHELP. Dados esses que poderão ser compartilhados e armazenados em sistemas terceiros para transações financeiras, não ficando os dados bancários armazenados no sistema CONDHELP, sendo as informações compartilhadas por recursos tecnológicos de integração como API’S e WebServices.`,
   },
   {
     type: "text",
-    content: `As informações que a CONDHELP poderá obter em redes pessoais ou
-    profissionais dependem das configurações de privacidade definidas pelo
-    próprio usuário junto ao serviço da plataforma indicada, assim como somente
-    as informações pessoais ou professionais que o usuário compartilha em sua
-    página.`,
+    content: `O Sistema foi desenvolvido para que o USUÁRIO tenha acesso exclusivo e intransferível, a senha criptografada é de responsabilidade exclusiva do USUÁRIO, garantindo que tenha acesso a todos os recursos disponíveis para o seu perfil de USUÁRIO no Sistema, podendo alterar, excluir, atualizar ou complementar suas próprias informações. Do mesmo modo é responsabilidade do USUÁRIO garantir a veracidade das informações e a manutenção da atualização de seus dados.`,
   },
   {
     type: "text",
-    content: `Informações classificadas como sensíveis podem ser fornecidas pelo titular
-    opcionalmente e de forma completamente anônima durante o processo de
-    inscrição, sendo, portanto, consideradas como dados não pessoais.`,
+    content: `O USUÁRIO aceita que seus dados, ainda que seja pessoal e permita sua identificação, poderá ser acessado e utilizado por colaboradores da CONDHELP Soluções Ltda., para:`,
   },
   {
     type: "text",
-    content: `Os titulares de dados pessoais deverão exercer os direitos previstos no item “6”
-    deste documento em “Direitos dos participantes”`,
+    content: `
+    - Emissão de relatórios variados;<br/>
+    - Desenvolvimento de novos produtos ou funcionalidades;<br/>
+    - Avaliação de satisfação do serviço ou produto ofertado;<br/>
+    - Auditoria sobre qualquer atividade dentro do Sistema;<br/>
+    - Suporte ou solução de problemas;`,
   },
   {
     type: "text",
-    content: `Para fins do disposto na Lei nº 13.709/2018 (“Lei Geral de Proteção de Dados
-    Pessoais”), a CONDHELP atuará na qualidade de controladora dos dados
-    pessoais dos participantes.`,
+    content: `A CONDHELP e seus parceiros, prestadores de serviço ou produto, poderão compartilhar as informações dos USUÁRIOS entre si e usá-las de modo consistente com esta Política de Privacidade. Eles também podem juntá-las com outras informações para análise, com o intuito de fornecer e melhorar nossos produtos, serviços e benefícios.`,
   },
   {
     type: "text",
-    content: `Antes de participar dos nossos eventos, o participante deverá fornecer
-    consentimento expresso e inequívoco para o tratamento dos dados pessoais
-    descritos nesta política. O consentimento poderá ser revogado a qualquer
-    momento mediante solicitação expressa do participante, sem prejuízo da
-    legalidade do tratamento realizado até a data da revogação`,
+    content: `A CONDHELP considera todo e qualquer prestador de serviço ou parceiros, direta ou indiretamente fornecedor de produto ou serviço para o setor condominial, como também empresas parceiras do comércio local, seja de serviço ou produto.`,
+  },
+  {
+    type: "text",
+    content: `Essas empresas, são obrigadas a proteger suas informações e podem estar localizadas onde quer que a CONDHELP opere, Nacional ou Internacionalmente.`,
+  },
+  {
+    type: "text",
+    content: `O USUÁRIO tem o direito de ser informado sobre quais parceiros da CONDHELP têm acesso aos seus dados pessoais, bem como as finalidades desse compartilhamento. Mediante solicitação enviada ao e-mail suporte@condhelp.com, a CONDHELP fornecerá uma lista atualizada de seus parceiros e os tipos de dados compartilhados com cada um, respeitando os princípios de transparência e boa-fé.`,
+  },
+  {
+    type: "text",
+    content: `A CONDHELP só permitirá acesso aos dados pelas empresas parceiras caso as solicitações forem pertinentes aos serviços prestados pelas mesmas. Por exemplo, fazer contato com Síndicos ou Condôminos para ofertar serviço ou produto, visto que, este é escopo principal do nosso trabalho e demandam este tipo de informação.`,
+  },
+  {
+    type: "text",
+    content: `Zelamos pela segurança dos seus dados, sempre que formalizada a quebra de uma relação contratual entre CONDHELP e seus parceiros, será bloqueado imediatamente qualquer tipo acesso ao Sistema por parte da empresa parceira.`,
+  },
+  {
+    type: "text",
+    content: `Destacamos a importância que, dentro do Sistema CONDHELP, o usuário poderá ser conduzido, via link, conteúdo ou serviços, a outros portais ou plataformas que não são de propriedade da CONDHELP Soluções Ltda. e que poderão coletar suas informações e ter sua própria Política de Privacidade.`,
   },
   {
     type: "title",
-    content: `USO DE DADOS`,
+    content: "USO DE DADOS",
   },
   {
     type: "text",
-    content: `Os dados pessoais serão utilizados de forma compatível com o disposto neste
-    Termo de Privacidade, apenas para fins internos, desde o momento da
-    inscrição até a confirmação.`,
+    content: `Os dados coletados dos usuários da CONDHELP e os registros das atividades podem ser utilizados para as seguintes finalidades:`,
+  },
+  {
+    type: "text",
+    content: `a) Identificá-los e autenticá-los adequadamente, além de processar movimentações na Conta cadastrada;`,
+  },
+  {
+    type: "text",
+    content: `b) Gerenciar funções do sistema, fornecer serviços ou produtos e cumprir obrigações decorrentes do contrato de prestação de serviços;`,
+  },
+  {
+    type: "text",
+    content: `c) Fornecer suporte ao usuário, incluindo respostas a perguntas sobre o Sistema;`,
+  },
+  {
+    type: "text",
+    content: `d) Otimizar e melhorar a experiência de uso do USUÁRIO;`,
+  },
+  {
+    type: "text",
+    content: `e) Realizar estatísticas, estudos, levantamentos e pesquisas relevantes para as atividades do comportamento dos USUÁRIOS durante o uso do Sistema;`,
+  },
+  {
+    type: "text",
+    content: `f) Promover os serviços e produtos da CONDHELP e seus parceiros;`,
+  },
+  {
+    type: "text",
+    content: `g) Informar sobre novidades, melhorias, recursos, conteúdo e outros eventos relevantes para a manutenção do relacionamento com nossos USUÁRIOS;`,
+  },
+  {
+    type: "text",
+    content: `h) Para salvaguardar os direitos e obrigações da CONDHELP relacionados ao uso do Sistema;`,
+  },
+  {
+    type: "text",
+    content: `i) Para prevenir a ocorrência de fraudes e vazamento de dados.`,
+  },
+  {
+    type: "text",
+    content: `Reforçamos que não encaminhamos seus dados para terceiros, a menos que sejamos obrigados por força de contrato, necessidade para a prestação dos serviços, solicitação do controlador, ou ordem de autoridade judicial ou outras autoridades públicas nacionais e internacionais, ou se o USUÁRIO solicitar expressamente. A CONDHELP Soluções Ltda. não irá vender, alugar ou trocar qualquer dado pessoal cadastrado dentro do Sistema.`,
   },
   {
     type: "title",
-    content: `USAMOS SEUS DADOS PARA`,
+    content: "CONSENTIMENTO",
   },
   {
     type: "text",
-    content: `Identificar o participante.`,
+    content: `O consentimento para as finalidades de uso dos dados será coletado de forma individual, sendo que o USUÁRIO não é obrigado a conceder. Em caso de consentimento negativo para serviços essenciais do Sistema, estes não serão disponibilizados ao USUÁRIO, podendo o acesso ser bloqueado.`,
   },
   {
     type: "text",
-    content: `Confirmar e apoiar o processo de inscrição do participante em todas as etapas necessárias.`,
+    content: `Haja visto que a CONDHELP, não mede esforços para proteger os dados dos USUÁRIOS, mas considerando as características dos sistemas atuais, a CONDHELP Soluções Ltda., não garante a segurança absoluta de seu Sistema, nem se responsabiliza por atos de terceiros que, eventualmente logrem êxito em coletar ou utilizar, por quaisquer meios, dados e informações disponibilizadas pelo USUÁRIO ao Sistema CONDHELP.`,
   },
   {
     type: "text",
-    content: `Melhorar a qualidade dos nossos processos e eventos.`,
-  },
-  {
-    type: "text",
-    content: `Garantir conformidade com a governança corporativa, requisitos legais e de parceiros de negócio.`,
-  },
-  {
-    type: "text",
-    content: `Confirmar, validar e dar continuidade aos trâmites necessários para participação do inscrito nos eventos.`,
-  },
-  {
-    type: "text",
-    content: `Comunicar o participante caso o número limite de inscritos exceda a capacidade permitida para o evento e alertá-lo sobre oportunidades futuras.`,
-  },
-  {
-    type: "text",
-    content: `A CONDHELP realizará o tratamento dos dados pessoais com base nas seguintes hipóteses legais: cumprimento de obrigação legal, execução de contrato, exercício regular de direitos e atendimento de interesses legítimos. A base legal poderá variar conforme a atividade realizada.`,
-  },
-  {
-    type: "text",
-    content: `Caso a CONDHELP utilize quaisquer dados pessoais de forma diversa das
-    estabelecidas neste Termo de Privacidade, o participante será previamente
-    informado sobre essa nova utilização, antes ou na data em que os dados
-    pessoais forem recebidos`,
+    content: `Caso o USUÁRIO tenha dúvidas de como fazer, poderá entrar em contato com o suporte, através do e-mail suporte@condhelp.com, que teremos a maior satisfação em sanar suas dúvidas.`,
   },
   {
     type: "title",
-    content: `COMO COMPARTILHAMOS OS SEUS DADOS`,
+    content: "REVISÃO E REVOGAÇÃO DE CONSENTIMENTO",
   },
   {
     type: "text",
-    content: `A CONDHELP poderá realizar o compartilhamento de dados pessoais, com as
-    seguintes finalidades: (i) melhorar a qualidade dos processos de inscrição; (ii)
-    garantir o crescimento, estrutura e como realizar eventos de qualidade;`,
-  },
-  {
-    type: "text",
-    content: `A CONDHELP poderá vender ou comprar outras empresas ou ativos. Em caso
-    de venda, fusão, reorganização, dissolução da empresa ou outra operação
-    societária semelhante, os dados pessoais poderão fazer parte dos ativos
-    intangíveis compartilhados ou transferidos.`,
-  },
-  {
-    type: "text",
-    content: `A CONDHELP poderá compartilhar os dados pessoais de seus participantes
-    com parceiros e prestadores de serviços que tratam tais dados em nome da
-    CONDHELP, tais como, mas não somente, plataformas de gestão de eventos e
-    outros.`,
-  },
-  {
-    type: "text",
-    content: `A CONDHELP poderá compartilhar as informações de seus participantes com
-    autoridades policiais ou judiciais competentes ou outros terceiros, dentro e fora
-    do Brasil, caso seja requerido pela legislação aplicável, por decisão judicial e
-    por requisição de autoridades, ou se necessário para responder a processos
-    judiciais ou para participar em eventos litígios ou disputas de qualquer
-    natureza.`,
-  },
-  {
-    type: "text",
-    content: `Nestas situações, a CONDHELP irá cooperar com as autoridades competentes
-    na medida em que, discricionariamente, entenda necessário e adequado em
-    relação a qualquer investigação de ilícitos, infrações a direitos de propriedade
-    industrial ou intelectual, ou outra atividade que seja ilegal ou que possa expor a
-    CONDHELP ou outros a qualquer responsabilidade legal ou lhes impor riscos,
-    ressalvadas hipóteses de sigilo de informações constantes na legislação
-    aplicável.`,
-  },
-  {
-    type: "text",
-    content: `Os dados pessoais dos participantes podem ser transferidos e processados em
-    outros países que não o Brasil, onde as leis de proteção de dados podem ser
-    diferentes. A CONDHELP assegura que tais transferências sejam realizadas
-    em conformidade com as leis aplicáveis e implementa medidas de segurança
-    apropriadas para proteger os dados pessoais.`,
+    content: `O USUÁRIO poderá, a qualquer momento, revisar ou revogar o consentimento fornecido para o tratamento de seus dados pessoais, em conformidade com o previsto na LGPD. Essa solicitação deve ser feita através do e-mail suporte@condhelp.com. A revogação do consentimento poderá limitar o acesso a funcionalidades ou serviços que dependam do tratamento dos dados, mas não impedirá o uso de outras partes do Sistema que não sejam afetadas pela revogação.`,
   },
   {
     type: "title",
-    content: `ARMAZENAMENTO DE DADOS`,
+    content: "COOKIES E OUTRAS TECNOLOGIAS",
   },
   {
     type: "text",
-    content: `As informações pessoais coletadas pela CONDHELP serão armazenadas em
-    serviços de nuvem confiáveis, providos por parceiros que podem estar
-    localizados no Brasil, em países da Europa ou em outros países.`,
+    content: `Os sites, os serviços online, os aplicativos interativos, as mensagens por e-mail, WhatsApp e notificações via push (telefone), da CONDHELP utilizam “cookies” e outras tecnologias, como pixel tags e web beacons. Tecnologias essas que, nos ajudam a entender melhor o comportamento dos USUÁRIOS e nos informam quais partes de nossos sites as pessoas visitaram.`,
   },
   {
     type: "text",
-    content: `Na contratação desses serviços, a CONDHELP busca empresas que
-    empregam alto nível de segurança no armazenamento de suas informações,
-    estabelecendo contratos que não violam as definições de privacidade previstas
-    neste Termo de Privacidade.`,
+    content: `A CONDHELP e seus parceiros também usam cookies e outras tecnologias para lembrar informações pessoais quando você utiliza
+nosso Sistema, serviços online e aplicativos. Nosso objetivo, é tornar sua experiência com a CONDHELP mais agradável e personalizada.`,
   },
   {
     type: "text",
-    content: `A CONDHELP armazena as informações dos participantes para as finalidades
-    apresentadas neste Termos de Privacidade, respeitando sempre o período de
-    retenção de dados determinado pela legislação aplicável. Caso, o participante
-    não conseguir se inscrever para o evento, nós iremos armazenar as suas
-    informações por um período razoável para que seja possível realizar contato
-    caso apareçam novas oportunidades.`,
+    content: `Coletamos algumas informações automaticamente e as armazenamos em arquivos de log. Essas informações incluem endereços do Protocolo da Internet (IP), tipo de navegador, idioma, localização, sites e aplicativos de encaminhamento e saída, sistema operacional, marcação de data/hora e dados de sequência de cliques (clickstream).`,
   },
   {
     type: "text",
-    content: `Caso o participante solicite a exclusão das suas informações pessoais
-    fornecidas, seus dados serão anonimizados ou excluídos definitivamente, salvo
-    se tais informações forem necessárias para cumprimento de obrigação legal
-    pela CONDHELP, execução de contrato, atendimento de interesses legítimos,
-    ou para exercício regular de direitos em processo judicial, administrativo ou
-    arbitral.`,
+    content: `Estas informações são utilizadas para entender e analisar os interesses, aprender sobre o comportamento do USUÁRIO no Sistema, melhorar nossos produtos e serviços e coletar informações demográficas sobre nossa base como um todo, sendo que a CONDHELP Soluções Ltda. pode usar essas informações em nossos serviços de marketing e propagandas.`,
   },
   {
     type: "text",
-    content: `A CONDHELP emprega seus melhores esforços para respeitar e proteger as
-    informações pessoais dos participantes contra perda, roubo ou qualquer
-    modalidade de uso indevido, bem como contra acesso não autorizado,
-    divulgação, alteração e destruição.`,
+    content: `As pixel tags permitem enviar mensagens de e-mail em um formato que os USUÁRIOS possam ler e nos informar se o e-mail foi lido. Podemos usar essas informações para reduzir ou eliminar mensagens enviadas aos USUÁRIOS.`,
   },
   {
     type: "text",
-    content: `A CONDHELP realizará o tratamento de dados pessoais mediante alto grau de
-    segurança, implementando as melhores práticas em uso na indústria para a
-    proteção de dados, tais como técnicas de criptografia, monitoramento e testes
-    de segurança periódicos, firewall, entre outros. Contudo, não é possível
-    garantir completamente a não ocorrência de interceptações e violações dos
-    sistemas e bases de dados, uma vez que a internet possui sua estrutura de
-    segurança em permanente aperfeiçoamento.`,
+    content: `O USUÁRIO declara estar ciente que existe a possibilidade de configurar seu navegador de preferência para ser avisado, na tela do dispositivo utilizado, sobre a aceitação dos “cookies”, e para impedir sua instalação. Informações e instruções sobre como configurar, devem ser obtidas no próprio navegador.`,
   },
   {
     type: "text",
-    content: `Em caso de incidente de segurança da informação que resulte na destruição,
-    perda, alteração, acesso não-autorizado, ou vazamento de dados pessoais, a
-    CONDHELP irá avaliar, imediatamente, os riscos às liberdades civis e aos
-    direitos fundamentais dos titulares dos dados pessoais. A comunicação aos
-    titulares ou à Autoridade Nacional de Proteção de Dados será realizada
-    conforme o caso concreto, após avaliação dos riscos mencionados.`,
-  },
-  {
-    type: "text",
-    content: `A CONDHELP implementa e mantém medidas de segurança administrativas,
-    técnicas e físicas adequadas para proteger os dados pessoais dos
-    participantes contra perda, roubo, uso indevido, acesso não autorizado,
-    divulgação, alteração e destruição. Embora nos esforcemos para proteger as
-    informações pessoais, não podemos garantir a segurança absoluta dos dados
-    transmitidos via internet.`,
+    content: `Para utilizar nossos serviços, não é necessário que o USUÁRIO aceite o uso de “cookies” solicitados pelo nosso Sistema, sem prejuízo de que, em tal caso, será necessário que o USUÁRIO se registre toda vez que acessar uma área que requeira identificação prévia.`,
   },
   {
     type: "title",
-    content: `DO USO DE IMAGEM E VOZ`,
+    content: "PROTEÇÃO DE DADOS",
   },
   {
     type: "text",
-    content: `O Participante, declara ciência e autoriza, para todos os fins em direito
-    admitidos, a utilização de sua imagem e voz, constantes em fotos, gravações e
-    filmagens decorrentes de sua participação no evento devidamente inscrito, sob
-    a responsabilidade da CONDHELP Soluções Ltda., sendo que a referência ao
-    seu nome, que constitui o direito moral, deverá ser respeitada sempre.`,
-  },
-  {
-    type: "text",
-    content: `As imagens e voz poderão ser exibidas durante, ao final do referido evento e
-    posterior ao evento, em apresentações audiovisuais do mesmo, em
-    publicações e divulgações disponibilizadas em acesso aberto, por meio do
-    website, dos perfis em redes sociais, tráfego pago, bem como de outros
-    sistemas de disseminação da informação e do conhecimento.`,
-  },
-  {
-    type: "text",
-    content: `A autorização neste Termo especificada é gratuita e por prazo indeterminado.
-    Por ser esta a expressão de minha vontade, nada terei a reclamar a título de
-    direitos conexos à minha imagem e voz.`,
+    content: `A CONDHELP se preocupa e leva a segurança de suas informações pessoais muito a sério. Nossos serviços online protegem suas informações pessoais durante a transmissão por meio de criptografia. Quando seus dados pessoais são armazenados pela CONDHELP Soluções Ltda., usamos soluções em nuvem com acesso limitado e em instalações que incluem medidas físicas de segurança.`,
   },
   {
     type: "title",
-    content: `O participante poderá solicitar à CONDHELP, de forma fácil e acessível,
-    através do nosso endereço eletrônico eventos@condhelp.com (i) a correção de
-    dados incompletos, inexatos ou desatualizados; (ii) anonimização, bloqueio ou
-    eliminação dos dados desnecessários ou excessivos; (iii) portabilidade dos
-    dados, dentro dos limites legais.`,
+    content: "ACESSO E RETENÇÃO DE INFORMAÇÕES PESSOAIS",
   },
   {
     type: "text",
-    content: `Se o participante solicitar a exclusão dos dados de sua titularidade, a
-    CONDHELP estará autorizada a excluir ou anonimizar os dados pessoais do
-    solicitante.`,
+    content: `Nossas soluções permitem que você acesse facilmente suas informações pessoais, bem como as mantenha atualizadas, de maneira simplificada, através de login e senha pessoal.`,
   },
   {
     type: "text",
-    content: `A CONDHELP nomeou um Encarregado de Proteção de Dados (DPO),
-    responsável por garantir o cumprimento da Lei Geral de Proteção de Dados
-    (LGPD) e atender às solicitações dos participantes relacionadas aos seus
-    dados pessoais. Para entrar em contato com o DPO, o participante deve enviar
-    um e-mail.`,
+    content: `Encerrado o período necessário para o tratamento de dados (contrato de prestação de serviços com o controlador de dados) ou a necessidade legal de manutenção dos dados, estes serão excluídos de forma automática e segura, ou serão anonimizados para fins estatísticos.`,
+  },
+  {
+    type: "text",
+    content: `O USUÁRIO pode solicitar, a qualquer momento, a exclusão antecipada de seus dados pessoais, independentemente do término do contrato de prestação de serviços. A solicitação deve ser encaminhada para o endereço de e-mail suporte@condhelp.com, e a exclusão será realizada dentro de um prazo de até 30 (trinta) dias, salvo em casos de obrigação legal de manutenção de dados ou para fins de defesa em processos judiciais.`,
   },
   {
     type: "title",
-    content: `DAS DISPOSIÇÕES GERAIS`,
+    content: "PORTABILIDADE DE DADOS",
   },
   {
     type: "text",
-    content: `Ao se inscrever em um evento realizado pela CONDHELP, o participante
-    declara estar ciente de todo o disposto neste Termo de Privacidade e demais
-    políticas legais que se encontram vigentes na data da inscrição. Por isso, é
-    recomendável que o participante se mantenha atualizado.`,
+    content: `O USUÁRIO poderá solicitar a portabilidade de seus dados pessoais para outra plataforma, conforme previsto pela Lei Geral de Proteção de Dados (LGPD). A solicitação deve ser feita por e-mail para o endereço suporte@condhelp.com, e a CONDHELP se compromete a fornecer os dados em formato estruturado, de uso comum e leitura automática, dentro de um prazo de até 15 (quinze) dias úteis.`,
+  },
+  {
+    type: "title",
+    content: "ATUALIZAÇÕES DA POLÍTICA DE PRIVACIDADE",
   },
   {
     type: "text",
-    content: `O presente Termo de Privacidade, está sujeito a constante melhoria e
-    aprimoramento. Assim, a CONDHELP se reserva o direito de modificá-lo a
-    qualquer momento, conforme a finalidade e interesse da CONDHELP, tal qual
-    para adequação e conformidade legal de disposição de lei ou norma que tenha
-    força jurídica equivalente, cabendo ao participante verificá-la.`,
+    content: `Com o avanço rápido das tecnologias na internet, à CONDHELP Soluções Ltda., reserva-se o direito de, a seu exclusivo critério, a qualquer tempo e sem aviso prévio, modificar ou alterar esta Política de Privacidade, razão pela qual se recomenda ao USUÁRIO, quando for utilizar os serviços da CONDELP Soluções Ltda., que proceda à leitura das condições vigentes a época de seu cadastro e acesso. A utilização dos serviços do nosso Sistema pelo USUÁRIO, implicará na irrestrita aceitação das condições aqui fixadas, incluindo as alterações que porventura venham ocorrer.`,
   },
   {
     type: "text",
-    content: `A eventual tolerância quanto a qualquer violação dos termos e condições do
-    contido neste domínio será considerada mera liberalidade e não será
-    interpretada como novação, precedente invocável, renúncia a direitos,
-    alteração tácita do termo, direito adquirido ou alteração do preposto.
-    Caso alguma disposição deste Termo for julgada inaplicável ou sem efeito, o
-    restante das normas continua a viger, sem a necessidade de medida judicial
-    que declare tal assertiva. O termo aqui descrito será interpretado segundo a
-    legislação brasileira.`,
-  },
-  {
-    type: "text",
-    content: `A comunicação entre a CONDHELP e o participante deverá ser realizada pelos
-    canais de atendimento indicados e disponibilizados, sobretudo através do
-    endereço de e-mail eventos@condhelp.com.`,
-  },
-  {
-    type: "text",
-    content: `Sempre que possível, potenciais divergências entre o participante e a
-    CONDHELP serão resolvidas de forma amigável. Quando todos os esforços
-    neste sentido forem esgotados, você concorda, desde já, que fica eleito o foro
-    da comarca de São José, no Estado de Santa Catarina, no Brasil, para resolver
-    controvérsias ou queixas oriundas da utilização de nossos objetivos ou
-    relacionadas a este Termo de Privacidade para Participantes.`,
+    content: `Nossa política de privacidade é constantemente atualizada, conforme os processos e procedimentos são renovados. Atualizaremos o número e a data deste documento a cada modificação.`,
   },
   {
     type: "divider",
   },
   {
     type: "text",
-    content: "São José, 2024.",
+    content: `Versão 1.0 de 30.11.2024`,
   },
   {
     type: "text",
-    content: "Versão 1.0",
-  },
-  {
-    type: "text",
-    content: "Última atualização 30.11.2024",
+    content: `Última atualização 30.11.2024`,
   },
   {
     type: "title",
-    content: "Lei aplicável",
+    content: "LEI APLICÁVEL",
   },
   {
     type: "text",
-    content:
-      "Este regulamento será regido, interpretado e executado de acordo com as leis da República Federativa do Brasil, independentemente dos conflitos dessas leis com leis de outros estados ou países, sendo competente o Foro da Comarca de São José, Estado de Santa Catarina, no Brasil, para dirimir qualquer dúvida decorrente deste instrumento",
+    content: `Este regulamento será regido, interpretado e executado de acordo com as leis da República Federativa do Brasil, independentemente dos conflitos dessas leis com leis de outros estados ou países, sendo competente o Foro da Comarca de São José, Estado de Santa Catarina, no Brasil, para dirimir qualquer dúvida decorrente deste instrumento.`,
+  },
+  {
+    type: "title",
+    content: "SUPORTE",
   },
   {
     type: "text",
-    content:
-      "Quando você busca apoio através da Central de Atendimento via e-mail, os dados coletados são encaminhados para nossa central que tratará sua demanda. Os dados fornecidos não ficam arquivados para eventuais consultas sendo descartados de forma automática após atendimento.",
+    content: `Caso o USUÁRIO tenha qualquer dúvida referente à privacidade e política de seus dados, ou ao presente termo de uso, poderá tirar suas dúvidas por e-mail, entrando em contato com o nosso canal de Suporte, suporte@condhelp.com.`,
   },
   {
     type: "text",
-    content:
-      "Solicitações relativas a inclusões, alterações ou exclusões de cadastro, deverão ser encaminhadas através do e-mail suporte@condhelp.com",
+    content: `Quando você busca apoio através da Central de Atendimento via e-mail, os dados coletados são encaminhados para nossa central que tratará sua demanda. Os dados fornecidos não ficam arquivados para eventuais consultas sendo descartados de forma automática após atendimento.`,
+  },
+  {
+    type: "text",
+    content: `Solicitações relativas a inclusões, alterações ou exclusões de cadastro, deverão ser encaminhadas através do e-mail suporte@condhelp.com.`,
   },
 ]
 
