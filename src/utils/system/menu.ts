@@ -18,11 +18,11 @@ export const menu: TNavItem[] = [
   // },
   {
     text: "Quero ser prestador",
-    link: "#preRegister",
+    link: "/prestador",
   },
   {
     text: "Sou Síndico",
-    link: "#wantRegister",
+    link: "/sindico",
   },
 ]
 
@@ -45,6 +45,6 @@ export const footer: TNavItem[] = [
   // },
   {
     text: "Quero ser prestador",
-    link: "#preRegister",
+    link: "/prestador",
   },
 ]

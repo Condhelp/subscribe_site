@@ -19,13 +19,10 @@ const Carousel = () => {
 
   const handleManager = () => {
     navigate("/sindico")
-    // const el = document.getElementById("managerRef")
-    // el?.scrollIntoView({ behavior: "smooth" })
   }
 
   const handleProvider = () => {
-    const el = document.getElementById("providerRef")
-    el?.scrollIntoView({ behavior: "smooth" })
+    navigate("/prestador")
   }
 
   const handleGeneral = () => {

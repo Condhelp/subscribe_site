@@ -1,69 +1,19 @@
 import { useEffect, useState } from "react"
 import * as S from "./styled"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 import { availableServices } from "../../utils/system/services"
 
 import Container from "../../components/Container"
-import ReactPlayer from "react-player"
 import Footer from "../../components/Footer"
-import Carousel from "../../components/Carousel"
-import Services from "../../components/Services"
 
-// speakers images
-import easy from "../../assets/images/easy.png"
 import Header from "../../components/Header"
 import Section from "../../components/Section"
 
 // features images
-import schedule from "../../assets/images/schedule.png"
-import chat from "../../assets/images/chat.png"
-import graphic from "../../assets/images/graphic.png"
 import broker from "../../assets/images/broker.png"
 import direct from "../../assets/images/direct.png"
 import checks from "../../assets/images/checks.png"
 import { Icons } from "../../assets/icons/icons"
-
-// Popup
-// import popupImg from "../../assets/images/popups/popup.jpeg"
-// import Modal from "../../components/Modal"
-
-const f1: any[] = [
-  {
-    image: schedule,
-    text: (() => (
-      <span>
-        Sabemos que não é fácil conseguir os orçamentos necessários, para
-        apresentar na <strong> Assembleia.</strong>
-      </span>
-    ))(),
-    reverse: false,
-    dark: false,
-  },
-  {
-    image: chat,
-    text: (() => (
-      <span>
-        Nesse momento nossa solução entra em ação, toda{" "}
-        <strong>inteligência</strong> e tecnologia do Sistema, estará voltada
-        para que seus orçamentos sejam realizados de forma segura e eficaz.
-      </span>
-    ))(),
-    reverse: true,
-    dark: true,
-  },
-  {
-    image: graphic,
-    text: (() => (
-      <span>
-        Venha sentir a experiência de fazer parte do próximo nível em sua gestão
-        condominial, com processos modernos, eficazes, utilizando tecnologia e
-        transformando em <strong>resultado.</strong>
-      </span>
-    ))(),
-    reverse: false,
-    dark: false,
-  },
-]
 
 const f2: any[] = [
   {
@@ -109,12 +59,10 @@ const f2: any[] = [
   },
 ]
 
-const Home = () => {
+const DetailsProvider = () => {
   const location = useLocation()
-  const navigate = useNavigate()
 
   const [allServicesOpened, setAllServicesOpened] = useState(true)
-  // const [showPopup, setShowPopup] = useState(false)
 
   const handleGetIn = () => {
     const aLink = document.createElement("a")
@@ -143,115 +91,12 @@ const Home = () => {
     }, 200)
   }, [location])
 
-  const handleManagerSubscribe = () => {
-    navigate("/cadastrosindico")
-  }
-
-  // useEffect(() => {
-  //   const alreadyShowedPopup = localStorage.getItem("showedPopup")
-
-  //   if (!alreadyShowedPopup || alreadyShowedPopup !== "true") setShowPopup(true)
-  // }, [])
-
   return (
     <S.Page>
-      {/*showPopup && (
-        <Modal
-          role="popup"
-          visible={showPopup}
-          data={{
-            img: popupImg,
-          }}
-          onClose={() => {
-            localStorage.setItem("showedPopup", "true")
-            setShowPopup(false)
-          }}
-        />
-      )*/}
-
-      <Header />
-
-      <S.Hero>
-        <Container>
-          <Carousel />
-        </Container>
-      </S.Hero>
+      <Header floatFixed={true} />
 
       <Container>
         <S.PageContent>
-          <Section
-            id={"generalRef"}
-            title="Simples, fácil e objetivo"
-            description="Com a CONDHELP, a forma de fazer orçamentos nos Condomínios, ficou ainda mais simples. Transformamos essa etapa importante em apenas alguns cliques."
-          >
-            <S.Features>
-              <S.FeatureLine $dark={false} $reverse={false}>
-                <img src={easy} alt="" />
-                <S.FeatureInfo>
-                  <S.FeatureTitle>
-                    Faça orçamentos para seus condomínios!
-                  </S.FeatureTitle>
-                  <S.FeatureText>
-                    Conhecendo a responsabilidade que tem a função de Síndico,
-                    criamos a conexão entre os desafios e as soluções para você
-                    Síndico tirar nota 10 na sua prestação de contas.
-                  </S.FeatureText>
-                </S.FeatureInfo>
-              </S.FeatureLine>
-            </S.Features>
-          </Section>
-
-          <S.VideoArea>
-            <ReactPlayer
-              url="https://youtu.be/rEwsNzDn-kE"
-              width={"100%"}
-              height={"100%"}
-              controls={true}
-            />
-          </S.VideoArea>
-
-          <Services />
-
-          <Section
-            id="wantRegister"
-            title="Quero me cadastrar"
-            description="Crie uma conta, cadastre seus condomínios e tenha acesso gratuito aos seus orçamentos!"
-          >
-            <div style={{ margin: "auto" }}>
-              <S.Button onClick={handleManagerSubscribe}>
-                Cadastrar agora
-              </S.Button>
-            </div>
-          </Section>
-
-          <Section
-            id={"managerRef"}
-            description="Funcionalidades que otimizam tempo e processos com as soluções CONDHELP"
-          >
-            <S.Features>
-              {f1.map((i, k) => (
-                <S.FeatureLine key={k} $reverse={i.reverse} $dark={i.dark}>
-                  <img src={i.image} alt="" />
-                  <S.FeatureInfo $justText={!i.title}>
-                    {i.title && <S.FeatureTitle>{i.text}</S.FeatureTitle>}
-                    <S.FeatureText>{i.text}</S.FeatureText>
-                  </S.FeatureInfo>
-                </S.FeatureLine>
-              ))}
-            </S.Features>
-          </Section>
-
-          <Section
-            title="Quero me cadastrar"
-            description="Crie uma conta, cadastre seus condomínios e tenha acesso gratuito aos seus orçamentos!"
-          >
-            <div style={{ margin: "auto" }}>
-              <S.Button onClick={handleManagerSubscribe}>
-                Cadastrar agora
-              </S.Button>
-            </div>
-          </Section>
-
           <Section
             id="services"
             title="Conexão, comunicação e responsabilidade"
@@ -336,4 +181,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default DetailsProvider

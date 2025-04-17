@@ -1,19 +1,40 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { useEffect } from "react"
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom"
 
 // Pages
-// import Subscribe from "../pages/Subscribe"
 import WhoPage from "../pages/Who"
 import Home from "../pages/Home"
 import ManagerPage from "../pages/Manager"
+import DetailsManager from "../pages/DetailsManager"
+import DetailsProvider from "../pages/DetailsProvider"
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/events" element={<Subscribe />} /> */}
         <Route path="/who" element={<WhoPage />} />
-        <Route path="/sindico" element={<ManagerPage />} />
+        <Route path="/cadastrosindico" element={<ManagerPage />} />
+        <Route path="/sindico" element={<DetailsManager />} />
+        <Route path="/prestador" element={<DetailsProvider />} />
         <Route path="*" element={<Navigate to={"/"} />} />
       </Routes>
     </BrowserRouter>
