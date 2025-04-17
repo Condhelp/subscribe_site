@@ -12,10 +12,10 @@ export const menu: TNavItem[] = [
     text: "Quem somos",
     link: "/who",
   },
-  {
-    text: "Eventos",
-    link: "/events",
-  },
+  // {
+  //   text: "Eventos",
+  //   link: "/events",
+  // },
   {
     text: "Quero ser prestador",
     link: "#preRegister",
@@ -39,10 +39,10 @@ export const footer: TNavItem[] = [
     text: "Quem somos",
     link: "/who",
   },
-  {
-    text: "Eventos",
-    link: "/events",
-  },
+  // {
+  //   text: "Eventos",
+  //   link: "/events",
+  // },
   {
     text: "Quero ser prestador",
     link: "#preRegister",

@@ -25,7 +25,6 @@ export const Disclaimer = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.green.light};
 
   span {
-    display: none;
     color: ${({ theme }) => theme.colors.green.light};
     font-weight: 700;
   }

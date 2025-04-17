@@ -12,11 +12,15 @@ import { Icons } from "../../assets/icons/icons"
 import slide1 from "../../assets/images/budget.jpg"
 import slide2 from "../../assets/images/deal.jpg"
 import slide3 from "../../assets/images/city.jpg"
+import { useNavigate } from "react-router-dom"
 
 const Carousel = () => {
+  const navigate = useNavigate()
+
   const handleManager = () => {
-    const el = document.getElementById("managerRef")
-    el?.scrollIntoView({ behavior: "smooth" })
+    navigate("/sindico")
+    // const el = document.getElementById("managerRef")
+    // el?.scrollIntoView({ behavior: "smooth" })
   }
 
   const handleProvider = () => {
