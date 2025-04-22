@@ -31,7 +31,7 @@ const Router = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/who" element={<WhoPage />} />
+        <Route path="/quemsomos" element={<WhoPage />} />
         <Route path="/cadastrosindico" element={<ManagerPage />} />
         <Route path="/sindico" element={<DetailsManager />} />
         <Route path="/prestador" element={<DetailsProvider />} />
