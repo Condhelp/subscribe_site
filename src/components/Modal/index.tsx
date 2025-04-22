@@ -6,6 +6,7 @@ import TermsModal from "./variations/Terms"
 import { Dialog } from "@mui/material"
 import TermsPrivacy from "./variations/TermsPrivacy"
 import TermsCookies from "./variations/TermsCookies"
+import AcceptCookies from "./variations/AcceptCookies"
 
 type Props = {
   visible: boolean
@@ -17,6 +18,7 @@ type Props = {
 }
 
 type TModals =
+  | "cookiesAcception"
   | "submitStatus"
   | "subscribeStatus"
   | "terms"
@@ -31,6 +33,9 @@ const Modal = (props: Props) => {
     let el: any = null
 
     switch (props.role) {
+      case "cookiesAcception":
+        el = <AcceptCookies data={props.data} onClose={onClose} />
+        break
       case "submitStatus":
         el = <SubmitStatus data={props.data} onClose={onClose} />
         break
