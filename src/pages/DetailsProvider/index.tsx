@@ -98,6 +98,27 @@ const DetailsProvider = () => {
       <Container>
         <S.PageContent>
           <Section
+            id={"providerRef"}
+            title="Quero oferecer meu serviço ou produto"
+          >
+            <S.StartGap>
+              <span>
+                Saia na <strong>FRENTE</strong> do seu concorrente, realize seu
+                pré-cadastro e nosso time comercial vai entrar em contato.
+              </span>
+              <S.StartGapContact>
+                <div>
+                  <Icons.Whatsapp width={48} height={48} />
+                  <span>Atendimento comercial</span>
+                </div>
+                <S.Button id="preRegister" onClick={handleGetIn}>
+                  Realizar pré-cadastro
+                </S.Button>
+              </S.StartGapContact>
+            </S.StartGap>
+          </Section>
+
+          <Section
             id="services"
             title="Conexão, comunicação e responsabilidade"
             description="A CONDHELP, conhece a importância dos Prestadores de Serviços e dos desafios de ofertar produtos ou serviços no setor condominial. Criamos uma solução exclusiva facilitando essa comunicação tão importante."
