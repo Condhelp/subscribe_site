@@ -6,7 +6,6 @@ export const Element = styled.div`
   background-color: ${({ theme }) => theme.colors.white.main};
   box-shadow: 0 6px 50px rgba(0, 0, 0, 0.18);
   width: 100%;
-  max-width: 540px;
   overflow: visible;
 
   @media (max-width: ${({ theme }) => theme.bp.small}px) {
@@ -25,12 +24,15 @@ export const ModalTitle = styled.span`
 
 export const Content = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   gap: 18px;
   padding: 20px;
   width: 100%;
-  max-height: 60svh;
-  overflow: auto;
+
+  @media (max-width: ${({ theme }) => theme.bp.small}px) {
+    flex-direction: column;
+    gap: 36px;
+  }
 `
 
 export const TermTitle = styled.h2<{ $documentTitle?: boolean }>`
@@ -62,8 +64,6 @@ export const Bottom = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 16px;
-  width: 100%;
-  margin-top: 16px;
 `
 
 export const Button = styled.button<{ $disabled: boolean }>`

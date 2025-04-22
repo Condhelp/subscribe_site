@@ -74,6 +74,24 @@ const Modal = (props: Props) => {
                 overflow: "visible",
               },
             }
+          : props.role === "cookiesAcception"
+          ? {
+              "&": {
+                bottom: 0,
+                top: "100%",
+                transform: "translateY(-100%)",
+                background: "red",
+                height: "fit-content",
+                padding: 0,
+                maxWidth: "100%",
+              },
+              "& .MuiPaper-root": {
+                width: "100%",
+                margin: 0,
+                borderRadius: 0,
+                maxWidth: "unset",
+              },
+            }
           : undefined
       }
     >
