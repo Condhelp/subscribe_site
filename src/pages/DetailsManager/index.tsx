@@ -6,6 +6,8 @@ import Container from "../../components/Container"
 import Footer from "../../components/Footer"
 import Section from "../../components/Section"
 
+import easy from "../../assets/images/easy.png"
+
 // features images
 import schedule from "../../assets/images/schedule.png"
 import chat from "../../assets/images/chat.png"
@@ -81,6 +83,24 @@ const DetailsManager = () => {
 
       <Container>
         <S.PageContent>
+          <Section>
+            <S.Features>
+              <S.FeatureLine $dark={false} $reverse={false}>
+                <img src={easy} alt="" />
+                <S.FeatureInfo>
+                  <S.FeatureTitle>
+                    Faça orçamentos para seus condomínios!
+                  </S.FeatureTitle>
+                  <S.FeatureText>
+                    Conhecendo a responsabilidade que tem a função de Síndico,
+                    criamos a conexão entre os desafios e as soluções para você
+                    Síndico tirar nota 10 na sua prestação de contas.
+                  </S.FeatureText>
+                </S.FeatureInfo>
+              </S.FeatureLine>
+            </S.Features>
+          </Section>
+
           <Section
             id="wantRegister"
             title="Quero me cadastrar"

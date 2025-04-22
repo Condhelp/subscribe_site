@@ -11,6 +11,7 @@ import Services from "../../components/Services"
 
 // speakers images
 import easy from "../../assets/images/easy.png"
+
 import Header from "../../components/Header"
 import Section from "../../components/Section"
 
