@@ -80,7 +80,6 @@ const Modal = (props: Props) => {
                 bottom: 0,
                 top: "100%",
                 transform: "translateY(-100%)",
-                background: "red",
                 height: "fit-content",
                 padding: 0,
                 maxWidth: "100%",
