@@ -24,6 +24,10 @@ export const menu: TNavItem[] = [
     text: "Sou Síndico",
     link: "/sindico",
   },
+  {
+    text: "Acessar sistema",
+    link: process.env.REACT_APP_DASHBOARD_LINK ?? "",
+  },
 ]
 
 export const footer: TNavItem[] = [
