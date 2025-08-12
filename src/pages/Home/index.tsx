@@ -120,7 +120,7 @@ const Home = () => {
   const handleGetIn = () => {
     const aLink = document.createElement("a")
     aLink.href =
-      "https://wa.me/5548999918804?text=Olá gostaria de ser um prestador de serviço."
+      "https://wa.me/5548996256944?text=Olá gostaria de ser um prestador de serviço."
     aLink.target = "_blank"
     aLink.click()
 
