@@ -4,7 +4,7 @@ import { theme } from "./theme"
 import { useEffect, useState } from "react"
 import Modal from "./components/Modal"
 
-const isOnMaintence = false
+const isOnMaintence = true
 
 function App() {
   const [showCookiesModal, setShowCookiesModal] = useState(false)
