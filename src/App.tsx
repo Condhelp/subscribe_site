@@ -4,10 +4,14 @@ import { theme } from "./theme"
 import { useEffect, useState } from "react"
 import Modal from "./components/Modal"
 
+const isOnMaintence = false
+
 function App() {
   const [showCookiesModal, setShowCookiesModal] = useState(false)
 
   useEffect(() => {
+    window.document.documentElement.style.overflow = isOnMaintence ? "hidden" : "auto"
+
     const hasConsented = localStorage.getItem("condhelpAcceptedCookies")
 
     if (
@@ -24,6 +28,13 @@ function App() {
           role="cookiesAcception"
           onClose={() => setShowCookiesModal(false)}
           visible={showCookiesModal}
+        />
+      )}
+      {isOnMaintence && (
+        <Modal
+          role="maintence"
+          onClose={() => {}}
+          visible={true}
         />
       )}
       <Routes />

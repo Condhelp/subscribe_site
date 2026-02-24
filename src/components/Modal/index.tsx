@@ -7,6 +7,7 @@ import { Dialog } from "@mui/material"
 import TermsPrivacy from "./variations/TermsPrivacy"
 import TermsCookies from "./variations/TermsCookies"
 import AcceptCookies from "./variations/AcceptCookies"
+import Maintence from "./variations/Maintence"
 
 type Props = {
   visible: boolean
@@ -25,6 +26,7 @@ type TModals =
   | "popup"
   | "privacy"
   | "cookies"
+  | "maintence"
 
 const Modal = (props: Props) => {
   const { visible, onClose, onSubmit } = props
@@ -53,6 +55,9 @@ const Modal = (props: Props) => {
         break
       case "popup":
         el = <Popup img={props.data.img} onClose={onClose} />
+        break
+      case "maintence":
+        el = <Maintence />
         break
       default:
         break
@@ -91,7 +96,11 @@ const Modal = (props: Props) => {
                 maxWidth: "unset",
               },
             }
-          : undefined
+          : {
+            "&": {
+              backdropFilter: "blur(8px)",
+            }
+          }
       }
     >
       {renderModalContent({ onClose })}

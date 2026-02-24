@@ -16,6 +16,7 @@ import { ReactComponent as Check } from "./cehck.svg"
 import { ReactComponent as Calculator } from "./calc.svg"
 import { ReactComponent as Whatsapp } from "./whatsapp.svg"
 import { ReactComponent as Dropdown } from "./dropdown.svg"
+import { ReactComponent as AiStars } from "./ai_stars.svg"
 
 export const Icons = {
   Burger,
@@ -36,4 +37,5 @@ export const Icons = {
   UserCircle,
   Whatsapp,
   Dropdown,
+  AiStars
 }
